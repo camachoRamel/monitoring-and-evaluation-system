@@ -6,20 +6,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
+    protected $table = 'users';
+    protected $guarded = [];
+    protected $casts = [
+        'password' => 'hashed'
     ];
 
     /**
@@ -32,16 +28,24 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
-    protected function casts(): array
+    public function internHandler() : HasMany
     {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
+        return $this->hasMany(InternHandler::class);
     }
+
+    public function userTask() : HasOne
+    {
+        return $this->hasOne(UserTask::class);
+    }
+
+    public function weeklyEvaluation() : HasMany
+    {
+        return $this->hasMany(WeeklyEvaluation::class);
+    }
+
+    public function weekyReport() : HasOne
+    {
+        return $this->hasOne(WeeklyReport::class);
+    }
+
 }
