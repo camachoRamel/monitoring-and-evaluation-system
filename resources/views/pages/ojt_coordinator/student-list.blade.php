@@ -18,6 +18,4 @@
 
 </div>
 
-<script defer src="{{ asset('custom-scripts/user-voting.js') }}"></script>
-
 @endsection

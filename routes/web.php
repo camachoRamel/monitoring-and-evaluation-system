@@ -3,10 +3,10 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('index');
+    return view('login');
 });
 
-Route::get('/student', function () {
-    return view('pages.student.index');
+Route::get('/admin', function () {
+    return view('pages.admin.student-list');
 });
 

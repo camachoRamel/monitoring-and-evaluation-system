@@ -1,7 +1,5 @@
 @extends('layouts.app')
 
-{{-- <link rel="stylesheet" href="{{ asset('custom-styles/admin.css') }}"> --}}
-
 @section('content')
 
 <div class="container d-flex flex-column align-items-center vh-100">
@@ -17,7 +15,5 @@
     </div>
 
 </div>
-
-<script defer src="{{ asset('custom-scripts/user-voting.js') }}"></script>
 
 @endsection
