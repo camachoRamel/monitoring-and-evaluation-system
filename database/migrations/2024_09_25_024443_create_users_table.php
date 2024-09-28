@@ -16,9 +16,9 @@ return new class extends Migration
             $table->string('first_name');
             $table->string('middle_name');
             $table->string('last_name');
-            $table->binary('profile_picture')->nullable();
+            $table->string('profile_picture')->nullable();
             $table->integer('role')->unsigned()->default(3);
-            $table->integer('approve_count')->unsigned()->default(0);
+            $table->integer('approved')->unsigned()->default(0);
             $table->string('username');
             $table->string('password');
             $table->timestamps();
