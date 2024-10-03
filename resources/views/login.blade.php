@@ -6,7 +6,7 @@
 
     <main class="d-flex justify-content-center align-items-center vh-100">
         <div class="container-xs p-5 border rounded border-dark">
-            <form name="form" action="" method="POST">
+            <form name="form" action="{{ route('login')}}" method="POST">
                 @csrf
                 <div class="form-floating mb-3">
                   <input type="text" class="form-control" name="username" id="floatingInput username" placeholder="Username">

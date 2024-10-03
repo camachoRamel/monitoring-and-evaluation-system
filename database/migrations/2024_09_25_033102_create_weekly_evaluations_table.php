@@ -16,7 +16,7 @@ return new class extends Migration
             $table->bigInteger('user_id')->unsigned();
             $table->bigInteger('evaluator_id')->unsigned();
             $table->bigInteger('weekly_task_id')->unsigned();
-            $table->binary('evaluation');
+            $table->string('evaluation')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('evaluator_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('weekly_task_id')->references('id')->on('weekly_tasks')->onDelete('cascade');
