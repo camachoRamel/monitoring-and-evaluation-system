@@ -19,6 +19,19 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach ($coordinators as $coord)
+
+                        <tr>
+                            <td>{{ $coord->first_name . " ". $coord->middle_name . " " . $coord->last_name}}</td>
+                            <td>System Architect</td>
+                            <td>Edinburgh</td>
+                            <td class="d-flex gap-2">
+                                <a href="#" class="btn btn-success">Edit</a>
+                                <a href="#" class="btn btn-secondary">View</a>
+                            </td>
+                        </tr>
+
+                    @endforeach
                     <tr>
                         <td>Tiger Nixon</td>
                         <td>System Architect</td>

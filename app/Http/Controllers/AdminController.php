@@ -26,24 +26,39 @@ class AdminController extends Controller
         return redirect()->route('admin.index')->with('success', 'Accounts successfully created.');
     }
 
-    public function viewStudents()
+    public function viewItStudents(string $type)
     {
-        //still not complete
-        $students = UserController::getAllFromRole(3);
-        return view('pages.admin.student-list', compact('students'));
+
+        $students = UserController::getAllUsers(3, 1);
+
+        return view('pages.admin.redirection.view-program-specific-student-' . $type, compact('students'));
+    }
+
+    public function viewComSciStudents(string $type)
+    {
+
+        $students = UserController::getAllUsers(3, 2);
+
+        return view('pages.admin.redirection.view-program-specific-student-' . $type, compact('students'));
+    }
+
+    public function viewIsStudents(string $type)
+    {
+
+        $students = UserController::getAllUsers(3, 3);
+
+        return view('pages.admin.redirection.view-program-specific-student-' . $type, compact('students'));
     }
 
     public function viewHtes()
     {
-        //still not complete
-        $htes = UserController::getAllFromRole(1);
-        return view('pages.admin.student-list', compact('htes'));
+        $htes = UserController::getAllUsers(1);
+        return view('pages.admin.hte-info', compact('htes'));
     }
 
     public function viewCoordinators()
     {
-        //still not complete
-        $coordinators = UserController::getAllFromRole(2);
-        return view('pages.admin.student-list', compact('coordinators'));
+        $coordinators = UserController::getAllUsers(2);
+        return view('pages.admin.ojt-coordinator-info', compact('coordinators'));
     }
 }

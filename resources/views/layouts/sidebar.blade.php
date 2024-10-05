@@ -7,7 +7,7 @@
             <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview" role="menu" data-accordion="false">
                 FOR ADMIN
                 <li class="nav-item">
-                  <a href="{{ route('admin.dashboard') }}" class="nav-link">
+                  <a href="{{ route('admin.index', Auth::id()) }}" class="nav-link">
                     <i class="nav-icon bi bi-circle"></i>
                     <p>
                       Dashboard
