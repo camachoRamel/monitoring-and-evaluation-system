@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('last_name');
             $table->string('profile_picture')->nullable();
             $table->integer('role')->unsigned()->default(3);
+            $table->integer('course')->default(0);
             $table->integer('approved')->unsigned()->default(0);
             $table->string('username');
             $table->string('password');

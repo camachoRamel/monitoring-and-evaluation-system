@@ -23,7 +23,7 @@ class UserController extends Controller
                 return view('pages.hte.index', compact('user'));
                 break;
             case 2:
-                return view('pages.ojy_coordinator.index', compact('user'));
+                return view('pages.ojt_coordinator.index', compact('user'));
                 break;
             case 3:
                 //checks student is approved by hte
@@ -42,12 +42,31 @@ class UserController extends Controller
 
     }
 
-    public static function getAllFromRole(int $role)
+    //FIRST ARGUMENT IS FOR ROLE SECOND IS FOR COURSE. SECOND ARGUMENT IS ONLY PRESENT WHEN ITS FOR STUDENT
+    public static function __callStatic($name, $args)
     {
-        $users = DB::table('users')
-        ->select('*')
-        ->where('role', $role)
-        ->get();
+        if($name == 'getAllUsers')
+        {
+            switch(count($args))
+            {
+                case 1:
+                    $users = DB::table('users')
+                    ->select('*')
+                    ->where('role', $args[0])
+                    ->get();
+                break;
+
+                case 2:
+                    $users = DB::table('intern_handlers')
+                    ->select('u1.id', DB::raw('CONCAT(u1.first_name, " ", u1.middle_name, " ", u1.last_name) AS name, CONCAT(u2.first_name, " ", u2.middle_name, " ", u2.last_name) AS coord, CONCAT(u3.first_name, " ", u3.middle_name, " ", u3.last_name) AS hte'))
+                    ->join('users AS u1', 'u1.id', '=', 'user_id')
+                    ->join('users AS u2', 'u2.id', '=', 'coord_id')
+                    ->leftJoin('users AS u3', 'u3.id', '=', 'hte_id')
+                    ->where('u1.role', $args[0])
+                    ->where('u1.course', $args[1])
+                    ->get();
+            }
+        }
 
         return $users;
     }

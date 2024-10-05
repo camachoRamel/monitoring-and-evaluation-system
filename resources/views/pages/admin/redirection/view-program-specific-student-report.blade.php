@@ -19,6 +19,17 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach ($students as $stud)
+                        <tr>
+                            <td>{{ $stud->name }}</td>
+                            <td>{{ $stud->hte }}</td>
+                            <td>{{ $stud->coord }}</td>
+                            <td class="d-flex gap-2">
+                                <a href="#" class="btn btn-success">Edit</a>
+                                <a href="#" class="btn btn-secondary">View</a>
+                            </td>
+                        </tr>
+                    @endforeach
                     <tr>
                         <td>Tiger Nixon</td>
                         <td>System Architect</td>
