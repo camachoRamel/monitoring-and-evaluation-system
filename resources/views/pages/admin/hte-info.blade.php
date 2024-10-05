@@ -12,27 +12,27 @@
             <table id="example" class="table table-striped table-bordered" style="width:100%">
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>HTE</th>
-                        <th>OJT Coordinator</th>
+                        <th>Company Name</th>
+                        {{-- <th>HTE</th>
+                        <th>OJT Coordinator</th> --}}
                         <th>Controls</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>Tiger Nixon</td>
-                        <td>System Architect</td>
-                        <td>Edinburgh</td>
-                        <td class="d-flex gap-2">
+                        {{-- <td>System Architect</td>
+                        <td>Edinburgh</td> --}}
+                        <td class="d-flex gap-2 justify-content-end">
                             <a href="#" class="btn btn-success">Edit</a>
                             <a href="#" class="btn btn-secondary">View</a>
                         </td>
                     </tr>
                     <tr>
                         <td>Garrett Winters</td>
-                        <td>Accountant</td>
-                        <td>Tokyo</td>
-                        <td class="d-flex gap-2">
+                        {{-- <td>Accountant</td>
+                        <td>Tokyo</td> --}}
+                        <td class="d-flex gap-2 justify-content-end">
                             <a href="#" class="btn btn-success">Edit</a>
                             <a href="#" class="btn btn-secondary">View</a>
                         </td>

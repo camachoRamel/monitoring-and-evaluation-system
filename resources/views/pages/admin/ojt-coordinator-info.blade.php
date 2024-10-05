@@ -12,9 +12,9 @@
             <table id="example" class="table table-striped table-bordered" style="width:100%">
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>HTE</th>
-                        <th>OJT Coordinator</th>
+                        <th>First Name</th>
+                        <th>Middle Name</th>
+                        <th>Last Name</th>
                         <th>Controls</th>
                     </tr>
                 </thead>
