@@ -4,20 +4,29 @@
 
 @section('content')
 
-<div class="container d-flex flex-column align-items-center vh-100">
+    <div class="app-content-header"> <!--begin::Container-->
+        <h3 class="mb-0">Student Weekly Report</h3>
+    </div> <!--end::App Content Header-->
 
-    <div class="row bg-secondary mb-auto mt-3">
-        DASHBOARD
-    </div>
-    <div class="row bg-primary w-75">
-        <div class="col">
-            dashboard
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia ad eos neque, adipisci, iure placeat rem veritatis blanditiis in hic cumque error, magnam reiciendis quam voluptates quibusdam nobis quos nisi est quod. Veritatis velit, modi deleniti sunt cumque ipsa dolorum fuga, quo obcaecati illum laboriosam eos molestiae nemo? Nobis nam porro, ullam expedita, odit perferendis consequatur asperiores nisi labore doloribus architecto repellat rem! Asperiores, nobis? Commodi eos dolorem vitae veniam, nulla nemo reiciendis dolore ipsa alias? Corporis, doloribus voluptate cumque amet qui totam fuga mollitia vero blanditiis aliquid earum officiis, libero, dolore fugit assumenda adipisci optio sequi dolor. Voluptas, sit?
+    <section class="content w-100 px-4">
+        <div class="card card-solid p-4">
+            <div class="container d-flex flex-column flex-lg-row p-3 gap-5" style="height: 25rem;">
+                <div class="col d-flex flex-column bg-secondary my-2 my-lg-0 mx-lg-2 border-none rounded-2 shadow p-4">
+                    <p class="mb-auto">IT</p>
+                    {{-- Insert 3 different routes for each button that gives the corresponding details for specific program of the student --}}
+                    <a href="{{ route("admin.view-program-student-specific-report") }}" class="btn btn-dark align-self-end">View</a>
+                </div>
+                <div class="col d-flex flex-column bg-secondary my-2 my-lg-0 mx-lg-2 border-none rounded-2 shadow p-4">
+                    <p class="mb-auto">IS</p>
+                    <a href="" class="btn btn-dark align-self-end">View</a>
+                </div>
+                <div class="col d-flex flex-column bg-secondary my-2 my-lg-0 mx-lg-2 border-none rounded-2 shadow p-4">
+                    <p class="mb-auto">ComSci</p>
+                    <a href="" class="btn btn-dark align-self-end">View</a>
+                </div>
+            </div>
+
         </div>
-    </div>
-
-</div>
-
-<script defer src="{{ asset('custom-scripts/user-voting.js') }}"></script>
+    </section>
 
 @endsection
