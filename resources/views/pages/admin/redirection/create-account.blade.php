@@ -56,13 +56,9 @@
                             Program
                             </button>
                             <ul class="dropdown-menu" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(0px, 40px);" data-popper-placement="bottom-start">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li> <a class="dropdown-item" href="#">Another action</a> </li>
-                                <li> <a class="dropdown-item" href="#">Something else here</a> </li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li> <a class="dropdown-item" href="#">Separated link</a> </li>
+                                <li><a class="dropdown-item" href="#">BSIT</a></li>
+                                <li> <a class="dropdown-item" href="#">BSIS</a> </li>
+                                <li> <a class="dropdown-item" href="#">ComSci</a> </li>
                             </ul>
                         </div>
                         <div class="btn-group">
@@ -70,13 +66,9 @@
                             OJT Coordinator
                             </button>
                             <ul class="dropdown-menu" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(0px, 40px);" data-popper-placement="bottom-start">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li> <a class="dropdown-item" href="#">Another action</a> </li>
-                                <li> <a class="dropdown-item" href="#">Something else here</a> </li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li> <a class="dropdown-item" href="#">Separated link</a> </li>
+                                <li><a class="dropdown-item" href="#">Coord 1</a></li>
+                                <li> <a class="dropdown-item" href="#">Coord 2</a> </li>
+                                <li> <a class="dropdown-item" href="#">Coord 3</a> </li>
                             </ul>
                         </div>
                     </div> <!--end::Body--> <!--begin::Footer-->
@@ -156,11 +148,3 @@
     {{-- content --}}
 
 @endsection
-
-@push('scripts')
-<script>
-    $(document).ready(function() {
-        $('#example').DataTable();
-    });
-</script>
-@endpush

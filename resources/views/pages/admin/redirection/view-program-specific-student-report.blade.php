@@ -7,8 +7,8 @@
         <h3 class="mb-0">IT Students Report</h3>
     </div> <!--end::App Content Header-->
 
-    <section class="content w-100 px-4">
-        <div class="card card-solid p-4">
+    <section class="content w-100 px-0 p-lg-4">
+        <div class="card card-solid px-0 py-2 p-lg-4">
             <table id="example" class="table table-striped table-bordered" style="width:100%">
                 <thead>
                     <tr>
@@ -34,8 +34,10 @@
                         <td>Tiger Nixon</td>
                         <td>System Architect</td>
                         <td>Edinburgh</td>
-                        <td class="d-flex gap-2">
-                            <a href="#" class="btn btn-primary ml-auto">View</a>
+                        <td class="d-flex">
+                            <form action="{{ route("admin.view-student-specific-report") }}">
+                                <button type="submit" class="btn btn-primary ml-auto">View</button>
+                            </form>
                         </td>
                     </tr>
                     <tr>

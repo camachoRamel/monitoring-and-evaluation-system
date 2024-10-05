@@ -36,8 +36,7 @@
                         <td>Tiger Nixon</td>
                         <td>System Architect</td>
                         <td>Edinburgh</td>
-                        <td class="d-flex gap-2">
-                            <a href="#" class="btn btn-success">Edit</a>
+                        <td class="d-flex gap-2 justify-content-end">
                             <a href="#" class="btn btn-secondary">View</a>
                         </td>
                     </tr>
@@ -45,8 +44,7 @@
                         <td>Garrett Winters</td>
                         <td>Accountant</td>
                         <td>Tokyo</td>
-                        <td class="d-flex gap-2">
-                            <a href="#" class="btn btn-success">Edit</a>
+                        <td class="d-flex gap-2 justify-content-end">
                             <a href="#" class="btn btn-secondary">View</a>
                         </td>
                     </tr>
