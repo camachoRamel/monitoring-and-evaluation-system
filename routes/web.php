@@ -48,10 +48,12 @@ Route::middleware('is.admin')->group(function()
 
     Route::get('/admin/hte-info', [AdminController::class, 'viewHtes'])->name('admin.hte-info');
 
-    Route::get('/admin/create-account', function ()
+    Route::get('/admin/create-account-page', function ()
     {
         return view('pages.admin.redirection.create-account');
-    })->name('admin.create-account');
+    })->name('admin.create-account-page');
+
+    Route::post('/admin/create-account', [AdminController::class, 'createUser'])->name('admin.create-account');
 
 
 });
