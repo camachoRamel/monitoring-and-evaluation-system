@@ -45,7 +45,6 @@ Route::middleware('is.admin')->group(function()
 
     Route::get('/admin/ojt-coordinator-list', [AdminController::class, 'viewCoordinators'])->name('admin.ojt-coordinator-info');
 
-
     Route::get('/admin/hte-info', [AdminController::class, 'viewHtes'])->name('admin.hte-info');
 
     Route::get('/admin/create-account-page', function ()
@@ -54,7 +53,6 @@ Route::middleware('is.admin')->group(function()
     })->name('admin.create-account-page');
 
     Route::post('/admin/create-account', [AdminController::class, 'createUser'])->name('admin.create-account');
-
 
 });
 
@@ -79,7 +77,10 @@ Route::middleware('is.student')->group(function()
     Route::get('/student{id}', [UserController::class, 'index'])->name('stud.index');
 });
 
-// Route::get('/admin', function () {
-//     return view('pages.admin.index');
-// })->name('admin.dashboard');
+Route::get('/admin/view-student-list', function () {
+    return view('pages.admin.redirection.view-student-specific-list');
+})->name('admin.view-student-specific-list');
 
+Route::get('/admin/view-student-report', function () {
+    return view('pages.admin.redirection.view-student-specific-report');
+})->name('admin.view-student-specific-report');

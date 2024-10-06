@@ -24,9 +24,10 @@
                             <td>{{ $stud->name }}</td>
                             <td>{{ $stud->hte }}</td>
                             <td>{{ $stud->coord }}</td>
-                            <td class="d-flex gap-2">
-                                <a href="#" class="btn btn-success">Edit</a>
-                                <a href="#" class="btn btn-secondary">View</a>
+                            <td>
+                                <form class="d-flex justify-content-end" action="{{ route("admin.view-student-specific-report") }}">
+                                    <button type="submit" class="btn btn-primary">View</button>
+                                </form>
                             </td>
                         </tr>
                     @endforeach
@@ -34,21 +35,12 @@
                         <td>Tiger Nixon</td>
                         <td>System Architect</td>
                         <td>Edinburgh</td>
-                        <td class="d-flex">
-                            <form action="{{ route("admin.view-student-specific-report") }}">
-                                <button type="submit" class="btn btn-primary ml-auto">View</button>
+                        <td>
+                            <form class="d-flex justify-content-end" action="{{ route("admin.view-student-specific-report") }}">
+                                <button type="submit" class="btn btn-primary">View</button>
                             </form>
                         </td>
                     </tr>
-                    <tr>
-                        <td>Garrett Winters</td>
-                        <td>Accountant</td>
-                        <td>Tokyo</td>
-                        <td class="d-flex gap-2">
-                            <a href="#" class="btn btn-primary ml-auto">View</a>
-                        </td>
-                    </tr>
-                    <!-- More rows here -->
                 </tbody>
             </table>
         </div>
