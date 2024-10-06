@@ -9,7 +9,7 @@
 
     <section class="content px-4">
         <div class="card card-solid p-4">
-           <form action="">
+           <form action=" {{route('admin.create-account')}}" method="POST">
             @csrf
             <!-- Radio Begin -->
             <div class="btn-group mb-2" role="group" aria-label="Basic radio toggle button group">
