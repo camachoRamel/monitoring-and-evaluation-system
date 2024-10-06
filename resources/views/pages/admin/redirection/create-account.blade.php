@@ -33,23 +33,23 @@
                             <div class="card-body">
                                 <div class="mb-3">
                                     <label for="first_name" name="first_name" class="form-label">First Name</label>
-                                    <input type="text" class="form-control" id="first_name">
+                                    <input type="text" class="form-control" name="first_name" id="first_name">
                                 </div>
                                 <div class="mb-3">
                                     <label for="middle_name" name="middle_name" class="form-label">Middle Name</label>
-                                    <input type="text" class="form-control" id="middle_name">
+                                    <input type="text" class="form-control" name="middle_name" id="middle_name">
                                 </div>
                                 <div class="mb-3">
                                     <label for="last_name" name="last_name" class="form-label">Last Name</label>
-                                    <input type="text" class="form-control" id="last_name">
+                                    <input type="text" class="form-control" name="last_name" id="last_name">
                                 </div>
                                 <div class="mb-3">
                                     <label for="username" name="username" class="form-label">Username</label>
-                                    <input type="text" class="form-control" id="username">
+                                    <input type="text" class="form-control" name="username" id="username">
                                 </div>
                                 <div class="mb-3">
                                     <label for="password" name="password" class="form-label">Password</label>
-                                    <input type="text" class="form-control" id="password">
+                                    <input type="text" class="form-control" name="password" id="password">
                                 </div>
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="true">
@@ -108,7 +108,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="password" name="password" class="form-label">Password</label>
-                                    <input type="text" class="form-control" id="password">
+                                    <input type="password" class="form-control" id="password">
                                 </div>
                             </div> <!--end::Body--> <!--begin::Footer-->
                             <div class="card-footer d-flex justify-content-end">
@@ -131,15 +131,15 @@
                             <div class="card-body">
                                 <div class="mb-3">
                                     <label for="first_name" name="first_name" class="form-label">Company Name</label>
-                                    <input type="text" class="form-control" id="first_name">
+                                    <input type="text" class="form-control" name="first_name" id="first_name">
                                 </div>
                                 <div class="mb-3">
                                     <label for="username" name="username" class="form-label">Username</label>
-                                    <input type="text" class="form-control" id="username">
+                                    <input type="text" class="form-control" name="username" id="username">
                                 </div>
                                 <div class="mb-3">
                                     <label for="password" name="password" class="form-label">Password</label>
-                                    <input type="text" class="form-control" id="password">
+                                    <input type="password" class="form-control" name="password" id="password">
                                 </div>
                             </div> <!--end::Body--> <!--begin::Footer-->
                             <div class="card-footer d-flex justify-content-end">

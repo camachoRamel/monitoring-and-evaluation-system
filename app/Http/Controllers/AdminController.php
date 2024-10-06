@@ -6,13 +6,15 @@ use App\Http\Controllers\Controller;
 use App\Models\InternHandler;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
     public function createUser(Request $request)
     {
         $studentCoord = null;
-        switch($request->btradio)
+        // dd($request->btnradio);
+        switch($request->btnradio)
         {
             case 'student':
                 $user = $request->validate([
@@ -21,7 +23,7 @@ class AdminController extends Controller
                     'last_name' => 'required',
                     'username' => 'required',
                     'password' => 'required|min:8',
-                    'course' => 'required'
+                    // 'course' => 'required'
                 ]);
 
                 $studentCoord = $request->validate([
@@ -29,7 +31,7 @@ class AdminController extends Controller
                 ]);
                 break;
 
-            case 'ojt_coordinator':
+            case 'ojt-coordinator':
                 $user = $request->validate([
                     'first_name' => 'required',
                     'middle_name' => 'sometimes',
@@ -37,6 +39,7 @@ class AdminController extends Controller
                     'username' => 'required',
                     'password' => 'required|min:8'
                 ]);
+
                 break;
 
             case 'hte':
@@ -45,23 +48,25 @@ class AdminController extends Controller
                     'username' => 'required',
                     'password' => 'required|min:8'
                 ]);
+
                 break;
 
         }
 
+        // dd($user);
         //NOT TESTED YET
         $userID = User::create($user)->id;
 
         if($studentCoord != null)
         {
             InternHandler::create([
-                'user_id' => $userID,
+                // 'user_id' => $userID,
                 'coord_id' => $studentCoord[0]->coord_id
             ]);
         }
 
         //dont know where to return
-        return redirect()->route('admin.index')->with('success', 'Accounts successfully created.');
+        return redirect()->route('admin.index', Auth::id())->with('success', 'Accounts successfully created.');
     }
 
     public function viewItStudents(string $type)
