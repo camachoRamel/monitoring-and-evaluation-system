@@ -1,37 +1,4 @@
-{{-- <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-    <!-- Left navbar links -->
-    <ul class="navbar-nav">
-        <li class="nav-item">
-            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-        </li>
-        <li class="nav-item d-none d-sm-inline-block">
-            <a href="" class="nav-link text-primary">Create Account</a>
-        </li>
-        <li class="nav-item d-none d-sm-inline-block">
-            <a href="../../index3.html" class="nav-link">About</a>
-        </li>
-        <li class="nav-item d-none d-sm-inline-block">
-            <a href="#" class="nav-link">Contact</a>
-        </li>
-    </ul>
-
-    <!-- Right navbar links -->
-    <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-            <form action="{{ route('logout') }}" method="post" id="logout-form-2">
-                @csrf
-                <button type="submit" class="btn text-danger">Log out</button>
-            </form>
-          </li>
-        <li class="nav-item">
-            <a class="nav-link" data-widget="control-settings" data-slide="true" href="#" role="button">
-            <i class="fas fa-th-large"></i>
-            </a>
-        </li>
-    </ul>
-  </nav> --}}
-
-  <nav class="app-header navbar navbar-expand bg-body"> <!--begin::Container-->
+<nav class="app-header navbar navbar-expand bg-body"> <!--begin::Container-->
     <div class="container-fluid"> <!--begin::Start Navbar Links-->
         <ul class="navbar-nav">
             <li class="nav-item"> <a class="nav-link" data-lte-toggle="sidebar" href="#" role="button"> <i class="bi bi-list"></i> </a> </li>
@@ -45,7 +12,7 @@
             <form action="{{ route('logout') }}" method="post" id="logout-form-2" class="m-0 p-0">
                 @csrf
                 <li class="nav-item">
-                    <a type="submit" class="nav-link text-danger">Log out</a>
+                    <button type="submit" class="nav-link text-danger">Log out</button>
                 </li>
             </form>
             <li class="nav-item">
