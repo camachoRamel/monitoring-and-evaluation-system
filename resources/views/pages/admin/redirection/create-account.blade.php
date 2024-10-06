@@ -13,17 +13,17 @@
             @csrf
             <!-- Radio Begin -->
             <div class="btn-group mb-2" role="group" aria-label="Basic radio toggle button group">
-                <input type="radio" class="btn-check" name="btnradio" id="student" autocomplete="off" value="student" checked="">
-                <label class="btn btn-outline-primary" for="student">Student</label>
-                <input type="radio" class="btn-check" name="btnradio" id="ojt_coordinator" value="ojt-coordinator" autocomplete="off">
-                <label class="btn btn-outline-primary" for="ojt_coordinator">OJT Coordinator</label>
-                <input type="radio" class="btn-check" name="btnradio" id="hte" value="hte" autocomplete="off">
-                <label class="btn btn-outline-primary" for="hte">HTE</label>
+                <input type="radio" class="btn-check" name="btnradio" id="1" autocomplete="off" value="1" checked="">
+                <label class="btn btn-outline-primary" for="1">Student</label>
+                <input type="radio" class="btn-check" name="btnradio" id="2" value="2" autocomplete="off">
+                <label class="btn btn-outline-primary" for="2">OJT Coordinator</label>
+                <input type="radio" class="btn-check" name="btnradio" id="3" value="3" autocomplete="off">
+                <label class="btn btn-outline-primary" for="3">HTE</label>
             </div>
             <!-- Radio End -->
 
             <!-- Student Card Begin -->
-            <div class="col-12 user-card" id="student-card">
+            <div class="col-12 user-card" id="1-card">
                 <div class="container d-flex justify-content-center">
                     <div class="col-12 col-md-6">
                         <div class="card mb-4"> <!--begin::Header-->
@@ -51,26 +51,25 @@
                                     <label for="password" name="password" class="form-label">Password</label>
                                     <input type="text" class="form-control" id="password">
                                 </div>
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="true">
-                                    Program
-                                    </button>
-                                    <ul class="dropdown-menu" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(0px, 40px);" data-popper-placement="bottom-start">
-                                        <li><a class="dropdown-item" href="#">BSIT</a></li>
-                                        <li> <a class="dropdown-item" href="#">BSIS</a> </li>
-                                        <li> <a class="dropdown-item" href="#">ComSci</a> </li>
-                                    </ul>
+                                <div class="row">
+                                    <div class="col-5">
+                                        <select class="form-select" aria-label="Default select example">
+                                            <option selected>Program</option>
+                                            <option value="1">BSIT</option>
+                                            <option value="2">ComSci</option>
+                                            <option value="3">BSIS</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-5">
+                                        <select class="form-select" aria-label="Default select example">
+                                            <option selected>OJT Coordinator</option>
+                                            <option value="1">Coordinator 1</option>
+                                            <option value="2">Coordinator 2</option>
+                                            <option value="3">Coordinator 3</option>
+                                        </select>
+                                    </div>
                                 </div>
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="true">
-                                    OJT Coordinator
-                                    </button>
-                                    <ul class="dropdown-menu" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(0px, 40px);" data-popper-placement="bottom-start">
-                                        <li><a class="dropdown-item" href="#">Coord 1</a></li>
-                                        <li> <a class="dropdown-item" href="#">Coord 2</a> </li>
-                                        <li> <a class="dropdown-item" href="#">Coord 3</a> </li>
-                                    </ul>
-                                </div>
+
                             </div> <!--end::Body--> <!--begin::Footer-->
                             <div class="card-footer d-flex justify-content-end">
                                 <button type="submit" class="btn btn-primary">Submit</button>
@@ -82,7 +81,7 @@
             <!-- Student Card End -->
 
             <!-- OJT Coord Card Begin -->
-            <div class="col-12 user-card" id="ojt-coordinator-card">
+            <div class="col-12 user-card" id="2-card">
                 <div class="container d-flex justify-content-center">
                     <div class="col-12 col-md-6">
                         <div class="card mb-4"> <!--begin::Header-->
@@ -121,7 +120,7 @@
             <!-- OJT Coord Card End -->
 
             <!-- HTE Card Begin -->
-            <div class="col-12 user-card" id="hte-card">
+            <div class="col-12 user-card" id="3-card">
                 <div class="container d-flex justify-content-center">
                     <div class="col-12 col-md-6">
                         <div class="card mb-4"> <!--begin::Header-->
