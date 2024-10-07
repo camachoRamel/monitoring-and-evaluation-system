@@ -20,7 +20,7 @@ class AdminController extends Controller
                     'middle_name' => 'sometimes',
                     'last_name' => 'required',
                     'role' => 'required',
-                    'username' => 'required',
+                    'username' => 'required|alpha:ascii',
                     'password' => 'required|min:8',
                     'course' => 'required'
                 ]);
@@ -36,7 +36,7 @@ class AdminController extends Controller
                     'middle_name' => 'sometimes',
                     'last_name' => 'required',
                     'role' => 'required',
-                    'username' => 'required',
+                    'username' => 'required|alpha:ascii',
                     'password' => 'required|min:8'
                 ]);
                 break;
@@ -45,7 +45,7 @@ class AdminController extends Controller
                 $user = $request->validate([
                     'first_name' => 'required',
                     'role' => 'required',
-                    'username' => 'required',
+                    'username' => 'required|alpha:ascii',
                     'password' => 'required|min:8'
                 ]);
                 break;
