@@ -13,11 +13,11 @@
             @csrf
             <!-- Radio Begin -->
             <div class="btn-group mb-2" role="group" aria-label="Basic radio toggle button group">
-                <input type="radio" class="btn-check" name="btnradio" id="1" autocomplete="off" value="1" checked="">
+                <input type="radio" class="btn-check" name="role" id="1" autocomplete="off" value="3" checked="">
                 <label class="btn btn-outline-primary" for="1">Student</label>
-                <input type="radio" class="btn-check" name="btnradio" id="2" value="2" autocomplete="off">
+                <input type="radio" class="btn-check" name="role" id="2" value="2" autocomplete="off">
                 <label class="btn btn-outline-primary" for="2">OJT Coordinator</label>
-                <input type="radio" class="btn-check" name="btnradio" id="3" value="3" autocomplete="off">
+                <input type="radio" class="btn-check" name="role" id="3" value="1" autocomplete="off">
                 <label class="btn btn-outline-primary" for="3">HTE</label>
             </div>
             <!-- Radio End -->
@@ -32,28 +32,28 @@
                             </div> <!--end::Header--> <!--begin::Body-->
                             <div class="card-body">
                                 <div class="mb-3">
-                                    <label for="first_name" name="first_name" class="form-label">First Name</label>
-                                    <input type="text" class="form-control" id="first_name">
+                                    <label for="first_name" class="form-label">First Name</label>
+                                    <input type="text" name="first_name" class="form-control" id="first_name">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="middle_name" name="middle_name" class="form-label">Middle Name</label>
-                                    <input type="text" class="form-control" id="middle_name">
+                                    <label for="middle_name" class="form-label">Middle Name</label>
+                                    <input type="text" name="middle_name" class="form-control" id="middle_name">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="last_name" name="last_name" class="form-label">Last Name</label>
-                                    <input type="text" class="form-control" id="last_name">
+                                    <label for="last_name" class="form-label">Last Name</label>
+                                    <input type="text" name="last_name" class="form-control" id="last_name">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="username" name="username" class="form-label">Username</label>
-                                    <input type="text" class="form-control" id="username">
+                                    <label for="username" class="form-label">Username</label>
+                                    <input type="text" name="username" class="form-control" id="username">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="password" name="password" class="form-label">Password</label>
-                                    <input type="text" class="form-control" id="password">
+                                    <label for="password" class="form-label">Password</label>
+                                    <input type="text" name="password" class="form-control" id="password">
                                 </div>
                                 <div class="row">
                                     <div class="col-5">
-                                        <select class="form-select" aria-label="Default select example">
+                                        <select name="course" class="form-select" aria-label="Default select example">
                                             <option selected>Program</option>
                                             <option value="1">BSIT</option>
                                             <option value="2">ComSci</option>
@@ -61,7 +61,7 @@
                                         </select>
                                     </div>
                                     <div class="col-5">
-                                        <select class="form-select" aria-label="Default select example">
+                                        <select name="coord_id" class="form-select" aria-label="Default select example">
                                             <option selected>OJT Coordinator</option>
                                             <option value="1">Coordinator 1</option>
                                             <option value="2">Coordinator 2</option>
@@ -90,24 +90,24 @@
                             </div> <!--end::Header--> <!--begin::Body-->
                             <div class="card-body">
                                 <div class="mb-3">
-                                    <label for="first_name" name="first_name" class="form-label">First Name</label>
-                                    <input type="text" class="form-control" id="first_name">
+                                    <label for="first_name" class="form-label">First Name</label>
+                                    <input type="text" name="first_name" class="form-control" id="first_name">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="middle_name" name="middle_name" class="form-label">Middle Name</label>
-                                    <input type="text" class="form-control" id="middle_name">
+                                    <label for="middle_name" class="form-label">Middle Name</label>
+                                    <input type="text" name="middle_name" class="form-control" id="middle_name">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="last_name" name="last_name" class="form-label">Last Name</label>
-                                    <input type="text" class="form-control" id="last_name">
+                                    <label for="last_name" class="form-label">Last Name</label>
+                                    <input type="text" name="last_name" class="form-control" id="last_name">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="username" name="username" class="form-label">Username</label>
-                                    <input type="text" class="form-control" id="username">
+                                    <label for="username" class="form-label">Username</label>
+                                    <input type="text" name="username" class="form-control" id="username">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="password" name="password" class="form-label">Password</label>
-                                    <input type="text" class="form-control" id="password">
+                                    <label for="password" class="form-label">Password</label>
+                                    <input type="text" name="password" class="form-control" id="password">
                                 </div>
                             </div> <!--end::Body--> <!--begin::Footer-->
                             <div class="card-footer d-flex justify-content-end">
@@ -129,16 +129,16 @@
                             </div> <!--end::Header--> <!--begin::Body-->
                             <div class="card-body">
                                 <div class="mb-3">
-                                    <label for="first_name" name="first_name" class="form-label">Company Name</label>
-                                    <input type="text" class="form-control" id="first_name">
+                                    <label for="first_name" class="form-label">Company Name</label>
+                                    <input type="text"  name="first_name" class="form-control" id="first_name">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="username" name="username" class="form-label">Username</label>
-                                    <input type="text" class="form-control" id="username">
+                                    <label for="username" class="form-label">Username</label>
+                                    <input type="text"  name="username" class="form-control" id="username">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="password" name="password" class="form-label">Password</label>
-                                    <input type="text" class="form-control" id="password">
+                                    <label for="password" class="form-label">Password</label>
+                                    <input type="text"  name="password" class="form-control" id="password">
                                 </div>
                             </div> <!--end::Body--> <!--begin::Footer-->
                             <div class="card-footer d-flex justify-content-end">
@@ -164,7 +164,7 @@
 
         // Show the appropriate card on page load
         function showSelectedCard() {
-            var selectedValue = $('input[name="btnradio"]:checked').val();
+            var selectedValue = $('input[name="role"]:checked').val();
 
             // Hide all cards
             $('.user-card').hide();
@@ -177,7 +177,7 @@
         showSelectedCard();
 
         // Trigger when any radio button is selected
-        $('input[name="btnradio"]').on('change', function() {
+        $('input[name="role"]').on('change', function() {
             showSelectedCard();
         });
     });

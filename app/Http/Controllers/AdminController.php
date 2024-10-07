@@ -12,13 +12,14 @@ class AdminController extends Controller
     public function createUser(Request $request)
     {
         $studentCoord = null;
-        switch($request->btradio)
+        switch($request->role)
         {
-            case 'student':
+            case 3:
                 $user = $request->validate([
                     'first_name' => 'required',
                     'middle_name' => 'sometimes',
                     'last_name' => 'required',
+                    'role' => 'required',
                     'username' => 'required',
                     'password' => 'required|min:8',
                     'course' => 'required'
@@ -29,19 +30,21 @@ class AdminController extends Controller
                 ]);
                 break;
 
-            case 'ojt_coordinator':
+            case 2:
                 $user = $request->validate([
                     'first_name' => 'required',
                     'middle_name' => 'sometimes',
                     'last_name' => 'required',
+                    'role' => 'required',
                     'username' => 'required',
                     'password' => 'required|min:8'
                 ]);
                 break;
 
-            case 'hte':
+            case 1:
                 $user = $request->validate([
                     'first_name' => 'required',
+                    'role' => 'required',
                     'username' => 'required',
                     'password' => 'required|min:8'
                 ]);
