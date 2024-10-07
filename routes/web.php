@@ -41,15 +41,16 @@ Route::middleware('is.admin')->group(function()
     Route::get('/admin/students-{type}/is-students', [AdminController::class, 'viewIsStudents']
     )->name('admin.view-is-student');
 
-
-
     Route::get('/admin/ojt-coordinator-list', [AdminController::class, 'viewCoordinators'])->name('admin.ojt-coordinator-info');
 
     Route::get('/admin/hte-info', [AdminController::class, 'viewHtes'])->name('admin.hte-info');
 
+
+    //CREATE ACCOUNT ROUTES
     Route::get('/admin/create-account-page', function ()
     {
-        return view('pages.admin.redirection.create-account');
+        $coords = UserController::getAllUsers(2);
+        return view('pages.admin.redirection.create-account', compact('coords'));
     })->name('admin.create-account-page');
 
     Route::post('/admin/create-account', [AdminController::class, 'createUser'])->name('admin.create-account');
