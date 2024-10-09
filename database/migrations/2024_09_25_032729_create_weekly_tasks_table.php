@@ -13,7 +13,14 @@ return new class extends Migration
     {
         Schema::create('weekly_tasks', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('user_id')->unsigned();
+            $table->bigInteger('hte_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('hte_id')->references('id')->on('users')->onDelete('cascade');
+            $table->integer('week');
+            $table->integer('day');
             $table->string('tasks');
+            $table->date('deadline');
             $table->timestamps();
         });
     }

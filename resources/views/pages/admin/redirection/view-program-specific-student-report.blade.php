@@ -4,7 +4,23 @@
 
     <!-- Content Header (Page header) -->
     <div class="app-content-header"> <!--begin::Container-->
-        <h3 class="mb-0">IT Students Report</h3>
+        <h3 class="mb-0">
+            {{-- @switch($students[0]->course)
+                        @case(1)
+                            {{'BSIT Students Report'}}
+                            @break
+                        @case(2)
+                            {{'COMSCI Students Report'}}
+                            @break
+                        @case(3)
+                            {{'BSIS Students Report'}}
+                        @break
+                        @default
+
+                    @endswitch --}}
+                    {{-- CAN BE DYNAMIC --}}
+            Students Report
+        </h3>
     </div> <!--end::App Content Header-->
 
     <section class="content w-100 px-0 p-lg-4">
@@ -31,16 +47,6 @@
                             </td>
                         </tr>
                     @endforeach
-                    <tr>
-                        <td>Tiger Nixon</td>
-                        <td>System Architect</td>
-                        <td>Edinburgh</td>
-                        <td>
-                            <form class="d-flex justify-content-end" action="{{ route("admin.view-student-specific-report") }}">
-                                <button type="submit" class="btn btn-primary">View</button>
-                            </form>
-                        </td>
-                    </tr>
                 </tbody>
             </table>
         </div>

@@ -83,7 +83,6 @@ class AdminController extends Controller
 
         }
 
-        //NOT TESTED YET
         $userID = User::create($user)->id;
 
         if($studentCoord != null)
@@ -96,6 +95,14 @@ class AdminController extends Controller
 
         //dont know where to return
         return redirect()->route('admin.index', Auth::id())->with('success', 'Accounts successfully created.');
+    }
+
+    //METHOD NOT FINISHED. WILL BE USED FOR GETTING ALL SPECIFIC USER VIEW
+    public function viewUser(int $id)
+    {
+        $stud = UserController::getUser($id);
+
+        return view('pages.admin.redirection.view-student-specific-list', compact('stud'));
     }
 
     public function viewItStudents(string $type)

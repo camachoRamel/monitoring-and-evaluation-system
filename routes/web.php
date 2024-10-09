@@ -1,8 +1,11 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\File;
 use App\Http\Controllers\LoginLogoutController;
+use App\Http\Controllers\HostingTrainingEstablishmentController;
 use App\Http\Controllers\UserController;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function ()
@@ -45,6 +48,13 @@ Route::middleware('is.admin')->group(function()
 
     Route::get('/admin/hte-info', [AdminController::class, 'viewHtes'])->name('admin.hte-info');
 
+    Route::get('/admin/view-student-list{id}', [AdminController::class, 'viewUser'])->name('admin.view-student-specific-list');
+
+    Route::get('/admin/view-student-report', function () {
+        return view('pages.admin.redirection.view-student-specific-report');
+    })->name('admin.view-student-specific-report');
+
+
 
     //CREATE ACCOUNT ROUTES
     Route::get('/admin/create-account-page', function ()
@@ -62,6 +72,37 @@ Route::middleware('is.admin')->group(function()
 Route::middleware('is.hte')->group(function()
 {
     Route::get('/hte{id}', [UserController::class, 'index'])->name('hte.index');
+
+    //VIEW STUDENT ROUTE FOR HTE
+    Route::get('/hte/students-list', function()
+    {
+        return view('pages.hte.student-list');
+    })->name('hte.student-list');
+
+    //APPROVE STUDENTS PAGE ROUTE
+    Route::get('/hte/students-to-approve', [HostingTrainingEstablishmentController::class, 'getStudentsToApprove'])->name('hte.students-to-approve');
+
+    Route::get('/hte/weekly-tasks', function()
+    {
+        return view('pages.hte.student-weekly-task');
+    })->name('hte.weekly-tasks');
+
+    Route::get('/hte/upload-student-tasks', function()
+    {
+        return view('pages.hte.redirection.upload-student-task');
+    })->name('hte.upload-student-task');
+
+
+    //HTE SUBMISSION AND VIEW STUDENT ROUTES
+    Route::get('/hte/submission-students', function()
+    {
+        return view('pages.hte.student-weekly-submission');
+    })->name('hte.weekly-submission');
+
+    Route::get('/hte/{type}-students-{course}', [HostingTrainingEstablishmentController::class, 'viewStudents'])->name('hte.view-students');
+
+    Route::get('/hte/{type}-student-{id}', [HostingTrainingEstablishmentController::class, 'viewStudent'])->name('hte.view-student');
+
 });
 
 
@@ -78,10 +119,9 @@ Route::middleware('is.student')->group(function()
     Route::get('/student{id}', [UserController::class, 'index'])->name('stud.index');
 });
 
-Route::get('/admin/view-student-list', function () {
-    return view('pages.admin.redirection.view-student-specific-list');
-})->name('admin.view-student-specific-list');
 
-Route::get('/admin/view-student-report', function () {
-    return view('pages.admin.redirection.view-student-specific-report');
-})->name('admin.view-student-specific-report');
+// TEST ROUTES
+
+Route::post('/test_upaload{id}', [File::class, 'storePicture'])->name('test_upload');
+
+Route::get('/test/download{id}', [File::class, 'download'])->name('test_download');

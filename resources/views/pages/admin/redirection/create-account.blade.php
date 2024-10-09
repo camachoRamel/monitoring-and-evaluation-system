@@ -56,8 +56,8 @@
                                         <select name="course" class="form-select" aria-label="Default select example">
                                             <option selected>Program</option>
                                             <option value="1">BSIT</option>
-                                            <option value="2">ComSci</option>
-                                            <option value="3">BSIS</option>
+                                            <option value="3">ComSci</option>
+                                            <option value="2">BSIS</option>
                                         </select>
                                     </div>
                                     <div class="col-5">
