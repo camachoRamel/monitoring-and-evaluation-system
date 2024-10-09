@@ -1,5 +1,13 @@
  <aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark"> <!--begin::Sidebar Brand-->
-    <div class="sidebar-brand"> <!--begin::Brand Link--> <a href="#" class="brand-link"> <!--begin::Brand Image--> <img src="{{ asset("images/cict-logo.png") }}" alt="AdminLTE Logo" class="brand-image opacity-75 shadow"> <!--end::Brand Image--> <!--begin::Brand Text--> <span class="brand-text fw-light">MES</span> <!--end::Brand Text--> </a> <!--end::Brand Link--> </div> <!--end::Sidebar Brand--> <!--begin::Sidebar Wrapper-->
+    <div class="sidebar-brand"> <!--begin::Brand Link-->
+        <a href="#" class="brand-link"> <!--begin::Brand Image-->
+            <img src="{{ asset("images/cict-logo.png") }}" alt="AdminLTE Logo" class="brand-image opacity-75 shadow"> <!--end::Brand Image--> <!--begin::Brand Text-->
+            <span class="brand-text fw-light">Admin</span>
+             <!--end::Brand Text-->
+        </a> <!--end::Brand Link-->
+    </div> <!--end::Sidebar Brand-->
+    <!--end::Sidebar Brand-->
+    <!--begin::Sidebar Wrapper-->
     <div class="sidebar-wrapper" data-overlayscrollbars="host"><div class="os-size-observer os-size-observer-appear"><div class="os-size-observer-listener ltr"></div></div><div data-overlayscrollbars-viewport="scrollbarHidden" style="margin-right: -16px; margin-bottom: -16px; margin-left: 0px; top: -8px; right: auto; left: -8px; width: calc(100% + 16px); padding: 8px; overflow-y: scroll;">
         <nav class="mt-2"> <!--begin::Sidebar Menu-->
             <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview" role="menu" data-accordion="false">
@@ -34,28 +42,28 @@
 
                 FOR HTE
                 <li class="nav-item">
-                  <a href="#" class="nav-link">
+                  <a href="" class="nav-link">
                     <p>
                       Dashboard
                     </p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="#" class="nav-link">
+                  <a href="" class="nav-link">
                     <p>
                       Student List
                     </p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="#" class="nav-link">
+                  <a href="" class="nav-link">
                     <p>
                       Student Weekly Tasks
                     </p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="#" class="nav-link">
+                  <a href="" class="nav-link">
                     <p>
                       Student Weekly Submission
                     </p>

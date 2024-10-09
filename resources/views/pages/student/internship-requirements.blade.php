@@ -2,18 +2,112 @@
 
 @section('content')
 
-<div class="container d-flex flex-column align-items-center vh-100">
-
-    <div class="row bg-secondary mb-auto mt-3">
-        DASHBOARD
-    </div>
-    <div class="row bg-primary w-75">
-        <div class="col">
-            dashboard
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia ad eos neque, adipisci, iure placeat rem veritatis blanditiis in hic cumque error, magnam reiciendis quam voluptates quibusdam nobis quos nisi est quod. Veritatis velit, modi deleniti sunt cumque ipsa dolorum fuga, quo obcaecati illum laboriosam eos molestiae nemo? Nobis nam porro, ullam expedita, odit perferendis consequatur asperiores nisi labore doloribus architecto repellat rem! Asperiores, nobis? Commodi eos dolorem vitae veniam, nulla nemo reiciendis dolore ipsa alias? Corporis, doloribus voluptate cumque amet qui totam fuga mollitia vero blanditiis aliquid earum officiis, libero, dolore fugit assumenda adipisci optio sequi dolor. Voluptas, sit?
+    <!-- Content Header (Page header) -->
+    <div class="app-content-header"> <!--begin::Container-->
+        <h3 class="mb-0">Host Training Establishment Application</h3>
+    </div> <!--end::App Content Header-->
+{{-- d-flex flex-column flex-md-row gap-3 justify-content-center --}}
+    <section class="content w-100 px-4">
+        <div class="card card-solid px-5 py-4">
+            <div class="row">
+                <div class="col-12 col-md-5 col-lg-4 d-flex align-items-stretch flex-column mb-3">
+                    <div class="card bg-light d-flex flex-fill">
+                      <div class="card-header text-muted border-bottom-0">
+                        Host Training Establishment
+                      </div>
+                      <div class="card-body pt-0">
+                        <div class="row d-flex align-items-center pt-2">
+                          <div class="col-7">
+                            <h2 class="lead"><b>Company Shit</b></h2>
+                          </div>
+                          <div class="col-5 text-center">
+                            <img src="{{ asset("dist/assets/img/avatar.png") }}" alt="user-avatar" class="rounded-circle img-fluid">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="card-footer">
+                        <div class="container d-flex justify-content-end">
+                            <a href="#" class="btn btn-sm btn-primary">
+                                Apply
+                            </a>
+                       </div>
+                      </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-5 col-lg-4 d-flex align-items-stretch flex-column mb-3">
+                    <div class="card bg-light d-flex flex-fill">
+                      <div class="card-header text-muted border-bottom-0">
+                        Host Training Establishment
+                      </div>
+                      <div class="card-body pt-0">
+                        <div class="row d-flex align-items-center pt-2">
+                          <div class="col-7">
+                            <h2 class="lead"><b>Company Shit</b></h2>
+                          </div>
+                          <div class="col-5 text-center">
+                            <img src="{{ asset("dist/assets/img/avatar.png") }}" alt="user-avatar" class="rounded-circle img-fluid">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="card-footer">
+                        <div class="container d-flex justify-content-end">
+                            <a href="#" class="btn btn-sm btn-primary">
+                                Apply
+                            </a>
+                       </div>
+                      </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-5 col-lg-4 d-flex align-items-stretch flex-column mb-3">
+                    <div class="card bg-light d-flex flex-fill">
+                      <div class="card-header text-muted border-bottom-0">
+                        Host Training Establishment
+                      </div>
+                      <div class="card-body pt-0">
+                        <div class="row d-flex align-items-center pt-2">
+                          <div class="col-7">
+                            <h2 class="lead"><b>Company Shit</b></h2>
+                          </div>
+                          <div class="col-5 text-center">
+                            <img src="{{ asset("dist/assets/img/avatar.png") }}" alt="user-avatar" class="rounded-circle img-fluid">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="card-footer">
+                        <div class="container d-flex justify-content-end">
+                            <a href="#" class="btn btn-sm btn-primary">
+                                Apply
+                            </a>
+                       </div>
+                      </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-5 col-lg-4 d-flex align-items-stretch flex-column mb-3">
+                    <div class="card bg-light d-flex flex-fill">
+                      <div class="card-header text-muted border-bottom-0">
+                        Host Training Establishment
+                      </div>
+                      <div class="card-body pt-0">
+                        <div class="row d-flex align-items-center pt-2">
+                          <div class="col-7">
+                            <h2 class="lead"><b>Company Shit</b></h2>
+                          </div>
+                          <div class="col-5 text-center">
+                            <img src="{{ asset("dist/assets/img/avatar.png") }}" alt="user-avatar" class="rounded-circle img-fluid">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="card-footer">
+                        <div class="container d-flex justify-content-end">
+                            <a href="#" class="btn btn-sm btn-primary">
+                                Apply
+                            </a>
+                       </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-
-</div>
+    </section>
 
 @endsection

@@ -1,21 +1,70 @@
 @extends('layouts.app')
 
-{{-- <link rel="stylesheet" href="{{ asset('custom-styles/admin.css') }}"> --}}
-
 @section('content')
 
-<div class="container d-flex flex-column align-items-center vh-100">
+        <!-- Content Header (Page header) -->
+        <div class="app-content-header"> <!--begin::Container-->
+            <h3 class="mb-0">Dashboard</h3>
+        </div> <!--end::App Content Header-->
 
-    <div class="row bg-secondary mb-auto mt-3">
-        DASHBOARD
-    </div>
-    <div class="row bg-primary w-75">
-        <div class="col">
-            dashboard
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia ad eos neque, adipisci, iure placeat rem veritatis blanditiis in hic cumque error, magnam reiciendis quam voluptates quibusdam nobis quos nisi est quod. Veritatis velit, modi deleniti sunt cumque ipsa dolorum fuga, quo obcaecati illum laboriosam eos molestiae nemo? Nobis nam porro, ullam expedita, odit perferendis consequatur asperiores nisi labore doloribus architecto repellat rem! Asperiores, nobis? Commodi eos dolorem vitae veniam, nulla nemo reiciendis dolore ipsa alias? Corporis, doloribus voluptate cumque amet qui totam fuga mollitia vero blanditiis aliquid earum officiis, libero, dolore fugit assumenda adipisci optio sequi dolor. Voluptas, sit?
-        </div>
-    </div>
-
-</div>
+        <section class="content w-100 px-4">
+            <div class="card card-solid p-4">
+                 <!-- Div that will hold the chart -->
+                <div id="chart_div" style="width: 100%; height: 450px;"></div>
+            </div>
+            {{-- card --}}
+        </section>
+        {{-- content --}}
 
 @endsection
+
+@push('scripts')
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+// Load the Visualization API and the corechart package.
+google.charts.load('current', {'packages':['corechart']});
+
+// Set a callback to run when the Google Visualization API is loaded.
+google.charts.setOnLoadCallback(drawChart);
+
+function drawChart() {
+    // Create the data table. Use percentages as decimal values (e.g., 0.1 for 10%)
+    var test = 0.12;
+    var data = google.visualization.arrayToDataTable([
+    ['Program', 'Completion Rate'],
+    ['e', ${test}]
+    ['IT', 0.1,],    // 10% sales,
+    ['IS', 0.557,], // 55.7% sales,
+    ['ComSci', 0.066,], // 6.6% sales,
+    ]);
+
+    // Set chart options, including formatting tooltips
+    var options = {
+    title: 'Student Performance',
+    hAxis: {
+        title: 'Program',
+        titleTextStyle: { color: '#333' }
+    },
+    vAxis: {
+        title: 'Percentage',
+        format: 'percent',  // Format vertical axis as percentage
+        minValue: 0,
+        maxValue: 1
+    },
+    tooltip: {
+        trigger: 'focus',    // Trigger tooltips on hover or focus
+        isHtml: true         // This enables more complex tooltip formatting (optional)
+    }
+    };
+
+    // Instantiate and draw the chart.
+    var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+
+    // Use a formatter to display the tooltip values as percentages
+    var formatter = new google.visualization.NumberFormat({pattern: '#,##0%'});
+    formatter.format(data, 1);  // Format Sales column (index 1)
+
+    chart.draw(data, options);
+}
+</script>
+@endpush
