@@ -15,7 +15,7 @@
                         <th>Company Name</th>
                         {{-- <th>HTE</th>
                         <th>OJT Coordinator</th> --}}
-                        <th>Controls</th>
+                        <th>Control</th>
                     </tr>
                 </thead>
                 <tbody>

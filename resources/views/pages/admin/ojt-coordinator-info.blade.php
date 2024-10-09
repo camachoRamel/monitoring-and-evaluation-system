@@ -15,7 +15,7 @@
                         <th>First Name</th>
                         <th>Middle Name</th>
                         <th>Last Name</th>
-                        <th>Controls</th>
+                        <th>Control</th>
                     </tr>
                 </thead>
                 <tbody>
