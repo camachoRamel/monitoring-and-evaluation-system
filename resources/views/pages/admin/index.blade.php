@@ -9,6 +9,12 @@
 
         <section class="content w-100 px-4">
             <div class="card card-solid p-4">
+                <!-- Display success message -->
+                @if(session('success'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('success') }}
+                    </div>
+                @endif
                  <!-- Div that will hold the chart -->
                 <div id="chart_div" style="width: 100%; height: 450px;"></div>
             </div>
