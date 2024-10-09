@@ -17,7 +17,7 @@ return new class extends Migration
             $table->bigInteger('hte_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('hte_id')->references('id')->on('users')->onDelete('cascade');
-            $table->integer('week');
+            $table->bigInteger('week');
             $table->integer('day');
             $table->string('tasks');
             $table->date('deadline');

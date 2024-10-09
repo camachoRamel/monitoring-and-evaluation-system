@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string('evaluation')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('evaluator_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('task_week')->references('week')->on('weekly_tasks')->onDelete('cascade');
             $table->timestamps();
         });
     }

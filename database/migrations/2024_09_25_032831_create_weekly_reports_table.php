@@ -17,7 +17,6 @@ return new class extends Migration
             $table->bigInteger('task_week')->unsigned();
             $table->string('report');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('task_week')->references('week')->on('weekly_tasks')->onDelete('cascade');
             $table->timestamps();
         });
     }
