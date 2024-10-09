@@ -97,6 +97,7 @@ class AdminController extends Controller
         return redirect()->route('admin.index', Auth::id())->with('success', 'Accounts successfully created.');
     }
 
+    //METHOD NOT FINISHED. WILL BE USED FOR GETTING ALL SPECIFIC USER VIEW
     public function viewUser(int $id)
     {
         $stud = UserController::getUser($id);

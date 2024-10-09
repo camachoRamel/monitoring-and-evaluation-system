@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('weekly_reports', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_id')->unsigned();
-            $table->bigInteger('weekly_task_id')->unsigned();
+            $table->bigInteger('task_week')->unsigned();
             $table->string('report');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('weekly_task_id')->references('id')->on('weekly_tasks')->onDelete('cascade');
+            $table->foreign('task_week')->references('week')->on('weekly_tasks')->onDelete('cascade');
             $table->timestamps();
         });
     }

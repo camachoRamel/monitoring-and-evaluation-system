@@ -48,4 +48,9 @@ class User extends Authenticatable
         return $this->hasOne(WeeklyReport::class);
     }
 
+    public function requirement() : Hasone
+    {
+        return $this->hasOne(Requirements::class);
+    }
+
 }
