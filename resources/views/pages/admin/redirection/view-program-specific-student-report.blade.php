@@ -5,33 +5,30 @@
     <!-- Content Header (Page header) -->
     <div class="app-content-header"> <!--begin::Container-->
         <h3 class="mb-0">
-            {{-- @switch($students[0]->course)
-                        @case(1)
-                            {{'BSIT Students Report'}}
-                            @break
-                        @case(2)
-                            {{'COMSCI Students Report'}}
-                            @break
-                        @case(3)
-                            {{'BSIS Students Report'}}
-                        @break
-                        @default
-
-                    @endswitch --}}
-                    {{-- CAN BE DYNAMIC --}}
-            Students Report
+            <!--MAKE SURE EACH COURSE HAS AT LEAST 1 STUDENT-->
+            @switch($students[0]->course)
+                @case(1)
+                    {{'BSIT Students Report'}}
+                    @break
+                @case(2)
+                    {{'COMSCI Students Report'}}
+                    @break
+                @case(3)
+                    {{'BSIS Students Report'}}
+                @break
+            @endswitch
         </h3>
     </div> <!--end::App Content Header-->
 
     <section class="content w-100 px-0 p-lg-4">
         <div class="card card-solid px-0 py-2 p-lg-4">
-            <table id="example" class="table table-striped table-bordered" style="width:100%">
+            <table id="student-table" class="table table-striped table-bordered" style="width:100%">
                 <thead>
                     <tr>
                         <th>Name</th>
                         <th>HTE</th>
                         <th>OJT Coordinator</th>
-                        <th>Reports</th>
+                        <th>Report</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -59,7 +56,7 @@
 @push('scripts')
 <script>
     $(document).ready(function() {
-        $('#example').DataTable();
+        $('#student-table').DataTable();
     });
 </script>
 @endpush

@@ -18,13 +18,14 @@ class AdminController extends Controller
         {
             case 3:
                 $validation = $request->validate([
-                    'stud_first_name' => 'required',
-                    'stud_middle_name' => 'sometimes',
-                    'stud_last_name' => 'required',
+                    'stud_first_name' => 'required|regex:/^[a-zA-Z\s]+$/',
+                    'stud_middle_name' => 'sometimes|regex:/^[a-zA-Z\s]+$/',
+                    'stud_last_name' => 'required|regex:/^[a-zA-Z\s]+$/',
                     'role' => 'required',
                     'stud_username' => 'required|alpha:ascii',
                     'stud_password' => 'required|min:8',
-                    'course' => 'required'
+                    'course' => 'required',
+                    'coord_id' => 'required'
                 ]);
 
                 $user = [
@@ -45,9 +46,9 @@ class AdminController extends Controller
 
             case 2:
                 $validation = $request->validate([
-                    'coord_first_name' => 'required',
-                    'coord_middle_name' => 'sometimes',
-                    'coord_last_name' => 'required',
+                    'coord_first_name' => 'required|regex:/^[a-zA-Z\s]+$/',
+                    'coord_middle_name' => 'sometimes|regex:/^[a-zA-Z\s]+$/',
+                    'coord_last_name' => 'required|regex:/^[a-zA-Z\s]+$/',
                     'role' => 'required',
                     'coord_username' => 'required|alpha:ascii',
                     'coord_password' => 'required|min:8'
@@ -66,7 +67,7 @@ class AdminController extends Controller
 
             case 1:
                 $validation = $request->validate([
-                    'hte_first_name' => 'required',
+                    'hte_first_name' => 'required|regex:/^[a-zA-Z\s]+$/',
                     'role' => 'required',
                     'hte_username' => 'required|alpha:ascii',
                     'hte_password' => 'required|min:8'
@@ -94,7 +95,7 @@ class AdminController extends Controller
         }
 
         //dont know where to return
-        return redirect()->route('admin.index', Auth::id())->with('success', 'Accounts successfully created.');
+        return redirect()->route('admin.index', Auth::id())->with('success', 'Account successfully created.');
     }
 
     //METHOD NOT FINISHED. WILL BE USED FOR GETTING ALL SPECIFIC USER VIEW

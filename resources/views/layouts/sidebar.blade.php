@@ -2,45 +2,51 @@
     <div class="sidebar-brand"> <!--begin::Brand Link-->
         <a href="#" class="brand-link"> <!--begin::Brand Image-->
             <img src="{{ asset("images/cict-logo.png") }}" alt="AdminLTE Logo" class="brand-image opacity-75 shadow"> <!--end::Brand Image--> <!--begin::Brand Text-->
-            <span class="brand-text fw-light">Admin</span>
+            @switch(Auth::user()->role)
+                @case(0)
+                    <span class="brand-text fw-light">Admin</span>
+                    @break
+                @case(1)
+                    <span class="brand-text fw-light">HTE</span>
+                    @break
+                @case(2)
+                    <span class="brand-text fw-light">OJT Coordinator</span>
+                    @break
+                @case(3)
+                    <span class="brand-text fw-light">Student</span>
+                    @break
+
+            @endswitch
+
              <!--end::Brand Text-->
         </a> <!--end::Brand Link-->
     </div> <!--end::Sidebar Brand-->
     <!--end::Sidebar Brand-->
     <!--begin::Sidebar Wrapper-->
     <div class="sidebar-wrapper" data-overlayscrollbars="host"><div class="os-size-observer os-size-observer-appear"><div class="os-size-observer-listener ltr"></div></div><div data-overlayscrollbars-viewport="scrollbarHidden" style="margin-right: -16px; margin-bottom: -16px; margin-left: 0px; top: -8px; right: auto; left: -8px; width: calc(100% + 16px); padding: 8px; overflow-y: scroll;">
-        <nav class="mt-2"> <!--begin::Sidebar Menu-->
+        <nav class="mt-2">
+          <!--begin::Sidebar Menu-->
             <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview" role="menu" data-accordion="false">
-                FOR ADMIN
+              <!--admin sidebar-->
+              @if (Auth::user()->role == '0')
                 <li class="nav-item">
-                    <a href="{{ route('admin.index', Auth::id()) }}" class="nav-link">
-                    <p>
-                      Dashboard
-                    </p>
-                  </a>
+                  <a href="{{ route('admin.index', Auth::id()) }}" class="nav-link"><p>Dashboard</p></a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{ route('admin.student-list') }}" class="nav-link">
-                    <p>Student List</p>
-                  </a>
+                  <a href="{{ route('admin.student-list') }}" class="nav-link"><p>Student List</p></a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{ route("admin.student-weekly-report") }}" class="nav-link">
-                    <p>Student Weekly Report</p>
-                  </a>
+                  <a href="{{ route("admin.student-weekly-report") }}" class="nav-link"><p>Student Weekly Report</p></a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{ route("admin.ojt-coordinator-info") }}" class="nav-link">
-                    <p>OJT Coordinator Info</p>
-                  </a>
+                  <a href="{{ route("admin.ojt-coordinator-info") }}" class="nav-link"><p>OJT Coordinator Info</p></a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{ route("admin.hte-info") }}" class="nav-link">
-                    <p>Host Training Establishment Info</p>
-                  </a>
+                  <a href="{{ route("admin.hte-info") }}" class="nav-link"><p>Host Training Establishment Info</p></a>
                 </li>
-
-                FOR HTE
+              @endif
+              <!--hte sidebar-->
+              @if (Auth::user()->role == '1')
                 <li class="nav-item">
                   <a href="{{ route('hte.index', Auth::id()) }}" class="nav-link">
                     <p>
@@ -69,8 +75,9 @@
                     </p>
                   </a>
                 </li>
-
-                FOR OJT COORDINATOR
+              @endif
+              <!--coord sidebar-->
+              @if (Auth::user()->role == '2')
                 <li class="nav-item">
                   <a href="#" class="nav-link">
                     <p>
@@ -92,8 +99,9 @@
                     </p>
                   </a>
                 </li>
-
-                FOR STUDENT
+              @endif
+              <!--student sidebar-->
+              @if (Auth::user()->role == '3')
                 <li class="nav-item">
                   <a href="#" class="nav-link">
                     <p>
@@ -123,8 +131,10 @@
                     </p>
                   </a>
                 </li>
-
-            </ul> <!--end::Sidebar Menu-->
+              @endif
+            </ul>
+          <!--end::Sidebar Menu-->
         </nav>
-    </div><div class="os-scrollbar os-scrollbar-horizontal os-scrollbar-auto-hide os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable os-scrollbar-auto-hide-hidden os-theme-light"><div class="os-scrollbar-track"><div class="os-scrollbar-handle" style="width: 100%;"></div></div></div><div class="os-scrollbar os-scrollbar-vertical os-scrollbar-auto-hide os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-visible os-scrollbar-cornerless os-scrollbar-auto-hide-hidden os-theme-light"><div class="os-scrollbar-track"><div class="os-scrollbar-handle" style="height: 24.843%;"></div></div></div></div> <!--end::Sidebar Wrapper-->
-</aside>
+    </div><div class="os-scrollbar os-scrollbar-horizontal os-scrollbar-auto-hide os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable os-scrollbar-auto-hide-hidden os-theme-light"><div class="os-scrollbar-track"><div class="os-scrollbar-handle" style="width: 100%;"></div></div></div><div class="os-scrollbar os-scrollbar-vertical os-scrollbar-auto-hide os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-visible os-scrollbar-cornerless os-scrollbar-auto-hide-hidden os-theme-light"><div class="os-scrollbar-track"><div class="os-scrollbar-handle" style="height: 24.843%;"></div></div></div></div>
+    <!--end::Sidebar Wrapper-->
+  </aside>
