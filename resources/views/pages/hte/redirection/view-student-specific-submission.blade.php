@@ -12,8 +12,17 @@
             <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
                 <div class="card bg-light d-flex flex-fill">
                   <div class="card-header text-muted border-bottom-0">
-                    {{-- INSERT PROGRAM --}}
-                    BSIT
+                    @switch($stud->course)
+                        @case(1)
+                            {{'BSIT'}}
+                            @break
+                        @case(2)
+                            {{'COMSCI'}}
+                            @break
+                        @case(3)
+                            {{'BSIS'}}
+                            @break
+                    @endswitch
                   </div>
                   <div class="card-body pt-0">
                     <div class="row d-flex align-items-center pt-2">

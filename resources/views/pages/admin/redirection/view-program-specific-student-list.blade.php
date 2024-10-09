@@ -6,7 +6,8 @@
     <div class="app-content-header"> <!--begin::Container-->
         <h3 class="mb-0">
             <!--MAKE SURE EACH COURSE HAS AT LEAST 1 STUDENT-->
-            @switch($students[0]->course)
+            @if ($students != null)
+                @switch($students[0]->course)
                 @case(1)
                     {{'BSIT Students List'}}
                     @break
@@ -15,8 +16,9 @@
                     @break
                 @case(3)
                     {{'BSIS Students List'}}
-                    @break
-            @endswitch
+                @break
+                @endswitch
+            @endif
         </h3>
     </div> <!--end::App Content Header-->
 

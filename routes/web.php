@@ -81,6 +81,10 @@ Route::middleware('is.hte')->group(function()
         return view('pages.hte.student-list');
     })->name('hte.student-list');
 
+    Route::get('/hte/{type}-students-{course}', [HostingTrainingEstablishmentController::class, 'viewStudents'])->name('hte.view-students');
+
+    Route::get('/hte/{type}-student-{id}', [HostingTrainingEstablishmentController::class, 'viewStudent'])->name('hte.view-student');
+
     //APPROVE STUDENTS PAGE ROUTE
     Route::get('/hte/students-to-approve', [HostingTrainingEstablishmentController::class, 'getStudentsToApprove'])->name('hte.students-to-approve');
 
@@ -96,7 +100,7 @@ Route::middleware('is.hte')->group(function()
     Route::post('hte/uploading-task{id}', [HostingTrainingEstablishmentController::class, 'uploadWeeklyTask'])->name('hte.upload-student-task');
 
 
-    //HTE SUBMISSION AND VIEW STUDENT ROUTES
+    //HTE SUBMISSION VIEW STUDENT ROUTES
     Route::get('/hte/submission-students', function()
     {
         return view('pages.hte.student-weekly-submission');
@@ -121,6 +125,25 @@ Route::middleware('is.coord')->group(function()
 Route::middleware('is.student')->group(function()
 {
     Route::get('/student{id}', [UserController::class, 'index'])->name('stud.index');
+
+    Route::get('/student/intern-requirements', function()
+    {
+        return view('pages.student.internship-requirements');
+
+    })->name('stud.intern-requirement-page');
+
+    Route::get('/student/weekly-tasks', function()
+    {
+        return view('pages.student.weekly-tasks');
+
+    })->name('stud.weekly-tasks-page');
+
+    Route::get('/student/weekly-submissions', function()
+    {
+        return view('pages.student.weekly-submission');
+
+    })->name('stud.weekly-submission-page');
+
 });
 
 

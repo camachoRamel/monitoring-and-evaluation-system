@@ -83,7 +83,7 @@ class HostingTrainingEstablishmentController extends Controller
 
     public function viewStudent(string $type, int $id)
     {
-        $student = UserController::getApprovedStudent($id);
-        return view('pages.hte.redirection.view-student-specific-' . $type, compact('student'));
+        $stud = UserController::getApprovedStudent($id);
+        return view('pages.hte.redirection.view-student-specific-' . $type, compact('stud'));
     }
 }

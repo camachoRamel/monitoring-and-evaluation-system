@@ -33,7 +33,19 @@
                             </td>
                         </tr>
                     @endforeach --}}
+                    @for ($i = 0; $i < $tasks[$i]->week; $i++)
+                        {{-- display week --}}
+                        <tr>
+                            <td>Week {{ $tasks[$i]->week }}</td>
+                            @foreach ($tasks as $task)
+                            <td>{{ $task->deadline }}</td>
+                            @endforeach
+
+                        </tr>
+
+                    @endfor
                     <tr>
+
                         <td>Week 1</td>
                         <td>Deadline</td>
                         <td>Deadline</td>
