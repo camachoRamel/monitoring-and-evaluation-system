@@ -4,18 +4,28 @@
 
 @section('content')
 
-<div class="container d-flex flex-column align-items-center vh-100">
+    <div class="app-content-header"> <!--begin::Container-->
+        <h3 class="mb-0">Student List</h3>
+    </div> <!--end::App Content Header-->
 
-    <div class="row bg-secondary mb-auto mt-3">
-        DASHBOARD
-    </div>
-    <div class="row bg-primary w-75">
-        <div class="col">
-            dashboard
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia ad eos neque, adipisci, iure placeat rem veritatis blanditiis in hic cumque error, magnam reiciendis quam voluptates quibusdam nobis quos nisi est quod. Veritatis velit, modi deleniti sunt cumque ipsa dolorum fuga, quo obcaecati illum laboriosam eos molestiae nemo? Nobis nam porro, ullam expedita, odit perferendis consequatur asperiores nisi labore doloribus architecto repellat rem! Asperiores, nobis? Commodi eos dolorem vitae veniam, nulla nemo reiciendis dolore ipsa alias? Corporis, doloribus voluptate cumque amet qui totam fuga mollitia vero blanditiis aliquid earum officiis, libero, dolore fugit assumenda adipisci optio sequi dolor. Voluptas, sit?
+    <section class="content w-100 px-4 h-auto">
+        <div class="card card-solid p-4" style="height: fit-content">
+            <div class="container d-flex flex-column flex-lg-row p-3 gap-5" style="height: auto;">
+                <div class="col d-flex flex-column bg-secondary my-2 my-lg-0 mx-lg-2 border-none rounded-2 shadow p-4">
+                    <h4 class="mb-auto text-light">BSIT</h4>
+                    {{-- Insert 3 different routes for each button that gives the corresponding details for specific program of the student --}}
+                    <a href="{{ route('admin.view-it-student', 'list') }}" class="btn btn-dark align-self-end">View</a>
+                </div>
+                <div class="col d-flex flex-column bg-secondary my-2 my-lg-0 mx-lg-2 border-none rounded-2 shadow p-4">
+                    <h4 class="mb-auto text-light">BSIS</h4>
+                    <a href="{{ route('admin.view-is-student', 'list') }}" class="btn btn-dark align-self-end">View</a>
+                </div>
+                <div class="col d-flex flex-column bg-secondary my-2 my-lg-0 mx-lg-2 border-none rounded-2 shadow p-4">
+                    <h4 class="mb-auto text-light">ComSci</h4>
+                    <a href=" {{ route('admin.view-comsci-student', 'list') }} " class="btn btn-dark align-self-end">View</a>
+                </div>
+            </div>
         </div>
-    </div>
-
-</div>
+    </section>
 
 @endsection

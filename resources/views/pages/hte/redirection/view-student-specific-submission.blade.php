@@ -4,14 +4,15 @@
 
     <!-- Content Header (Page header) -->
     <div class="app-content-header"> <!--begin::Container-->
-        <h3 class="mb-0">Studen Informationt</h3>
+        <h3 class="mb-0">Student Submission Record</h3>
     </div> <!--end::App Content Header-->
 
     <section class="content w-100 px-4">
-        <div class="card card-solid p-4 d-flex align-items-center" >
+        <div class="card card-solid p-4 d-flex align-items-center">
             <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
                 <div class="card bg-light d-flex flex-fill">
                   <div class="card-header text-muted border-bottom-0">
+                    {{-- INSERT PROGRAM --}}
                     BSIT
                   </div>
                   <div class="card-body pt-0">
@@ -20,10 +21,16 @@
                         <h2 class="lead"><b>John Doe</b></h2>
                         <ul class="ml-4 mb-0 fa-ul text-muted">
                             <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span>
-                                <b>OJT Coordinator: </b> Juan Molina
+                                <a href="">Week 1</a>
                             </li>
                             <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span>
-                                <b>HTE: </b> Juanito Molina
+                                <a href="">Week 2</a>
+                            </li>
+                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span>
+                                <a href="">Week 3</a>
+                            </li>
+                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span>
+                                <a href="">Week 4</a>
                             </li>
                         </ul>
                       </div>
@@ -32,13 +39,6 @@
                       </div>
                     </div>
                   </div>
-                  {{-- <div class="card-footer">
-                    <div class="container d-flex justify-content-end">
-                        <button href="#" class="btn btn-sm btn-primary">
-                            <i class="fas fa-user"></i> View Profile
-                        </button>
-                   </div>
-                  </div> --}}
                 </div>
             </div>
         </div>

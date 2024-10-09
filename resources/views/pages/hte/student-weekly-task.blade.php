@@ -1,21 +1,59 @@
 @extends('layouts.app')
 
-{{-- <link rel="stylesheet" href="{{ asset('custom-styles/admin.css') }}"> --}}
-
 @section('content')
 
-<div class="container d-flex flex-column align-items-center vh-100">
+    <!-- Content Header (Page header) -->
+    <div class="app-content-header"> <!--begin::Container-->
+        <h3 class="mb-0">Student Weekly Task</h3>
+    </div> <!--end::App Content Header-->
 
-    <div class="row bg-secondary mb-auto mt-3">
-        DASHBOARD
-    </div>
-    <div class="row bg-primary w-75">
-        <div class="col">
-            dashboard
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia ad eos neque, adipisci, iure placeat rem veritatis blanditiis in hic cumque error, magnam reiciendis quam voluptates quibusdam nobis quos nisi est quod. Veritatis velit, modi deleniti sunt cumque ipsa dolorum fuga, quo obcaecati illum laboriosam eos molestiae nemo? Nobis nam porro, ullam expedita, odit perferendis consequatur asperiores nisi labore doloribus architecto repellat rem! Asperiores, nobis? Commodi eos dolorem vitae veniam, nulla nemo reiciendis dolore ipsa alias? Corporis, doloribus voluptate cumque amet qui totam fuga mollitia vero blanditiis aliquid earum officiis, libero, dolore fugit assumenda adipisci optio sequi dolor. Voluptas, sit?
+    <section class="content w-100 px-0 p-lg-4">
+        <div class="card card-solid px-0 py-2 p-lg-4">
+            <table id="example" class="table table-striped table-bordered" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Program</th>
+                        {{-- <th>OJT Coordinator</th> --}}
+                        <th>Tasks</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{-- @foreach ($students as $stud)
+                        <tr>
+                            <td>{{ $stud->name }}</td>
+                            <td>{{ $stud->hte }}</td>
+                            <td>{{ $stud->coord }}</td>
+                            <td>
+                                <form class="d-flex justify-content-end" action="{{ route("admin.view-student-specific-report") }}">
+                                    <button type="submit" class="btn btn-primary">View</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach --}}
+                    <tr>
+                        <td>Tiger Nixon</td>
+                        <td>BSIT</td>
+                        {{-- <td>Edinburgh</td> --}}
+                        <td>
+                            <form class="d-flex justify-content-end" action="{{ route("hte.upload-student-task") }}">
+                                <button type="submit" class="btn btn-primary">View</button>
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-    </div>
-
-</div>
+        {{-- card --}}
+    </section>
+    {{-- content --}}
 
 @endsection
+
+@push('scripts')
+<script>
+    $(document).ready(function() {
+        $('#example').DataTable();
+    });
+</script>
+@endpush

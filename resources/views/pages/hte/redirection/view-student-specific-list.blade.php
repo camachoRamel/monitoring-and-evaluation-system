@@ -4,7 +4,7 @@
 
     <!-- Content Header (Page header) -->
     <div class="app-content-header"> <!--begin::Container-->
-        <h3 class="mb-0">Studen Informationt</h3>
+        <h3 class="mb-0">Student Information</h3>
     </div> <!--end::App Content Header-->
 
     <section class="content w-100 px-4">
@@ -21,9 +21,6 @@
                         <ul class="ml-4 mb-0 fa-ul text-muted">
                             <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span>
                                 <b>OJT Coordinator: </b> Juan Molina
-                            </li>
-                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span>
-                                <b>HTE: </b> Juanito Molina
                             </li>
                         </ul>
                       </div>
