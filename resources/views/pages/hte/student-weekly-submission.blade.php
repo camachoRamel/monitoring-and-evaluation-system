@@ -14,15 +14,15 @@
                 <div class="col d-flex flex-column bg-secondary my-2 my-lg-0 mx-lg-2 border-none rounded-2 shadow p-4">
                     <h4 class="mb-auto text-light">BSIT</h4>
                     {{-- Insert 3 different routes for each button that gives the corresponding details for specific program of the student --}}
-                    <a href="{{ route('admin.view-it-student', 'report') }}" class="btn btn-dark align-self-end">View</a>
+                    <a href="{{ route('hte.view-students', ['type' => 'submission', 'course' => 1]) }}" class="btn btn-dark align-self-end">View</a>
                 </div>
                 <div class="col d-flex flex-column bg-secondary my-2 my-lg-0 mx-lg-2 border-none rounded-2 shadow p-4">
                     <h4 class="mb-auto text-light">BSIS</h4>
-                    <a href="{{ route('admin.view-is-student', 'report') }}" class="btn btn-dark align-self-end">View</a>
+                    <a href="{{ route('hte.view-students', ['type' => 'submission', 'course' => 2]) }}" class="btn btn-dark align-self-end">View</a>
                 </div>
                 <div class="col d-flex flex-column bg-secondary my-2 my-lg-0 mx-lg-2 border-none rounded-2 shadow p-4">
                     <h4 class="mb-auto text-light">ComSci</h4>
-                    <a href="{{ route('admin.view-comsci-student', 'report') }}" class="btn btn-dark align-self-end">View</a>
+                    <a href="{{ route('hte.view-students', ['type' => 'submission', 'course' => 3]) }}" class="btn btn-dark align-self-end">View</a>
                 </div>
             </div>
         </div>

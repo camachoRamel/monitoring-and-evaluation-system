@@ -4,13 +4,13 @@
 
     <!-- Content Header (Page header) -->
     <div class="app-content-header">
-        <h3 class="mb-0">Upload Weekly Tasks for (Student name)</h3>
+        <h3 class="mb-0">Upload Weekly Tasks for {{ $student->name }}</h3>
     </div>
 
     <section class="content w-100 px-0 p-lg-4">
         <div class="card card-solid px-0 py-2 p-lg-4">
             <div class="container p-3">
-                <form id="task-form" method="POST" action="" enctype="multipart/form-data">
+                <form id="task-form" method="POST" action="{{ route('hte.upload-student-task', $student->id) }}" enctype="multipart/form-data">
                     @csrf
                     <div class="col-12 mb-3">
                         <select id="week-selector" name="week" class="form-select" aria-label="Select Week">
@@ -30,13 +30,13 @@
                                     <!-- Upload file input -->
                                     <div class="form-group">
                                         <label for="file_day{{ $day }}">Upload File:</label>
-                                        <input type="file" name="files[day{{ $day }}]" id="file_day{{ $day }}" class="form-control">
+                                        <input type="file" name="files[{{ $day }}]" id="file_day{{ $day }}" class="form-control">
                                     </div>
 
                                     <!-- Deadline input -->
                                     <div class="form-group">
                                         <label for="deadline_day{{ $day }}">Set Deadline:</label>
-                                        <input type="date" name="deadlines[day{{ $day }}]" id="deadline_day{{ $day }}" class="form-control">
+                                        <input type="date" name="deadlines[{{ $day }}]" id="deadline_day{{ $day }}" class="form-control">
                                     </div>
                                 </div>
                             </div>

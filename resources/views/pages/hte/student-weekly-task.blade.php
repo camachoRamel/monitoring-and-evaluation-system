@@ -19,28 +19,30 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {{-- @foreach ($students as $stud)
+                    @foreach ($students as $stud)
                         <tr>
                             <td>{{ $stud->name }}</td>
-                            <td>{{ $stud->hte }}</td>
-                            <td>{{ $stud->coord }}</td>
-                            <td>
-                                <form class="d-flex justify-content-end" action="{{ route("admin.view-student-specific-report") }}">
-                                    <button type="submit" class="btn btn-primary">View</button>
-                                </form>
+                            {{-- <td>{{ $stud->course }}</td> --}}
+                            <td>@switch($stud->course)
+                                @case(1)
+                                    {{'BSIT'}}
+                                    @break
+                                @case(2)
+                                    {{'BSIS'}}
+                                    @break
+                                @case(3)
+                                    {{'COMSCI'}}
+                                @break
+                                @default
+
+                            @endswitch
+                            </td>
+
+                            <td class="d-flex justify-content-end">
+                                <a href="{{ route('hte.upload-student-task-page', $stud->id) }}" class="btn btn-primary">View</a>
                             </td>
                         </tr>
-                    @endforeach --}}
-                    <tr>
-                        <td>Tiger Nixon</td>
-                        <td>BSIT</td>
-                        {{-- <td>Edinburgh</td> --}}
-                        <td>
-                            <form class="d-flex justify-content-end" action="{{ route("hte.upload-student-task") }}">
-                                <button type="submit" class="btn btn-primary">View</button>
-                            </form>
-                        </td>
-                    </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

@@ -12,7 +12,7 @@
         <div class="card card-solid p-4" style="height: fit-content">
 
             <div class="container ps-4">
-                <a href="" class="btn btn-secondary">Students to Approve</a>
+                <a href="{{ route('hte.students-to-approve') }}" class="btn btn-secondary">Students to Approve</a>
             </div>
             <div class="container d-flex flex-column flex-lg-row p-3 gap-5" style="height: auto;">
                 <div class="col d-flex flex-column bg-secondary my-2 my-lg-0 mx-lg-2 border-none rounded-2 shadow p-4">

@@ -2,11 +2,13 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\File;
+use App\Http\Controllers\FileController;
 use App\Http\Controllers\LoginLogoutController;
 use App\Http\Controllers\HostingTrainingEstablishmentController;
 use App\Http\Controllers\UserController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 
 Route::get('/', function ()
 {
@@ -82,15 +84,16 @@ Route::middleware('is.hte')->group(function()
     //APPROVE STUDENTS PAGE ROUTE
     Route::get('/hte/students-to-approve', [HostingTrainingEstablishmentController::class, 'getStudentsToApprove'])->name('hte.students-to-approve');
 
-    Route::get('/hte/weekly-tasks', function()
-    {
-        return view('pages.hte.student-weekly-task');
-    })->name('hte.weekly-tasks');
+    Route::get('/hte/weekly-tasks', [HostingTrainingEstablishmentController::class, 'viewAllStudents'])->name('hte.weekly-tasks');
 
-    Route::get('/hte/upload-student-tasks', function()
+    Route::get('/hte/upload-student-tasks{id}', function(int $id)
     {
-        return view('pages.hte.redirection.upload-student-task');
-    })->name('hte.upload-student-task');
+        $student = UserController::getUser($id);
+        return view('pages.hte.redirection.upload-student-task', compact('student'));
+
+    })->name('hte.upload-student-task-page');
+
+    Route::post('hte/uploading-task{id}', [HostingTrainingEstablishmentController::class, 'uploadWeeklyTask'])->name('hte.upload-student-task');
 
 
     //HTE SUBMISSION AND VIEW STUDENT ROUTES
@@ -102,6 +105,7 @@ Route::middleware('is.hte')->group(function()
     Route::get('/hte/{type}-students-{course}', [HostingTrainingEstablishmentController::class, 'viewStudents'])->name('hte.view-students');
 
     Route::get('/hte/{type}-student-{id}', [HostingTrainingEstablishmentController::class, 'viewStudent'])->name('hte.view-student');
+
 
 });
 
@@ -122,6 +126,9 @@ Route::middleware('is.student')->group(function()
 
 // TEST ROUTES
 
-Route::post('/test_upaload{id}', [File::class, 'storePicture'])->name('test_upload');
+// Route::post('/test_upaload{id}', [File::class, 'storePicture'])->name('test_upload');
 
-Route::get('/test/download{id}', [File::class, 'download'])->name('test_download');
+// Route::get('/test/download', function()
+// {
+//     return Storage::download('tasks/task162024-10-11.docx');
+// })->name('test-download');

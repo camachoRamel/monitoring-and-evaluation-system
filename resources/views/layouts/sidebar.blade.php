@@ -42,28 +42,28 @@
 
                 FOR HTE
                 <li class="nav-item">
-                  <a href="" class="nav-link">
+                  <a href="{{ route('hte.index', Auth::id()) }}" class="nav-link">
                     <p>
                       Dashboard
                     </p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="" class="nav-link">
+                  <a href="{{ route('hte.student-list') }}" class="nav-link">
                     <p>
                       Student List
                     </p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="" class="nav-link">
+                  <a href="{{ route('hte.weekly-tasks') }}" class="nav-link">
                     <p>
                       Student Weekly Tasks
                     </p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="" class="nav-link">
+                  <a href="{{ route('hte.weekly-submission') }}" class="nav-link">
                     <p>
                       Student Weekly Submission
                     </p>

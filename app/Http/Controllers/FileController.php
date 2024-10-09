@@ -14,7 +14,7 @@ class FileController extends Controller
     public function storePicture(Request $request, int $id)
     {
         $request->validate([
-            'test_file' => 'required', // Example validation rules
+            'test_file' => 'required|mimes:docx,pdf,txt',
         ]);
 
         $file = $request->file('test_file');

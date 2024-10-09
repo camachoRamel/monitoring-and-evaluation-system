@@ -33,11 +33,6 @@ class User extends Authenticatable
         return $this->hasMany(InternHandler::class);
     }
 
-    public function userTask() : HasOne
-    {
-        return $this->hasOne(UserTask::class);
-    }
-
     public function weeklyEvaluation() : HasMany
     {
         return $this->hasMany(WeeklyEvaluation::class);
