@@ -22,33 +22,15 @@
                     @foreach ($coordinators as $coord)
 
                         <tr>
-                            <td>{{ $coord->first_name . " ". $coord->middle_name . " " . $coord->last_name}}</td>
-                            <td>System Architect</td>
-                            <td>Edinburgh</td>
-                            <td class="d-flex gap-2">
-                                <a href="#" class="btn btn-success">Edit</a>
+                            <td>{{ $coord->first_name }}</td>
+                            <td>{{ $coord->middle_name }}</td>
+                            <td>{{ $coord->last_name }}</td>
+                            <td class="d-flex gap-2 justify-content-end">
                                 <a href="#" class="btn btn-secondary">View</a>
                             </td>
                         </tr>
 
                     @endforeach
-                    <tr>
-                        <td>Tiger Nixon</td>
-                        <td>System Architect</td>
-                        <td>Edinburgh</td>
-                        <td class="d-flex gap-2 justify-content-end">
-                            <a href="#" class="btn btn-secondary">View</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Garrett Winters</td>
-                        <td>Accountant</td>
-                        <td>Tokyo</td>
-                        <td class="d-flex gap-2 justify-content-end">
-                            <a href="#" class="btn btn-secondary">View</a>
-                        </td>
-                    </tr>
-                    <!-- More rows here -->
                 </tbody>
             </table>
         </div>

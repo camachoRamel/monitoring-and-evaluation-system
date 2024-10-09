@@ -58,7 +58,7 @@ class UserController extends Controller
 
                 case 2:
                     $users = DB::table('intern_handlers')
-                    ->select('u1.id', DB::raw('CONCAT(u1.first_name, " ", u1.middle_name, " ", u1.last_name) AS name, CONCAT(u2.first_name, " ", u2.middle_name, " ", u2.last_name) AS coord, CONCAT(u3.first_name, " ", u3.middle_name, " ", u3.last_name) AS hte'))
+                    ->select('u1.id', 'u1.course', DB::raw('CONCAT(u1.first_name, " ", u1.middle_name, " ", u1.last_name) AS name, CONCAT(u2.first_name, " ", u2.middle_name, " ", u2.last_name) AS coord, CONCAT(u3.first_name, " ", u3.middle_name, " ", u3.last_name) AS hte'))
                     ->join('users AS u1', 'u1.id', '=', 'user_id')
                     ->join('users AS u2', 'u2.id', '=', 'coord_id')
                     ->leftJoin('users AS u3', 'u3.id', '=', 'hte_id')
@@ -66,9 +66,32 @@ class UserController extends Controller
                     ->where('u1.course', $args[1])
                     ->get();
             }
+            return $users;
         }
 
-        return $users;
+
+
+        if($name == 'getUser')
+        {
+            switch(count($args))
+            {
+                case 1:
+                    $user = DB::table('intern_handlers')
+                    ->select('u1.course', 'u1.profile_picture AS stud_picture', 'u2.profile_picture AS coord_picture', 'u3.profile_picture AS hte_picture', DB::raw('CONCAT(u1.first_name, " ", u1.middle_name, " ", u1.last_name) AS name, CONCAT(u2.first_name, " ", u2.middle_name, " ", u2.last_name) AS coord, CONCAT(u3.first_name, " ", u3.middle_name, " ", u3.last_name) AS hte'))
+                    ->join('users AS u1', 'u1.id', '=', 'user_id')
+                    ->join('users AS u2', 'u2.id', '=', 'coord_id')
+                    ->leftJoin('users AS u3', 'u3.id', '=', 'hte_id')
+                    ->orWhere('u1.id', $args[0])
+                    ->orWhere('u2.id', $args[0])
+                    ->orWhere('u3.id', $args[0])
+                    ->first();
+
+                    break;
+            }
+            return $user;
+        }
+
+
     }
 
     public static function getWeeklyTasks()

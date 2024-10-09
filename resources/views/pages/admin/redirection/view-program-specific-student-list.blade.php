@@ -4,7 +4,23 @@
 
     <!-- Content Header (Page header) -->
     <div class="app-content-header"> <!--begin::Container-->
-        <h3 class="mb-0">IT Students List</h3>
+        <h3 class="mb-0">
+            {{-- @switch($students[0]->course)
+                        @case(1)
+                            {{'BSIT Students List'}}
+                            @break
+                        @case(2)
+                            {{'COMSCI Students List'}}
+                            @break
+                        @case(3)
+                            {{'BSIS Students List'}}
+                        @break
+                        @default
+
+                    @endswitch --}}
+                    {{-- CAN BE DYNAMIC --}}
+            Students List
+        </h3>
     </div> <!--end::App Content Header-->
 
     <section class="content w-100 px-0 p-lg-4">
@@ -24,14 +40,17 @@
                             <td>{{ $stud->name }}</td>
                             <td>{{ $stud->hte }}</td>
                             <td>{{ $stud->coord }}</td>
-                            <td>
+                            {{-- <td>
                                 <form class="d-flex justify-content-end" action="{{ route("admin.view-student-specific-list") }}">
                                     <button type="submit" class="btn btn-primary">View</button>
                                 </form>
+                            </td> --}}
+                            <td class="d-flex justify-content-end">
+                                <a href="{{ route("admin.view-student-specific-list", $stud->id) }}" class="btn btn-primary">View</a>
                             </td>
                         </tr>
                     @endforeach
-                    <tr>
+                    {{-- <tr>
                         <td>Tiger Nixon</td>
                         <td>System Architect</td>
                         <td>Edinburgh</td>
@@ -40,7 +59,7 @@
                                 <button type="submit" class="btn btn-primary">View</button>
                             </form>
                         </td>
-                    </tr>
+                    </tr> --}}
                 </tbody>
             </table>
         </div>
