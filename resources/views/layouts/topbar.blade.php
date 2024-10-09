@@ -2,9 +2,11 @@
     <div class="container-fluid"> <!--begin::Start Navbar Links-->
         <ul class="navbar-nav">
             <li class="nav-item"> <a class="nav-link" data-lte-toggle="sidebar" href="#" role="button"> <i class="bi bi-list"></i> </a> </li>
-            <li class="nav-item d-none d-sm-inline-block">
-                <a href="{{ route("admin.create-account-page") }}" class="nav-link text-primary">Create Account</a>
-            </li>
+            @if (Auth::user()->role == '0')
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="{{ route("admin.create-account-page") }}" class="nav-link text-primary">Create Account</a>
+                </li>
+            @endif
             <li class="nav-item d-none d-md-block"> <a href="#" class="nav-link">About</a> </li>
             <li class="nav-item d-none d-md-block"> <a href="#" class="nav-link">Contact Us</a> </li>
         </ul> <!--end::Start Navbar Links--> <!--begin::End Navbar Links-->
