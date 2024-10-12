@@ -31,9 +31,9 @@ function drawChart() {
     // Create the data table. Use actual numbers instead of percentages
     var data = google.visualization.arrayToDataTable([
         ['Program', 'Number of Students'],
-        ['IT', 1],
-        ['IS', 5],
-        ['ComSci', 8]
+        ['IT', {{ $iTCount }}],
+        ['IS', {{ $iSCount }}],
+        ['ComSci', {{ $ComSciCount }}]
     ]);
 
      // Calculate the max value dynamically (ensure at least 10)

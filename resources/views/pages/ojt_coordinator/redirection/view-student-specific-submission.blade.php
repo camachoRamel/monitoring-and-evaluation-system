@@ -12,13 +12,22 @@
             <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
                 <div class="card bg-light d-flex flex-fill">
                   <div class="card-header text-muted border-bottom-0">
-                    {{-- INSERT PROGRAM --}}
-                    BSIT
+                    @switch($stud->course)
+                        @case(1)
+                            {{'BSIT'}}
+                            @break
+                        @case(2)
+                            {{'COMSCI'}}
+                            @break
+                        @case(3)
+                            {{'BSIS'}}
+                            @break
+                    @endswitch
                   </div>
                   <div class="card-body pt-0">
                     <div class="row d-flex align-items-center pt-2">
                       <div class="col-7">
-                        <h2 class="lead"><b>John Doe</b></h2>
+                        <h2 class="lead"><b>{{ $stud->name }}</b></h2>
                         <ul class="ml-4 mb-0 fa-ul text-muted">
                             <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span>
                                 <a href="">Week 1</a>

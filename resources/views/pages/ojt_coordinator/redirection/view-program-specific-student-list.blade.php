@@ -4,7 +4,21 @@
 
     <!-- Content Header (Page header) -->
     <div class="app-content-header"> <!--begin::Container-->
-        <h3 class="mb-0">IT Students List</h3>
+        <h3 class="mb-0">
+            @if ($students != null)
+                @switch($students[0]->course)
+                @case(1)
+                    {{'BSIT Students List'}}
+                    @break
+                @case(2)
+                    {{'COMSCI Students List'}}
+                    @break
+                @case(3)
+                    {{'BSIS Students List'}}
+                @break
+                @endswitch
+            @endif
+        </h3>
     </div> <!--end::App Content Header-->
 
     <section class="content w-100 px-0 p-lg-4">
@@ -21,23 +35,14 @@
                     @foreach ($students as $stud)
                         <tr>
                             <td>{{ $stud->name }}</td>
-                            <td>{{ $stud->hte }}</td>
+                            <td>{{ $stud->coord }}</td>
                             <td>
-                                <form class="d-flex justify-content-end" action="{{ route("admin.view-student-specific-list") }}">
+                                <form class="d-flex justify-content-end" action="{{ route("coord.view-student", ['type' => 'list', 'id' => $stud->id]) }}">
                                     <button type="submit" class="btn btn-primary">View</button>
                                 </form>
                             </td>
                         </tr>
                     @endforeach
-                    <tr>
-                        <td>Tiger Nixon</td>
-                        <td>Edinburgh</td>
-                        <td>
-                            <form class="d-flex justify-content-end" action="{{ route("admin.view-student-specific-list") }}">
-                                <button type="submit" class="btn btn-primary">View</button>
-                            </form>
-                        </td>
-                    </tr>
                 </tbody>
             </table>
         </div>

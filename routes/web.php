@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CoordinatorController;
 use App\Http\Controllers\File;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\LoginLogoutController;
@@ -120,15 +121,22 @@ Route::middleware('is.coord')->group(function()
 {
     Route::get('/ojt-coordinator{id}', [UserController::class, 'index'])->name('coord.index');
 
+    //VIEW STUDENTS ROUTE FOR COORD
     Route::get('/ojt-coordinator/students-list', function(){
 
         return view('pages.ojt_coordinator.student-list');
     })->name('coord.students-list-page');
 
+    Route::get('/ojt-coordinator/{type}-students-{course}', [CoordinatorController::class, 'viewStudents'])->name('coord.view-students');
+
+    Route::get('/ojt-coordinator/{type}-student-{id}', [CoordinatorController::class, 'viewStudent'])->name('coord.view-student');
+
     Route::get('/ojt-coordinator/students-report', function()
     {
         return view('pages.ojt_coordinator.student-weekly-report');
     })->name('coord.students-reports-page');
+
+
 });
 
 
