@@ -44,6 +44,12 @@ class FileController extends Controller
     }
 
 
+    public function fileDownload(string $path, string $fileName)
+    {
+        return Storage::download($path . '/' . $fileName);
+    }
+
+
     public static function getStudentReports(int $id)
     {
         $reports = DB::table('weekly_reports')
@@ -51,8 +57,6 @@ class FileController extends Controller
         ->join('users AS u', 'user_id', '=', 'u.id')
         ->where('user_id', $id)
         ->get();
-
-        dd($reports);
 
         return $reports;
     }

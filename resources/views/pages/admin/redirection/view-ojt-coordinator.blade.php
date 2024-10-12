@@ -33,32 +33,14 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {{-- @foreach ($students as $stud)
-                                        <tr>
-                                            <td>{{ $stud->name }}</td>
-                                            <td>{{ $stud->hte }}</td>
-                                            <td>{{ $stud->coord }}</td>
-                                            <td>
-                                                <form class="d-flex justify-content-end" action="{{ route("admin.view-student-specific-list") }}">
-                                                    <button type="submit" class="btn btn-primary">View</button>
-                                                </form>
-                                            </td>
-                                            <td class="d-flex justify-content-end">
-                                                <a href="{{ route("admin.view-student-specific-list", $stud->id) }}" class="btn btn-primary">View</a>
-                                            </td>
-                                        </tr>
-                                    @endforeach --}}
-                                    @for ($i = 0; $i < 10; $i++)
+                                    @foreach ($connections as $conn)
                                     <tr>
-                                        <td>Tiger Nixon</td>
-
-                                        <td>
-                                            <form class="d-flex justify-content-end" action="">
-                                                <button type="submit" class="btn btn-primary">View</button>
-                                            </form>
+                                        <td>{{ $conn->student_name }}</td>
+                                        <td class="d-flex justify-content-end">
+                                            <a href="{{ route("admin.view-student", ['type' => 'list', 'id' => $conn->stud_id]) }}" class="btn btn-primary">View</a>
                                         </td>
                                     </tr>
-                                    @endfor
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

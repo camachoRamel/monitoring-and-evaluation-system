@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+@php
+    $temp = 0;
+@endphp
 @section('content')
 
         <!-- Content Header (Page header) -->
@@ -9,21 +11,32 @@
 
         <section class="content w-100 px-4">
             <div class="card card-solid py-3 px-4">
-                <form action="" class="row p-3">
-                    @foreach(range(1, 12) as $week)
+                @foreach($tasks as $task)
+
+                {{-- CHECKS IF THE LAST COLUMN LOOPED HAS THE SAME WEEK VALUE AS THE NEW ONE --}}
+                @if ($temp != $task->week)
+                    @php
+                        $temp = $task->week
+                    @endphp
+                <form method="POST" action="{{ route('stud.weekly-submission', ['week' => $task->week]) }}" class="row p-3" enctype="multipart/form-data">
+                    @csrf
+
                         <div class="col-12 col-md-5 col-lg-4">
                             <div class="card mb-3 p-3">
-                                    <div class="lead mb-1">Week {{ $week }}</div>
+                                    <div class="lead mb-1">Week {{ $task->week }}</div>
                                     <!-- Upload file input -->
                                     <div class="form-group mb-2">
-                                        <label for="file_day{{ $week }}">Upload File:</label>
-                                        <input type="file" name="files[{{ $week }}]" id="file_day{{ $week }}" class="form-control">
+                                        <label for="file">Upload File:</label>
+                                        <input type="file" name="files" id="file" class="form-control">
                                     </div>
                                     <input type="submit" value="upload" class="btn btn-primary">
                             </div>
-                        </div>
-                    @endforeach
+                    </div>
                 </form>
+
+                @endif
+
+                    @endforeach
             </div>
             {{-- card --}}
         </section>

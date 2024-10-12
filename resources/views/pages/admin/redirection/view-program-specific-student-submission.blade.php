@@ -39,10 +39,8 @@
                             <td>{{ $stud->name }}</td>
                             <td>{{ $stud->hte }}</td>
                             <td>{{ $stud->coord }}</td>
-                            <td>
-                                <form class="d-flex justify-content-end" action="{{ route("admin.view-student-specific-report") }}">
-                                    <button type="submit" class="btn btn-primary">View</button>
-                                </form>
+                            <td class="d-flex justify-content-end">
+                                <a href="{{ route("admin.view-student", ['type' => 'submission', 'id' => $stud->id]) }}" class="btn btn-primary">View</a>
                             </td>
                         </tr>
                     @endforeach

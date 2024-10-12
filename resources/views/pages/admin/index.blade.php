@@ -37,9 +37,9 @@ function drawChart() {
     // Create the data table. Use percentages as decimal values (e.g., 0.1 for 10%)
     var data = google.visualization.arrayToDataTable([
     ['Program', 'Completion Rate'],
-    ['IT', 0.1,],    // 10% sales,
-    ['IS', 0.557,], // 55.7% sales,
-    ['ComSci', 0.066,], // 6.6% sales,
+    ['IT', {{ $rates['it'] }},],    // 10% sales,
+    ['IS', {{ $rates['is'] }},], // 55.7% sales,
+    ['ComSci', {{ $rates['comsci'] }},], // 6.6% sales,
     ]);
 
     // Set chart options, including formatting tooltips

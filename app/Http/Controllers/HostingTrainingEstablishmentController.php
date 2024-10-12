@@ -49,14 +49,14 @@ class HostingTrainingEstablishmentController extends Controller
         for($i = 1; $i <= 5; $i++)
         {
             $file = $validation['files'][$i];
-            $fileName = 'task' . $i . $id . $validation['deadlines'][$i] . '.' . $file->getClientOriginalExtension();
+            $fileName = 'task' . $i . $id . "-" . $validation['deadlines'][$i] . '.' . $file->getClientOriginalExtension();
             $filePath = $file->storeAs('tasks', $fileName);
 
             $weekly_task = [
                 'user_id' => $id,
                 'hte_id' => Auth::id(),
                 'week' => $validation['week'],
-                'day' => $i,
+                'day' => $i + 1,
                 'tasks' => $fileName,
                 'deadline' => $validation['deadlines'][$i]
             ];
