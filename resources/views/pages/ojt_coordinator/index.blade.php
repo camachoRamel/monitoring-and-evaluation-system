@@ -33,7 +33,7 @@ function drawChart() {
         ['Program', 'Number of Students'],
         ['IT', {{ $iTCount }}],
         ['IS', {{ $iSCount }}],
-        ['ComSci', {{ $ComSciCount }}]
+        ['ComSci', {{ $comSciCount }}]
     ]);
 
      // Calculate the max value dynamically (ensure at least 10)

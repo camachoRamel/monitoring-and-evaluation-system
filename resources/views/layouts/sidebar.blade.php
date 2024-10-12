@@ -109,16 +109,18 @@
                     </p>
                   </a>
                 </li>
+                @if (Auth::user()->approved == 0 || Auth::user()->approved == 2)
+                    <li class="nav-item">
+                        <a href="{{ route('stud.intern-requirement-page') }}" class="nav-link">
+                        <p>
+                            Internship Requirements
+                            <!-- available only if the student doesn't have an HTE yet -->
+                        </p>
+                        </a>
+                    </li>
+                @endif
                 <li class="nav-item">
-                  <a href="{{ route('stud.intern-requirement-page') }}" class="nav-link">
-                    <p>
-                      Internship Requirements
-                      <!-- available only if the student doesn't have an HTE yet -->
-                    </p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="{{ route('stud.weekly-tasks-page') }}" class="nav-link">
+                  <a href="{{ route('stud.weekly-tasks-page', Auth::id()) }}" class="nav-link">
                     <p>
                       Weekly Tasks
                     </p>

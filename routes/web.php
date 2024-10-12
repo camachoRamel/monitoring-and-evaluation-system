@@ -83,10 +83,6 @@ Route::middleware('is.hte')->group(function()
         return view('pages.hte.student-list');
     })->name('hte.student-list');
 
-    Route::get('/hte/{type}-students-{course}', [HostingTrainingEstablishmentController::class, 'viewStudents'])->name('hte.view-students');
-
-    Route::get('/hte/{type}-student-{id}', [HostingTrainingEstablishmentController::class, 'viewStudent'])->name('hte.view-student');
-
     //APPROVE STUDENTS PAGE ROUTE
     Route::get('/hte/students-to-approve', [HostingTrainingEstablishmentController::class, 'getStudentsToApprove'])->name('hte.students-to-approve');
 
@@ -108,6 +104,8 @@ Route::middleware('is.hte')->group(function()
         return view('pages.hte.student-weekly-submission');
     })->name('hte.weekly-submission');
 
+
+    //DYNAMIC STUDENT VIEWS FOR HTE
     Route::get('/hte/{type}-students-{course}', [HostingTrainingEstablishmentController::class, 'viewStudents'])->name('hte.view-students');
 
     Route::get('/hte/{type}-student-{id}', [HostingTrainingEstablishmentController::class, 'viewStudent'])->name('hte.view-student');
@@ -147,11 +145,7 @@ Route::middleware('is.student')->group(function()
 
     Route::get('/student/intern-requirements', [StudentController::class, 'viewHtes'])->name('stud.intern-requirement-page');
 
-    Route::get('/student/weekly-tasks', function()
-    {
-        return view('pages.student.weekly-tasks');
-
-    })->name('stud.weekly-tasks-page');
+    Route::get('/student{id}/weekly-tasks', [StudentController::class, 'getWeeklyTasks'])->name('stud.weekly-tasks-page');
 
     Route::get('/student/weekly-submissions', function()
     {
