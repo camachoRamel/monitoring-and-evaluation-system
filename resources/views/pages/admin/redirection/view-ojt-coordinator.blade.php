@@ -12,8 +12,7 @@
             <div class="col-12 col-sm-7 col-md-7 d-flex align-items-stretch flex-column">
                 <div class="card bg-light d-flex flex-fill">
                   <div class="card-header text-muted fs-4 fw-bold border-bottom-0">
-                    {{-- output the OJT Coordinator name --}}
-                    OJT Coord Name
+                    {{ $worker->first_name . ' ' . $worker->middle_name . ' ' . $worker->last_name }}
 
                   </div>
                   <div class="card-body pt-0">
@@ -22,7 +21,7 @@
                             <div class="col-5 col-md-3 text-center">
                                 {{-- if profile has value output profile else output default value --}}
                                 {{-- change the value with actual profile name--}}
-                                <img src="{{ asset($profile ?? 'images/profile.jpg') }}" alt="user-avatar" class="rounded-circle img-fluid">
+                                <img src="{{ asset($worker->profile_picture == null ? 'images/profile.jpg' : 'storage/images/' . $worker->profile_picture) }}" alt="user-avatar" class="rounded-circle img-fluid">
                             </div>
                         </div>
 

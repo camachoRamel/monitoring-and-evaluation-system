@@ -170,21 +170,6 @@ class UserController extends Controller
         return $tasks;
     }
 
-    // public static function getUnfinishedWeeklyTasks(int $id)
-    // {
-    //     $tasks = DB::table('weekly_tasks AS wt')
-    //     ->select('u1.user_id', 'wt.tasks', 'wt.week')
-    //     ->join('weekly_reports AS u1', 'u1.task_week', '=', 'wt.week')
-    //     ->join('users AS u2', 'u2.id', '=', 'wt.user_id')
-    //     ->where([
-    //         ['u2.id', '=', 'wt.user_id'],
-    //         ['u1.task_week', '!=', 'wt.week']
-    //     ])
-    //     ->get();
-
-    //     return $tasks;
-    // }
-
     public static function getWeeklyReports()
     {
         $reports = DB::table('weekly_reports')
