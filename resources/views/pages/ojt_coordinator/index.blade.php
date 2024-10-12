@@ -28,42 +28,41 @@ google.charts.load('current', {'packages':['corechart']});
 google.charts.setOnLoadCallback(drawChart);
 
 function drawChart() {
-    // Create the data table. Use percentages as decimal values (e.g., 0.1 for 10%)
-    var test = 0.12;
+    // Create the data table. Use actual numbers instead of percentages
     var data = google.visualization.arrayToDataTable([
-    ['Program', 'Completion Rate'],
-    ['e', ${test}]
-    ['IT', 0.1,],    // 10% sales,
-    ['IS', 0.557,], // 55.7% sales,
-    ['ComSci', 0.066,], // 6.6% sales,
+        ['Program', 'Number of Students'],
+        ['IT', 1],
+        ['IS', 5],
+        ['ComSci', 8]
     ]);
 
-    // Set chart options, including formatting tooltips
+     // Calculate the max value dynamically (ensure at least 10)
+    var maxValue = Math.max(10, data.getColumnRange(1).max);
+
+    // Set chart options
     var options = {
-    title: 'Student Performance',
-    hAxis: {
-        title: 'Program',
-        titleTextStyle: { color: '#333' }
-    },
-    vAxis: {
-        title: 'Percentage',
-        format: 'percent',  // Format vertical axis as percentage
-        minValue: 0,
-        maxValue: 1
-    },
-    tooltip: {
-        trigger: 'focus',    // Trigger tooltips on hover or focus
-        isHtml: true         // This enables more complex tooltip formatting (optional)
-    }
+        title: 'Number of Students Managed',
+        hAxis: {
+            title: 'Program',
+            titleTextStyle: { color: '#333' }
+        },
+        vAxis: {
+            title: 'Number of Students',
+            minValue: 0,
+            maxValue: maxValue,  // Ensures that the vAxis is at least 10
+            viewWindow: {
+                min: 0,
+                max: maxValue  // Dynamically calculated maximum value
+            }
+        },
+        tooltip: {
+            trigger: 'focus',
+            isHtml: true
+        }
     };
 
     // Instantiate and draw the chart.
     var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
-
-    // Use a formatter to display the tooltip values as percentages
-    var formatter = new google.visualization.NumberFormat({pattern: '#,##0%'});
-    formatter.format(data, 1);  // Format Sales column (index 1)
-
     chart.draw(data, options);
 }
 </script>
