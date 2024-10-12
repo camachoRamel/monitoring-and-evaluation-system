@@ -45,7 +45,7 @@
                                 </form>
                             </td> --}}
                             <td class="d-flex justify-content-end">
-                                <a href="{{ route("admin.view-student-specific-list", $stud->id) }}" class="btn btn-primary">View</a>
+                                <a href="{{ route("admin.view-student", ['type' => 'list', 'id' => $stud->id]) }}" class="btn btn-primary">View</a>
                             </td>
                         </tr>
                     @endforeach

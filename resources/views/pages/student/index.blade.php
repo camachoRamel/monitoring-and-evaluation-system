@@ -7,6 +7,13 @@
         <h3 class="mb-0">Dashboard</h3>
     </div> <!--end::App Content Header-->
 
+    <!-- Display success message -->
+    @if(session('success'))
+    <div class="alert alert-success" role="alert">
+        {{ session('success') }}
+    </div>
+@endif
+
     <section class="content w-100 px-0 p-lg-4">
         <div class="card card-solid px-0 py-2 p-lg-4">
             <h3>HTE</h3>
@@ -37,7 +44,7 @@
                         {{-- display week --}}
                         <tr>
                             <td>Week {{ $tasks[$i]->week }}</td>
-                            @for ($j = 0; $j < 5; $j++)
+                            @for ($j = $i; $j < $i + 5; $j++)
                             <td>{{ $tasks[$j]->deadline }}</td>
                             @endfor
 

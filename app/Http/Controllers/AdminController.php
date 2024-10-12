@@ -7,12 +7,12 @@ use App\Models\InternHandler;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
     public function createUser(Request $request)
     {
-        // dd($request);
         $studentCoord = null;
         switch($request->role)
         {
@@ -94,40 +94,21 @@ class AdminController extends Controller
             ]);
         }
 
-        //dont know where to return
         return redirect()->route('admin.index', Auth::id())->with('success', 'Account successfully created.');
     }
 
-    //METHOD NOT FINISHED. WILL BE USED FOR GETTING ALL SPECIFIC USER VIEW
-    public function viewUser(int $id)
+    public function viewStudents(string $type, int $course)
     {
-        $stud = UserController::getUser($id);
-
-        return view('pages.admin.redirection.view-student-specific-list', compact('stud'));
-    }
-
-    public function viewItStudents(string $type)
-    {
-
-        $students = UserController::getAllUsers(3, 1);
+        $students = UserController::getApprovedStudents($course);
 
         return view('pages.admin.redirection.view-program-specific-student-' . $type, compact('students'));
     }
 
-    public function viewComSciStudents(string $type)
+    public function viewStudent(string $type, int $id)
     {
-
-        $students = UserController::getAllUsers(3, 2);
-
-        return view('pages.admin.redirection.view-program-specific-student-' . $type, compact('students'));
-    }
-
-    public function viewIsStudents(string $type)
-    {
-
-        $students = UserController::getAllUsers(3, 3);
-
-        return view('pages.admin.redirection.view-program-specific-student-' . $type, compact('students'));
+        $stud = UserController::getApprovedStudent($id);
+        $reports = FileController::getStudentReports($id);
+        return view('pages.admin.redirection.view-student-specific-' . $type, compact('stud', 'reports'));
     }
 
     public function viewHtes()
@@ -140,5 +121,69 @@ class AdminController extends Controller
     {
         $coordinators = UserController::getAllUsers(2);
         return view('pages.admin.ojt-coordinator-info', compact('coordinators'));
+    }
+
+    public function viewWorker(string $type, int $id)
+    {
+        $temp = 0;
+        switch ($type) {
+            case 'hte':
+                $temp = 3;
+                break;
+
+            case 'ojt-coordinator':
+                $temp = 2;
+                break;
+        }
+
+        $worker = DB::table('users')
+        ->select('*')
+        ->where('id', $id)
+        ->first();
+
+        $connections = DB::table('intern_handlers')
+        ->select('u1.id AS stud_id', 'u1.course', DB::raw('CONCAT(u1.first_name, " ", u1.middle_name, " ", u1.last_name) AS student_name, CONCAT(u2.first_name, " ", u2.middle_name, " ", u2.last_name) AS coord, CONCAT(u3.first_name, " ", u3.middle_name, " ", u3.last_name) AS hte'))
+        ->join('users AS u1', 'u1.id', '=', 'user_id')
+        ->join('users AS u2', 'u2.id', '=', 'coord_id')
+        ->leftJoin('users AS u3', 'u3.id', '=', 'hte_id')
+        ->where('u' . $temp . "." . 'id', $id)
+        ->get();
+
+        return view('pages.admin.redirection.view-'. $type, compact('worker', 'connections'));
+    }
+
+    public static function calculateCompletionRate()
+    {
+        $totalIt = User::where('role', 3)->where('course', 1)->get()->count();
+        $totalIs = User::where('role', 3)->where('course', 2)->get()->count();
+        $totalComSci = User::where('role', 3)->where('course', 3)->get()->count();
+
+        $finishedIt = DB::table('weekly_reports')
+        ->select('user_id')
+        ->join('users AS u', 'u.id', '=', 'user_id')
+        ->where('course', 1)
+        ->get()
+        ->count();
+        $finishedIs = DB::table('weekly_reports')
+        ->select('user_id')
+        ->join('users AS u', 'u.id', '=', 'user_id')
+        ->where('course', 2)
+        ->get()
+        ->count();
+        $finishedComSci = DB::table('weekly_reports')
+        ->select('user_id')
+        ->join('users AS u', 'u.id', '=', 'user_id')
+        ->where('course', 3)
+        ->get()
+        ->count();
+
+        $finishRates = [
+            'it' => $totalIt != 0 ? $finishedIt / $totalIt : 0,
+            'is' => $totalIs != 0 ? $finishedIs / $totalIs : 0,
+            'comsci' => $totalComSci != 0 ? $finishedComSci / $totalComSci : 0
+        ];
+
+        return $finishRates;
+
     }
 }

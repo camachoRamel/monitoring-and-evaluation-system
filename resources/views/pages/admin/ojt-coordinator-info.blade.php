@@ -27,7 +27,7 @@
                             <td>{{ $coord->last_name }}</td>
                             <td class="d-flex gap-2 justify-content-end">
                                 {{-- Provide a route that will redirect to redirection -> view-ojt-coordinator that gets the id of the specific coord viewed --}}
-                                <a href="#" class="btn btn-secondary">View</a>
+                                <a href="{{ route('admin.specific-worker', ['type' => 'ojt-coordinator', 'id' => $coord->id]) }}" class="btn btn-secondary">View</a>
                             </td>
                         </tr>
 

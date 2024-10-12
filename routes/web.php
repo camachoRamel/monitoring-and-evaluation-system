@@ -9,6 +9,8 @@ use App\Http\Controllers\HostingTrainingEstablishmentController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
 
@@ -39,26 +41,18 @@ Route::middleware('is.admin')->group(function()
         return view('pages.admin.student-weekly-report');
     })->name('admin.student-weekly-report');
 
+    //DYNAMIC STUDENT VIEWS FOR ADMIN
+    Route::get('/admin/{type}-students-{course}', [AdminController::class, 'viewStudents'])->name('admin.view-students');
 
-    Route::get('/admin/students-{type}/it-students', [AdminController::class, 'viewItStudents'])->name('admin.view-it-student');
+    Route::get('/admin/{type}-student-{id}', [AdminController::class, 'viewStudent'])->name('admin.view-student');
 
-    Route::get('/admin/students-{type}/comsci-students', [AdminController::class, 'viewComSciStudents']
-    )->name('admin.view-comsci-student');
-
-    Route::get('/admin/students-{type}/is-students', [AdminController::class, 'viewIsStudents']
-    )->name('admin.view-is-student');
 
     Route::get('/admin/ojt-coordinator-list', [AdminController::class, 'viewCoordinators'])->name('admin.ojt-coordinator-info');
 
     Route::get('/admin/hte-info', [AdminController::class, 'viewHtes'])->name('admin.hte-info');
 
-    Route::get('/admin/view-student-list{id}', [AdminController::class, 'viewUser'])->name('admin.view-student-specific-list');
-
-    Route::get('/admin/view-student-report', function () {
-        return view('pages.admin.redirection.view-student-specific-report');
-    })->name('admin.view-student-specific-report');
-
-
+    //DYNAMIC ROUTE FOR VIEWING SPECIFIC COORD AND HTE
+    Route::get('/admin/{type}{id}', [AdminController::class, 'viewWorker'])->name('admin.specific-worker');
 
     //CREATE ACCOUNT ROUTES
     Route::get('/admin/create-account-page', function ()
@@ -68,6 +62,10 @@ Route::middleware('is.admin')->group(function()
     })->name('admin.create-account-page');
 
     Route::post('/admin/create-account', [AdminController::class, 'createUser'])->name('admin.create-account');
+
+
+    //ROUTE FOR DOWNLOADING STUDENT REPORT
+    Route::get('/admin/download/{path}/{fileName}', [FileController::class, 'fileDownload'])->name('admin.download-file');
 
 });
 
@@ -110,6 +108,9 @@ Route::middleware('is.hte')->group(function()
 
     Route::get('/hte/{type}-student-{id}', [HostingTrainingEstablishmentController::class, 'viewStudent'])->name('hte.view-student');
 
+    //ROUTE FOR DOWNLOADING STUDENT REPORT
+    Route::get('/hte/download/{path}/{fileName}', [FileController::class, 'fileDownload'])->name('hte.download-file');
+
 
 });
 
@@ -134,6 +135,9 @@ Route::middleware('is.coord')->group(function()
         return view('pages.ojt_coordinator.student-weekly-report');
     })->name('coord.students-reports-page');
 
+    //ROUTE FOR DOWNLOADING STUDENT REPORT
+    Route::get('/ojt-coordinator/download/{path}/{fileName}', [FileController::class, 'fileDownload'])->name('coord.download-file');
+
 
 });
 
@@ -145,12 +149,16 @@ Route::middleware('is.student')->group(function()
 
     Route::get('/student/intern-requirements', [StudentController::class, 'viewHtes'])->name('stud.intern-requirement-page');
 
-    Route::get('/student{id}/weekly-tasks', [StudentController::class, 'getWeeklyTasks'])->name('stud.weekly-tasks-page');
+    Route::get('/student/weekly-tasks', [StudentController::class, 'getWeeklyTasks'])->name('stud.weekly-tasks-page');
 
     Route::get('/student/weekly-submissions', function()
     {
-        return view('pages.student.weekly-submission');
+        $tasks = UserController::getWeeklyTasks(Auth::id());
+        // dd($tasks);
+        return view('pages.student.weekly-submission', compact('tasks'));
 
     })->name('stud.weekly-submission-page');
+
+    Route::post('/student/submitting-week{week}', [StudentController::class, 'uploadReport'])->name('stud.weekly-submission');
 
 });

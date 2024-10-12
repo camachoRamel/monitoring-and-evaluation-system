@@ -25,7 +25,7 @@
                             <td>{{ $hte->first_name }}</td>
                             <td class="d-flex gap-2 justify-content-end">
                                 {{-- Provide a route that will redirect to redirection -> view-hte that gets the id of the specific hte viewed --}}
-                                <a href="#" class="btn btn-secondary">View</a>
+                                <a href="{{ route('admin.specific-worker', ['type' => 'hte', 'id' => $hte->id]) }}" class="btn btn-secondary">View</a>
                             </td>
                         </tr>
                     @endforeach

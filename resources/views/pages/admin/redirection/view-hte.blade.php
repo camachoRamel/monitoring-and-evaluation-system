@@ -12,8 +12,7 @@
             <div class="col-12 col-sm-7 col-md-7 d-flex align-items-stretch flex-column">
                 <div class="card bg-light d-flex flex-fill">
                   <div class="card-header text-muted fs-4 fw-bold border-bottom-0">
-                    {{-- output the company name --}}
-                    Company Name
+                    {{ $worker->first_name }}
 
                   </div>
                   <div class="card-body pt-0">
@@ -33,32 +32,14 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {{-- @foreach ($students as $stud)
+                                    @foreach ($connections as $conn)
                                         <tr>
-                                            <td>{{ $stud->name }}</td>
-                                            <td>{{ $stud->hte }}</td>
-                                            <td>{{ $stud->coord }}</td>
-                                            <td>
-                                                <form class="d-flex justify-content-end" action="{{ route("admin.view-student-specific-list") }}">
-                                                    <button type="submit" class="btn btn-primary">View</button>
-                                                </form>
-                                            </td>
+                                            <td>{{ $conn->student_name }}</td>
                                             <td class="d-flex justify-content-end">
-                                                <a href="{{ route("admin.view-student-specific-list", $stud->id) }}" class="btn btn-primary">View</a>
+                                                <a href="{{ route("admin.view-student", ['type' => 'list', 'id' => $conn->stud_id]) }}" class="btn btn-primary">View</a>
                                             </td>
                                         </tr>
-                                    @endforeach --}}
-                                    @for ($i = 0; $i < 10; $i++)
-                                    <tr>
-                                        <td>Tiger Nixon</td>
-
-                                        <td>
-                                            <form class="d-flex justify-content-end" action="">
-                                                <button type="submit" class="btn btn-primary">View</button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                    @endfor
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

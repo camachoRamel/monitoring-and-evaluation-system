@@ -17,6 +17,8 @@ class CoordinatorController extends Controller
     public function viewStudent(string $type, int $id)
     {
         $stud = UserController::getApprovedStudent($id);
-        return view('pages.ojt_coordinator.redirection.view-student-specific-' . $type, compact('stud'));
+        $reports = FileController::getStudentReports($id);
+
+        return view('pages.ojt_coordinator.redirection.view-student-specific-' . $type, compact('stud', 'reports'));
     }
 }

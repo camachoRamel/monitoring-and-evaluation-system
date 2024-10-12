@@ -27,20 +27,13 @@
                   <div class="card-body pt-0">
                     <div class="row d-flex align-items-center pt-2">
                       <div class="col-7">
-                        <h2 class="lead"><b>{{ $student->name }}</b></h2>
+                        <h2 class="lead"><b>{{ $stud->name }}</b></h2>
                         <ul class="ml-4 mb-0 fa-ul text-muted">
+                            @foreach ($reports as $report)
                             <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span>
-                                <a href="">Week 1</a>
+                                <a href="{{ route('hte.download-file', ['path' => 'reports', 'fileName' => $report->report]) }}">Week {{ $report->task_week }}</a>
                             </li>
-                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span>
-                                <a href="">Week 2</a>
-                            </li>
-                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span>
-                                <a href="">Week 3</a>
-                            </li>
-                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span>
-                                <a href="">Week 4</a>
-                            </li>
+                            @endforeach
                         </ul>
                       </div>
                       <div class="col-5 text-center">

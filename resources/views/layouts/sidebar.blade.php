@@ -120,7 +120,7 @@
                     </li>
                 @endif
                 <li class="nav-item">
-                  <a href="{{ route('stud.weekly-tasks-page', Auth::id()) }}" class="nav-link">
+                  <a href="{{ route('stud.weekly-tasks-page') }}" class="nav-link">
                     <p>
                       Weekly Tasks
                     </p>

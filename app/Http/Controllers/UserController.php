@@ -17,6 +17,8 @@ class UserController extends Controller
         ->where('id', $id)
         ->first();
 
+        $rates = AdminController::calculateCompletionRate();
+
         $iTCount = User::where('role', 3)->where('course', 1)->get()->count();
         $iSCount = User::where('role', 3)->where('course', 2)->get()->count();
         $comSciCount = User::where('role', 3)->where('course', 3)->get()->count();
@@ -26,7 +28,7 @@ class UserController extends Controller
 
         switch ($user->role) {
             case 0:
-                return view('pages.admin.index', compact('user'));
+                return view('pages.admin.index', compact('user', 'rates'));
                 break;
             case 1:
                 return view('pages.hte.index', compact('user', 'iTCount', 'iSCount', 'comSciCount'));
@@ -167,6 +169,21 @@ class UserController extends Controller
 
         return $tasks;
     }
+
+    // public static function getUnfinishedWeeklyTasks(int $id)
+    // {
+    //     $tasks = DB::table('weekly_tasks AS wt')
+    //     ->select('u1.user_id', 'wt.tasks', 'wt.week')
+    //     ->join('weekly_reports AS u1', 'u1.task_week', '=', 'wt.week')
+    //     ->join('users AS u2', 'u2.id', '=', 'wt.user_id')
+    //     ->where([
+    //         ['u2.id', '=', 'wt.user_id'],
+    //         ['u1.task_week', '!=', 'wt.week']
+    //     ])
+    //     ->get();
+
+    //     return $tasks;
+    // }
 
     public static function getWeeklyReports()
     {
