@@ -19,7 +19,7 @@
                     <div class="row py-4">
                         <div class="col-12 d-flex justify-content-center align-items-center mb-3">
                             <div class="col-5 col-md-3 text-center">
-                                <img src="{{ asset("dist/assets/img/avatar.png") }}" alt="user-avatar" class="rounded-circle img-fluid">
+                                <img src="{{ asset("$profile ?? images/profile.jpg") }}" alt="user-avatar" class="rounded-circle img-fluid">
                             </div>
                         </div>
 

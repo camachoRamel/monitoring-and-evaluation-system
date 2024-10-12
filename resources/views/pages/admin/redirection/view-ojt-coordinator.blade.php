@@ -20,7 +20,9 @@
                     <div class="row py-4">
                         <div class="col-12 d-flex justify-content-center align-items-center mb-3">
                             <div class="col-5 col-md-3 text-center">
-                                <img src="{{ asset("dist/assets/img/avatar.png") }}" alt="user-avatar" class="rounded-circle img-fluid">
+                                {{-- if profile has value output profile else output default value --}}
+                                {{-- change the value with actual profile name--}}
+                                <img src="{{ asset($profile ?? 'images/profile.jpg') }}" alt="user-avatar" class="rounded-circle img-fluid">
                             </div>
                         </div>
 
