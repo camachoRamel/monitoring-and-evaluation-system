@@ -2,6 +2,10 @@
 
 @section('content')
 
+@php
+$week = $week ?? null;
+@endphp
+
     <!-- Content Header (Page header) -->
     <div class="app-content-header">
         <h3 class="mb-0">Weekly Tasks</h3>
@@ -25,31 +29,36 @@
                 </div>
 
                 <!-- Dynamically Display Files for Each Day -->
-                @foreach (range(1, 5) as $day)
-                    <div class="card col-6 col-md-4 col-lg-2 mb-3" style="height: auto;">
-                        <div class="p-2">
-                            <strong>Day {{ $day }}</strong>
+                <div class="row">
+                    @foreach (range(1, 5) as $day)
+                        <div class="col-6 col-md-4 col-lg-3">
+                            <div class="card mb-3" style="height: auto;">
+                                <div class="p-2">
+                                    <strong>Day {{ $day }}</strong>
 
-                            @if (isset($files[$day]))
-                                <ul class="list-group mt-2">
-                                    @foreach ($files[$day] as $file)
-                                        @php
-                                            $filename = basename($file);
-                                        @endphp
-                                        <li class="list-group-item">
-                                            <a href="{{ route('tasks.download', ['week' => $week, 'day' => $day, 'filename' => $filename]) }}">
-                                                {{ $filename }}
-                                            </a>
-                                        </li>
-                                    @endforeach
-                                </ul>
-                            @else
-                                <p>No files uploaded for this day.</p>
-                            @endif
+                                    @if (isset($files[$day]))
+                                        <ul class="list-group mt-2">
+                                            @foreach ($files[$day] as $file)
+                                                @php
+                                                    $filename = basename($file);
+                                                @endphp
+                                                <li class="list-group-item">
+                                                    <a href="{{ route('tasks.download', ['week' => $week, 'day' => $day, 'filename' => $filename]) }}">
+                                                        {{ $filename }}
+                                                    </a>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    @else
+                                        <p>No files uploaded for this day.</p>
+                                    @endif
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                @endforeach
 
+                    @endforeach
+
+                </div>
             </div>
         </div>
     </section>
