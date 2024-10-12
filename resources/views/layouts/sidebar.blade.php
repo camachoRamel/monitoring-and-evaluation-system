@@ -79,21 +79,21 @@
               <!--coord sidebar-->
               @if (Auth::user()->role == '2')
                 <li class="nav-item">
-                  <a href="#" class="nav-link">
+                  <a href="{{ route('coord.index', Auth::id()) }}" class="nav-link">
                     <p>
                       Dashboard
                     </p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="#" class="nav-link">
+                  <a href="{{ route('coord.students-list-page') }}" class="nav-link">
                     <p>
                       Student List
                     </p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="#" class="nav-link">
+                  <a href="{{ route('coord.students-reports-page') }}" class="nav-link">
                     <p>
                       Student Weekly Report
                     </p>

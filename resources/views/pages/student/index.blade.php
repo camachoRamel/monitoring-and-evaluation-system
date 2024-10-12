@@ -37,9 +37,9 @@
                         {{-- display week --}}
                         <tr>
                             <td>Week {{ $tasks[$i]->week }}</td>
-                            @foreach ($tasks as $task)
-                            <td>{{ $task->deadline }}</td>
-                            @endforeach
+                            @for ($j = 0; $j < 5; $j++)
+                            <td>{{ $tasks[$j]->deadline }}</td>
+                            @endfor
 
                         </tr>
 

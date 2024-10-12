@@ -5,6 +5,7 @@ use App\Http\Controllers\File;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\LoginLogoutController;
 use App\Http\Controllers\HostingTrainingEstablishmentController;
+use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
@@ -118,6 +119,16 @@ Route::middleware('is.hte')->group(function()
 Route::middleware('is.coord')->group(function()
 {
     Route::get('/ojt-coordinator{id}', [UserController::class, 'index'])->name('coord.index');
+
+    Route::get('/ojt-coordinator/students-list', function(){
+
+        return view('pages.ojt_coordinator.student-list');
+    })->name('coord.students-list-page');
+
+    Route::get('/ojt-coordinator/students-report', function()
+    {
+        return view('pages.ojt_coordinator.student-weekly-report');
+    })->name('coord.students-reports-page');
 });
 
 
@@ -126,11 +137,7 @@ Route::middleware('is.student')->group(function()
 {
     Route::get('/student{id}', [UserController::class, 'index'])->name('stud.index');
 
-    Route::get('/student/intern-requirements', function()
-    {
-        return view('pages.student.internship-requirements');
-
-    })->name('stud.intern-requirement-page');
+    Route::get('/student/intern-requirements', [StudentController::class, 'viewHtes'])->name('stud.intern-requirement-page');
 
     Route::get('/student/weekly-tasks', function()
     {
@@ -145,13 +152,3 @@ Route::middleware('is.student')->group(function()
     })->name('stud.weekly-submission-page');
 
 });
-
-
-// TEST ROUTES
-
-// Route::post('/test_upaload{id}', [File::class, 'storePicture'])->name('test_upload');
-
-// Route::get('/test/download', function()
-// {
-//     return Storage::download('tasks/task162024-10-11.docx');
-// })->name('test-download');
