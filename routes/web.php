@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CoordinatorController;
 use App\Http\Controllers\File;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\LoginLogoutController;
@@ -82,10 +83,6 @@ Route::middleware('is.hte')->group(function()
         return view('pages.hte.student-list');
     })->name('hte.student-list');
 
-    Route::get('/hte/{type}-students-{course}', [HostingTrainingEstablishmentController::class, 'viewStudents'])->name('hte.view-students');
-
-    Route::get('/hte/{type}-student-{id}', [HostingTrainingEstablishmentController::class, 'viewStudent'])->name('hte.view-student');
-
     //APPROVE STUDENTS PAGE ROUTE
     Route::get('/hte/students-to-approve', [HostingTrainingEstablishmentController::class, 'getStudentsToApprove'])->name('hte.students-to-approve');
 
@@ -107,6 +104,8 @@ Route::middleware('is.hte')->group(function()
         return view('pages.hte.student-weekly-submission');
     })->name('hte.weekly-submission');
 
+
+    //DYNAMIC STUDENT VIEWS FOR HTE
     Route::get('/hte/{type}-students-{course}', [HostingTrainingEstablishmentController::class, 'viewStudents'])->name('hte.view-students');
 
     Route::get('/hte/{type}-student-{id}', [HostingTrainingEstablishmentController::class, 'viewStudent'])->name('hte.view-student');
@@ -120,15 +119,22 @@ Route::middleware('is.coord')->group(function()
 {
     Route::get('/ojt-coordinator{id}', [UserController::class, 'index'])->name('coord.index');
 
+    //VIEW STUDENTS ROUTE FOR COORD
     Route::get('/ojt-coordinator/students-list', function(){
 
         return view('pages.ojt_coordinator.student-list');
     })->name('coord.students-list-page');
 
+    Route::get('/ojt-coordinator/{type}-students-{course}', [CoordinatorController::class, 'viewStudents'])->name('coord.view-students');
+
+    Route::get('/ojt-coordinator/{type}-student-{id}', [CoordinatorController::class, 'viewStudent'])->name('coord.view-student');
+
     Route::get('/ojt-coordinator/students-report', function()
     {
         return view('pages.ojt_coordinator.student-weekly-report');
     })->name('coord.students-reports-page');
+
+
 });
 
 
@@ -139,11 +145,7 @@ Route::middleware('is.student')->group(function()
 
     Route::get('/student/intern-requirements', [StudentController::class, 'viewHtes'])->name('stud.intern-requirement-page');
 
-    Route::get('/student/weekly-tasks', function()
-    {
-        return view('pages.student.weekly-tasks');
-
-    })->name('stud.weekly-tasks-page');
+    Route::get('/student{id}/weekly-tasks', [StudentController::class, 'getWeeklyTasks'])->name('stud.weekly-tasks-page');
 
     Route::get('/student/weekly-submissions', function()
     {

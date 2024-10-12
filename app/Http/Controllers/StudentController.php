@@ -7,11 +7,11 @@ use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
-    public function getWeeklyTask()
+    public function getWeeklyTasks(int $id)
     {
-        // $tasks = UserController::getWeeklyTasks();
-
-        return view('pages.hte.student-weekly-task', compact('tasks'));
+        $tasks = UserController::getWeeklyTasks($id);
+        // dd($tasks);
+        return view('pages.student.weekly-tasks', compact('tasks'));
     }
 
     public function createWeeklyReport(Request $request)

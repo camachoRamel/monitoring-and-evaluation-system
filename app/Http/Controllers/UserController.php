@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -16,6 +17,10 @@ class UserController extends Controller
         ->where('id', $id)
         ->first();
 
+        $iTCount = User::where('role', 3)->where('course', 1)->get()->count();
+        $iSCount = User::where('role', 3)->where('course', 2)->get()->count();
+        $comSciCount = User::where('role', 3)->where('course', 3)->get()->count();
+
         $htes = UserController::getAllUsers(1);
         $tasks = UserController::getWeeklyTasks(Auth::id());
 
@@ -24,10 +29,10 @@ class UserController extends Controller
                 return view('pages.admin.index', compact('user'));
                 break;
             case 1:
-                return view('pages.hte.index', compact('user'));
+                return view('pages.hte.index', compact('user', 'iTCount', 'iSCount', 'comSciCount'));
                 break;
             case 2:
-                return view('pages.ojt_coordinator.index', compact('user'));
+                return view('pages.ojt_coordinator.index', compact('user', 'iTCount', 'iSCount', 'comSciCount'));
                 break;
             case 3:
                 //checks student is approved by hte
@@ -153,7 +158,7 @@ class UserController extends Controller
     public static function getWeeklyTasks(int $id)
     {
         $tasks = DB::table('weekly_tasks')
-        ->select('*')
+        ->select('tasks', 'week', 'day', 'deadline')
         ->join('users AS u1', 'u1.id', '=', 'user_id')
         ->where('u1.id', $id)
         ->get();

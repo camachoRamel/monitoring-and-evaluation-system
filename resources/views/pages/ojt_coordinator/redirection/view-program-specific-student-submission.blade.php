@@ -19,25 +19,14 @@
                 </thead>
                 <tbody>
                     @foreach ($students as $stud)
-                        <tr>
-                            <td>{{ $stud->name }}</td>
-                            <td>{{ $stud->hte }}</td>
-                            <td>
-                                <form class="d-flex justify-content-end" action="{{ route("admin.view-student-specific-report") }}">
-                                    <button type="submit" class="btn btn-primary">View</button>
-                                </form>
-                            </td>
-                        </tr>
-                    @endforeach
                     <tr>
-                        <td>Tiger Nixon</td>
-                        <td>Edinburgh</td>
-                        <td>
-                            <form class="d-flex justify-content-end" action="{{ route("admin.view-student-specific-report") }}">
-                                <button type="submit" class="btn btn-primary">View</button>
-                            </form>
+                        <td>{{ $stud->name }}</td>
+                        <td>{{ $stud->coord }}</td>
+                        <td class="d-flex justify-content-end">
+                            <a href="{{ route("coord.view-student", ['type' => 'submission', 'id' => $stud->id]) }}" class="btn btn-primary">View</a>
                         </td>
                     </tr>
+                @endforeach
                 </tbody>
             </table>
         </div>
