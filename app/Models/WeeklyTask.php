@@ -12,10 +12,6 @@ class WeeklyTask extends Model
 
     protected $guarded = [];
 
-    public function userTask() : HasOne
-    {
-        return $this->hasOne(UserTask::class);
-    }
 
     public function weeklyReport() : HasOne
     {

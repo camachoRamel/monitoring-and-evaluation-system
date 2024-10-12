@@ -9,7 +9,7 @@ class StudentController extends Controller
 {
     public function getWeeklyTask()
     {
-        $tasks = UserController::getWeeklyTasks();
+        // $tasks = UserController::getWeeklyTasks();
 
         return view('pages.hte.student-weekly-task', compact('tasks'));
     }
@@ -21,5 +21,13 @@ class StudentController extends Controller
         ]);
 
         //return somewhere
+    }
+
+    public function viewHtes()
+    {
+        $htes = UserController::getAllUsers(1);
+
+        return view('pages.student.internship-requirements', compact('htes'));
+
     }
 }

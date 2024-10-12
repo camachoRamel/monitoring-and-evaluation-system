@@ -2,11 +2,14 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\File;
+use App\Http\Controllers\FileController;
 use App\Http\Controllers\LoginLogoutController;
 use App\Http\Controllers\HostingTrainingEstablishmentController;
+use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 
 Route::get('/', function ()
 {
@@ -79,21 +82,26 @@ Route::middleware('is.hte')->group(function()
         return view('pages.hte.student-list');
     })->name('hte.student-list');
 
+    Route::get('/hte/{type}-students-{course}', [HostingTrainingEstablishmentController::class, 'viewStudents'])->name('hte.view-students');
+
+    Route::get('/hte/{type}-student-{id}', [HostingTrainingEstablishmentController::class, 'viewStudent'])->name('hte.view-student');
+
     //APPROVE STUDENTS PAGE ROUTE
     Route::get('/hte/students-to-approve', [HostingTrainingEstablishmentController::class, 'getStudentsToApprove'])->name('hte.students-to-approve');
 
-    Route::get('/hte/weekly-tasks', function()
+    Route::get('/hte/weekly-tasks', [HostingTrainingEstablishmentController::class, 'viewAllStudents'])->name('hte.weekly-tasks');
+
+    Route::get('/hte/upload-student-tasks{id}', function(int $id)
     {
-        return view('pages.hte.student-weekly-task');
-    })->name('hte.weekly-tasks');
+        $student = UserController::getUser($id);
+        return view('pages.hte.redirection.upload-student-task', compact('student'));
 
-    Route::get('/hte/upload-student-tasks', function()
-    {
-        return view('pages.hte.redirection.upload-student-task');
-    })->name('hte.upload-student-task');
+    })->name('hte.upload-student-task-page');
+
+    Route::post('hte/uploading-task{id}', [HostingTrainingEstablishmentController::class, 'uploadWeeklyTask'])->name('hte.upload-student-task');
 
 
-    //HTE SUBMISSION AND VIEW STUDENT ROUTES
+    //HTE SUBMISSION VIEW STUDENT ROUTES
     Route::get('/hte/submission-students', function()
     {
         return view('pages.hte.student-weekly-submission');
@@ -103,6 +111,7 @@ Route::middleware('is.hte')->group(function()
 
     Route::get('/hte/{type}-student-{id}', [HostingTrainingEstablishmentController::class, 'viewStudent'])->name('hte.view-student');
 
+
 });
 
 
@@ -110,6 +119,16 @@ Route::middleware('is.hte')->group(function()
 Route::middleware('is.coord')->group(function()
 {
     Route::get('/ojt-coordinator{id}', [UserController::class, 'index'])->name('coord.index');
+
+    Route::get('/ojt-coordinator/students-list', function(){
+
+        return view('pages.ojt_coordinator.student-list');
+    })->name('coord.students-list-page');
+
+    Route::get('/ojt-coordinator/students-report', function()
+    {
+        return view('pages.ojt_coordinator.student-weekly-report');
+    })->name('coord.students-reports-page');
 });
 
 
@@ -117,11 +136,19 @@ Route::middleware('is.coord')->group(function()
 Route::middleware('is.student')->group(function()
 {
     Route::get('/student{id}', [UserController::class, 'index'])->name('stud.index');
+
+    Route::get('/student/intern-requirements', [StudentController::class, 'viewHtes'])->name('stud.intern-requirement-page');
+
+    Route::get('/student/weekly-tasks', function()
+    {
+        return view('pages.student.weekly-tasks');
+
+    })->name('stud.weekly-tasks-page');
+
+    Route::get('/student/weekly-submissions', function()
+    {
+        return view('pages.student.weekly-submission');
+
+    })->name('stud.weekly-submission-page');
+
 });
-
-
-// TEST ROUTES
-
-Route::post('/test_upaload{id}', [File::class, 'storePicture'])->name('test_upload');
-
-Route::get('/test/download{id}', [File::class, 'download'])->name('test_download');

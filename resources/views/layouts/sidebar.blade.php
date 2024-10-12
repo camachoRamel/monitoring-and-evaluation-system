@@ -48,28 +48,28 @@
               <!--hte sidebar-->
               @if (Auth::user()->role == '1')
                 <li class="nav-item">
-                  <a href="" class="nav-link">
+                  <a href="{{ route('hte.index', Auth::id()) }}" class="nav-link">
                     <p>
                       Dashboard
                     </p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="" class="nav-link">
+                  <a href="{{ route('hte.student-list') }}" class="nav-link">
                     <p>
                       Student List
                     </p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="" class="nav-link">
+                  <a href="{{ route('hte.weekly-tasks') }}" class="nav-link">
                     <p>
                       Student Weekly Tasks
                     </p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="" class="nav-link">
+                  <a href="{{ route('hte.weekly-submission') }}" class="nav-link">
                     <p>
                       Student Weekly Submission
                     </p>
@@ -79,21 +79,21 @@
               <!--coord sidebar-->
               @if (Auth::user()->role == '2')
                 <li class="nav-item">
-                  <a href="#" class="nav-link">
+                  <a href="{{ route('coord.index', Auth::id()) }}" class="nav-link">
                     <p>
                       Dashboard
                     </p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="#" class="nav-link">
+                  <a href="{{ route('coord.students-list-page') }}" class="nav-link">
                     <p>
                       Student List
                     </p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="#" class="nav-link">
+                  <a href="{{ route('coord.students-reports-page') }}" class="nav-link">
                     <p>
                       Student Weekly Report
                     </p>
@@ -103,14 +103,14 @@
               <!--student sidebar-->
               @if (Auth::user()->role == '3')
                 <li class="nav-item">
-                  <a href="#" class="nav-link">
+                  <a href="{{ route('stud.index', Auth::id()) }}" class="nav-link">
                     <p>
                       Dashboard
                     </p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="#" class="nav-link">
+                  <a href="{{ route('stud.intern-requirement-page') }}" class="nav-link">
                     <p>
                       Internship Requirements
                       <!-- available only if the student doesn't have an HTE yet -->
@@ -118,14 +118,14 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="#" class="nav-link">
+                  <a href="{{ route('stud.weekly-tasks-page') }}" class="nav-link">
                     <p>
                       Weekly Tasks
                     </p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="#" class="nav-link">
+                  <a href="{{ route('stud.weekly-submission-page') }}" class="nav-link">
                     <p>
                       Weekly Submission
                     </p>
