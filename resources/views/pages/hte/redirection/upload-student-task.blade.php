@@ -12,7 +12,7 @@
             <div class="container p-3">
                 <form id="task-form" method="POST" action="{{ route('hte.upload-student-task', $student->id) }}" enctype="multipart/form-data">
                     @csrf
-                    <div class="col-12 mb-3">
+                    <div class="col-12 mb-4">
                         <select id="week-selector" name="week" class="form-select" aria-label="Select Week">
                             @foreach (range(1, 12) as $weekNum)
                                 <option value="{{ $weekNum }}">Week {{ $weekNum }}</option>
@@ -22,7 +22,7 @@
 
                     <div class="row">
                         @foreach (range(1, 5) as $day)
-                        <div class="col-6 col-md-4 col-lg-4 mb-3">
+                        <div class="col-6 col-md-4 col-lg-4 mb-4">
                             <div class="card">
                                 <div class="p-2">
                                     <strong>Day {{ $day }}</strong>

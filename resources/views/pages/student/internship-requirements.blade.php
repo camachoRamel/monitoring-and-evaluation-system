@@ -11,7 +11,7 @@
         <div class="card card-solid px-5 py-4">
             <div class="row">
                 @foreach ($htes as $hte)
-                <div class="col-12 col-md-5 col-lg-4 d-flex align-items-stretch flex-column mb-3">
+                <div class="col-12 col-md-5 col-lg-4 d-flex align-items-stretch flex-column mb-4">
                     <div class="card bg-light d-flex flex-fill">
                       <div class="card-header text-muted border-bottom-0">
                         Host Training Establishment
@@ -37,7 +37,7 @@
                 </div>
 
                 @endforeach
-            
+
             </div>
         </div>
     </section>

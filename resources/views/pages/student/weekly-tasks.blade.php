@@ -32,7 +32,7 @@ $week = $week ?? null;
                 <div class="row">
                     @foreach (range(1, 5) as $day)
                         <div class="col-6 col-md-4 col-lg-3">
-                            <div class="card mb-3" style="height: auto;">
+                            <div class="card mb-4" style="height: auto;">
                                 <div class="p-2">
                                     <strong>Day {{ $day }}</strong>
 
