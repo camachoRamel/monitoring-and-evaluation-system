@@ -29,17 +29,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {{-- @foreach ($students as $stud)
-                        <tr>
-                            <td>{{ $stud->name }}</td>
-                            <td>{{ $stud->coord }}</td>
-                            <td>
-                                <form class="d-flex justify-content-end" action="{{ route("admin.view-student-specific-report") }}">
-                                    <button type="submit" class="btn btn-primary">View</button>
-                                </form>
-                            </td>
-                        </tr>
-                    @endforeach --}}
+
                     @for ($i = 0; $i < $tasks[$i]->week; $i++)
                         {{-- display week --}}
                         <tr>
