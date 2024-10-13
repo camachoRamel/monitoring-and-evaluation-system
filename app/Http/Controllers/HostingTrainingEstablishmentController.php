@@ -45,7 +45,9 @@ class HostingTrainingEstablishmentController extends Controller
         $validation = $request->validate([
             'week' => 'required',
             'deadlines' => 'required',
-            'files' => 'required'
+            'files' => 'required',
+            'deadlines' => 'required|array',
+            'deadlines.*' => 'required|date|after_or_equal:today', // Ensures no past date and not empty
         ]);
 
         // 5 because there are 5 days with tasks|| i = day
@@ -67,7 +69,7 @@ class HostingTrainingEstablishmentController extends Controller
             WeeklyTask::create($weekly_task);
         }
 
-        return redirect()->route('hte.index', Auth::id());
+        return redirect()->route('hte.index', Auth::id())->with('success', 'Tasks successfully uploaded.');
     }
 
     public function viewAllStudents()
