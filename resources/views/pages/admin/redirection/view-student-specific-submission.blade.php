@@ -38,7 +38,7 @@
                       </div>
                       <div class="col-5 text-center">
                         <img
-                        src="{{ assset(!isset($stud->stud_picture) ? 'images/profile.jpg' : 'storage/images/' . $stud->stud_picture) }}"
+                        src="{{ assset(!isset($stud->stud_picture) ? 'images/profile.jpg' : 'storage/' . $stud->stud_picture) }}"
                         alt="user-avatar"
                         class="rounded-circle img-fluid">
                       </div>
