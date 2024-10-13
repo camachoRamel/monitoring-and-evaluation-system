@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Requirement;
 use App\Models\WeeklyReport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,15 +15,6 @@ class StudentController extends Controller
         $tasks = UserController::getWeeklyTasks(Auth::id());
         // dd($tasks);
         return view('pages.student.weekly-tasks', compact('tasks'));
-    }
-
-    public function createWeeklyReport(Request $request)
-    {
-        $validated = $request->validate([
-            'file' => 'required'
-        ]);
-
-        //return somewhere
     }
 
     public function viewHtes()
@@ -53,5 +45,27 @@ class StudentController extends Controller
 
         return redirect()->route('stud.index', Auth::id())->with('success', 'Report uploaded successfully.');
 
+    }
+
+    public function uploadResume(Request $request, int $id)
+    {
+
+        $validation = $request->validate([
+            'resume' => 'required'
+        ]);
+
+        $file = $request->file('resume');
+        $fileName = 'resume' . Auth::user()->last_name . "-" . Auth::id() . '.' . $file->getCLientOriginalExtension();
+        $filePath = $file->storeAs('resumes', $fileName);
+
+        $requirements = [
+            'user_id' => Auth::id(),
+            'hte_id' => $id,
+            'requirement' => $fileName,
+        ];
+
+        Requirement::create($requirements);
+
+        return redirect()->route('stud.index', Auth::id())->with('success', 'Resume sent successfully.');
     }
 }

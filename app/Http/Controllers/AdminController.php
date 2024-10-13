@@ -94,7 +94,8 @@ class AdminController extends Controller
             ]);
         }
 
-        return redirect()->route('admin.index', Auth::id())->with('success', 'Account successfully created.');
+        // return redirect()->route('admin.index', Auth::id())->with('success', 'Account successfully created.');
+        return redirect()->back()->with('success', 'Account successfully created.');
     }
 
     public function viewStudents(string $type, int $course)
@@ -142,7 +143,7 @@ class AdminController extends Controller
         ->first();
 
         $connections = DB::table('intern_handlers')
-        ->select('u1.id AS stud_id', 'u1.course', DB::raw('CONCAT(u1.first_name, " ", u1.middle_name, " ", u1.last_name) AS student_name, CONCAT(u2.first_name, " ", u2.middle_name, " ", u2.last_name) AS coord, CONCAT(u3.first_name, " ", u3.middle_name, " ", u3.last_name) AS hte'))
+        ->select('u1.id AS stud_id', 'u1.course', DB::raw('CONCAT(u1.first_name, " ", COALESCE(u1.middle_name, ""), " ", u1.last_name) AS student_name, CONCAT(u2.first_name, " ", COALESCE(u2.middle_name, ""), " ", u2.last_name) AS coord, u3.first_name AS hte'))
         ->join('users AS u1', 'u1.id', '=', 'user_id')
         ->join('users AS u2', 'u2.id', '=', 'coord_id')
         ->leftJoin('users AS u3', 'u3.id', '=', 'hte_id')

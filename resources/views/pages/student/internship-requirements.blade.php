@@ -28,7 +28,7 @@
                       </div>
                       <div class="card-footer">
                         <div class="container d-flex justify-content-end">
-                            <a href="#" class="btn btn-sm btn-primary">
+                            <a href="{{ route('stud.resume-upload-page', $hte->id) }}" class="btn btn-sm btn-primary">
                                 Apply
                             </a>
                        </div>

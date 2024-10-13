@@ -10,6 +10,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
@@ -52,7 +53,7 @@ Route::middleware('is.admin')->group(function()
     Route::get('/admin/hte-info', [AdminController::class, 'viewHtes'])->name('admin.hte-info');
 
     //DYNAMIC ROUTE FOR VIEWING SPECIFIC COORD AND HTE
-    Route::get('/admin/{type}{id}', [AdminController::class, 'viewWorker'])->name('admin.specific-worker');
+    Route::get('/admin/worker/{type}{id}', [AdminController::class, 'viewWorker'])->name('admin.specific-worker');
 
     //CREATE ACCOUNT ROUTES
     Route::get('/admin/create-account-page', function ()
@@ -83,6 +84,8 @@ Route::middleware('is.hte')->group(function()
 
     //APPROVE STUDENTS PAGE ROUTE
     Route::get('/hte/students-to-approve', [HostingTrainingEstablishmentController::class, 'getStudentsToApprove'])->name('hte.students-to-approve');
+
+    Route::post('/hte/students-to-approve/action{id}', [HostingTrainingEstablishmentController::class, 'approve'])->name('hte.approve-action');
 
     Route::get('/hte/weekly-tasks', [HostingTrainingEstablishmentController::class, 'viewAllStudents'])->name('hte.weekly-tasks');
 
@@ -147,14 +150,26 @@ Route::middleware('is.student')->group(function()
 {
     Route::get('/student{id}', [UserController::class, 'index'])->name('stud.index');
 
+    // ROUTE FOR STUDENT APPLICATION
     Route::get('/student/intern-requirements', [StudentController::class, 'viewHtes'])->name('stud.intern-requirement-page');
+
+    Route::get('/student/upload-resume-to{id}', function(int $id)
+    {
+        $hte = DB::table('users')
+        ->select('*')
+        ->where('id', $id)
+        ->first();
+
+        return view('pages.student.conditional-pages.submit-requirements', compact('hte'));
+    })->name('stud.resume-upload-page');
+
+    Route::post('/student/resume-upload{id}', [StudentController::class, 'uploadResume'])->name('stud.resume-upload');
 
     Route::get('/student/weekly-tasks', [StudentController::class, 'getWeeklyTasks'])->name('stud.weekly-tasks-page');
 
     Route::get('/student/weekly-submissions', function()
     {
         $tasks = UserController::getWeeklyTasks(Auth::id());
-        // dd($tasks);
         return view('pages.student.weekly-submission', compact('tasks'));
 
     })->name('stud.weekly-submission-page');
