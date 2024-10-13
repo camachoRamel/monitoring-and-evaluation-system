@@ -18,11 +18,11 @@
                 </div>
                 <div class="col d-flex flex-column bg-secondary my-2 my-lg-0 mx-lg-2 border-none rounded-2 shadow p-4">
                     <h4 class="mb-auto text-light">BSIS</h4>
-                    <a href="{{ route('coord.view-students', ['type' => 'submission', 'course' => 1]) }}" class="btn btn-dark align-self-end">View</a>
+                    <a href="{{ route('coord.view-students', ['type' => 'submission', 'course' => 2]) }}" class="btn btn-dark align-self-end">View</a>
                 </div>
                 <div class="col d-flex flex-column bg-secondary my-2 my-lg-0 mx-lg-2 border-none rounded-2 shadow p-4">
                     <h4 class="mb-auto text-light">ComSci</h4>
-                    <a href="{{ route('coord.view-students', ['type' => 'submission', 'course' => 1]) }}" class="btn btn-dark align-self-end">View</a>
+                    <a href="{{ route('coord.view-students', ['type' => 'submission', 'course' => 3]) }}" class="btn btn-dark align-self-end">View</a>
                 </div>
             </div>
         </div>

@@ -19,7 +19,7 @@
                     <div class="row py-4">
                         <div class="col-12 d-flex justify-content-center align-items-center mb-3">
                             <div class="col-5 col-md-3 text-center">
-                                <img src="{{ asset($worker->profile_picture == null ? 'images/profile.jpg' : 'storage/' . $worker->profile_picture) }}"
+                                <img src="{{ asset(!isset($worker->profile_picture) ? 'images/profile.jpg' : 'storage/images/' . $worker->profile_picture) }}"
                                 alt="user-avatar"
                                 class="rounded-circle img-fluid">
                             </div>

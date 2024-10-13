@@ -21,7 +21,7 @@
                             <div class="col-5 col-md-3 text-center">
                                 {{-- if profile has value output profile else output default value --}}
                                 {{-- change the value with actual profile name--}}
-                                <img src="{{ asset($worker->profile_picture == null ? 'images/profile.jpg' : 'storage/' . $worker->profile_picture) }}"
+                                <img src="{{ asset(!isset($worker->profile_picture) ? 'images/profile.jpg' : 'storage/images/' . $worker->profile_picture) }}"
                                 alt="user-avatar"
                                 class="rounded-circle img-fluid">
                             </div>

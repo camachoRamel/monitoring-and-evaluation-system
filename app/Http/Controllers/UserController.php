@@ -275,7 +275,7 @@ class UserController extends Controller
                 $user = [
                     'first_name' => $validation['hte_first_name'],
                     // 'profile_picture' => $validation['hte_profile_picture'] == null ? Auth::user()->profile_picture : $validation['hte_profile_picture'],
-                    'profile_picture' => $filePath ?? Auth::user()->profile_picture,
+                    'profile_picture' => $fileName ?? Auth::user()->profile_picture,
                     'username' => $validation['hte_username'],
                     'password' => $validation['hte_password'],
                 ];
@@ -305,7 +305,7 @@ class UserController extends Controller
                     'middle_name' => $validation['coord_middle_name'],
                     'last_name' => $validation['coord_last_name'],
                     // 'profile_picture' => $validation['coord_profile_picture'] == null ? Auth::user()->profile_picture : $validation['coord_profile_picture'],
-                    'profile_picture' => $filePath ?? Auth::user()->profile_picture,
+                    'profile_picture' => $fileName ?? Auth::user()->profile_picture,
                     'username' => $validation['coord_username'],
                     'password' => $validation['coord_password'],
                 ];
@@ -333,7 +333,7 @@ class UserController extends Controller
                     'middle_name' => $validation['stud_middle_name'],
                     'last_name' => $validation['stud_last_name'],
                     // 'profile_picture' => $validation['stud_profile_picture'] == null ? Auth::user()->profile_picture : $validation['stud_profile_picture'],
-                    'profile_picture' => $filePath ?? Auth::user()->profile_picture,
+                    'profile_picture' => $fileName ?? Auth::user()->profile_picture,
                     'username' => $validation['stud_username'],
                     'password' => $validation['stud_password'],
                 ];
