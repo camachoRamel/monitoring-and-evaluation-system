@@ -24,11 +24,13 @@ Route::get('/', function ()
 Route::post('/login', [LoginLogoutController::class, 'authenticate'])->name('login');
 Route::post('/logout', [LoginLogoutController::class, 'logout'])->name('logout');
 
-Route::get('/edit-profile-page', function()
-{
-    return view('pages.profile');
+// Route::get('/edit-profile-page', function()
+// {
+//     return view('pages.profile');
 
-})->name('profile.edit-page');
+// })->name('profile.edit-page');
+
+Route::get('/edit-profile-page', [UserController::class, 'getProfile'])->name('profile.edit-page');
 
 Route::post('/edit-profile', [UserController::class, 'updateUserProfile'])->name('profile.edit');
 
