@@ -280,7 +280,7 @@ class UserController extends Controller
                     'coord_first_name' => 'required|regex:/^[a-zA-Z\s]+$/',
                     'coord_middle_name' => 'sometimes|regex:/^[a-zA-Z\s]+$/',
                     'coord_last_name' => 'required|regex:/^[a-zA-Z\s]+$/',
-                    'coord_profile_picture' => 'nullable|image|mimes:jpeg,png,jpg',
+                    'coord_profile_picture' => 'sometimes|image|mimes:jpeg,png,jpg',
                     'coord_username' => 'required|alpha:ascii',
                     'coord_password' => 'required|min:8'
                 ]);
@@ -307,7 +307,7 @@ class UserController extends Controller
                     'stud_first_name' => 'required|regex:/^[a-zA-Z\s]+$/',
                     'stud_middle_name' => 'sometimes|regex:/^[a-zA-Z\s]+$/',
                     'stud_last_name' => 'required|regex:/^[a-zA-Z\s]+$/',
-                    'stud_profile_picture' => 'nullalbe|image|mimes:jpeg,png,jpg',
+                    'stud_profile_picture' => 'nullable|image|mimes:jpeg,png,jpg',
                     'stud_username' => 'required|alpha:ascii',
                     'stud_password' => 'required|min:8',
                 ]);

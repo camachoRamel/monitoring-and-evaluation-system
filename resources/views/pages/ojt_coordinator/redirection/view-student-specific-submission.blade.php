@@ -27,7 +27,7 @@
             </div>
 
             <!-- Modal -->
-            <form class="modal fade" id="evaluationModal" tabindex="-1" aria-labelledby="evaluationModalLabel" aria-hidden="true">
+            <form method="POST" action="{{ route('coord.upload-evaluation', $stud->id) }}" class="modal fade" id="evaluationModal" tabindex="-1" aria-labelledby="evaluationModalLabel" aria-hidden="true" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
@@ -46,7 +46,7 @@
                         </div>
                         <div class="form-group mb-3">
                             <label for="file">Upload file:</label>
-                            <input type="file" name="files" id="file" class="form-control">
+                            <input type="file" name="evaluation" id="file" class="form-control">
                         </div>
                     </div>
                     <div class="modal-footer">
