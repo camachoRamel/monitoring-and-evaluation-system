@@ -8,8 +8,7 @@
     </div> <!--end::App Content Header-->
 
     <section class="content w-100 px-4">
-        <div class="card card-solid px-5 py-4 d-flex flex-column flex-md-row gap-3 justify-content-center" >
-            {{-- Insert a foreach --}}
+        <div class="card card-solid px-5 py-4">
             <div class="row">
                 @foreach ($students as $stud)
                 <div class="col-12 col-md-5 col-lg-4 d-flex align-items-stretch flex-column">
@@ -30,7 +29,6 @@
                             </ul>
                           </div>
                           <div class="col-5 text-center">
-                            {{-- replace asset with the profile pic --}}
                             <img src="{{ asset("dist/assets/img/avatar.png") }}" alt="user-avatar" class="rounded-circle img-fluid">
                           </div>
                         </div>
@@ -43,16 +41,14 @@
                             <button name="submitBtn" value="approve" type="submit" class="btn btn-primary ms-2">
                                 approve
                             </button>
-                       </div>
+                        </div>
                       </div>
                     </form>
                 </div>
                 @endforeach
             </div>
-
         </div>
-        {{-- card --}}
+        <!-- card -->
     </section>
-    {{-- content --}}
-
+    <!-- content -->
 @endsection
