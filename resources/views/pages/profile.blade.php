@@ -42,7 +42,7 @@
                                                 name="hte_first_name"
                                                 class="form-control"
                                                 id="hte_first_name"
-                                                value="{{ old('hte_first_name', $hte->first_name ?? '') }}"
+                                                value="{{ old('hte_first_name', $user->first_name ?? '') }}"
                                                 >
                                                 @error('hte_first_name')
                                                     <div class="text-danger">{{ $message }}</div>
@@ -54,7 +54,7 @@
                                                 name="hte_username"
                                                 class="form-control"
                                                 id="hte_username"
-                                                value="{{ old('hte_username', $hte->username ?? '') }}"
+                                                value="{{ old('hte_username', $user->username ?? '') }}"
                                                 >
                                                 @error('hte_username')
                                                     <div class="text-danger">{{ $message }}</div>
@@ -93,7 +93,7 @@
                                                 name="coord_first_name"
                                                 class="form-control"
                                                 id="coord_first_name"
-                                                value="{{ old('coord_first_name', $coord->first_name ?? '') }}"
+                                                value="{{ old('coord_first_name', $user->first_name ?? '') }}"
                                                 >
                                                 @error('coord_first_name')
                                                     <div class="text-danger">{{ $message }}</div>
@@ -105,7 +105,7 @@
                                                 name="coord_middle_name"
                                                 class="form-control"
                                                 id="coord_middle_name"
-                                                value="{{ old('coord_middle_name', $coord->middle_name ?? '') }}"
+                                                value="{{ old('coord_middle_name', $user->middle_name ?? '') }}"
                                                 >
                                                 @error('coord_middle_name')
                                                     <div class="text-danger">{{ $message }}</div>
@@ -117,7 +117,7 @@
                                                 name="coord_last_name"
                                                 class="form-control"
                                                 id="coord_last_name"
-                                                value="{{ old('coord_last_name', $coord->last_name ?? '') }}"
+                                                value="{{ old('coord_last_name', $user->last_name ?? '') }}"
                                                 >
                                                 @error('coord_last_name')
                                                     <div class="text-danger">{{ $message }}</div>
@@ -129,7 +129,7 @@
                                                 name="coord_username"
                                                 class="form-control"
                                                 id="coord_username"
-                                                value="{{ old('coord_username', $coord->username ?? '') }}"
+                                                value="{{ old('coord_username', $user->username ?? '') }}"
                                                 >
                                                 @error('coord_username')
                                                     <div class="text-danger">{{ $message }}</div>
@@ -167,7 +167,7 @@
                                                 name="stud_first_name"
                                                 class="form-control"
                                                 id="stud_first_name"
-                                                value="{{ old('stud_first_name', $stud->first_name ?? '') }}"
+                                                value="{{ old('stud_first_name', $user->first_name ?? '') }}"
                                                 >
                                                 @error('stud_first_name')
                                                     <div class="text-danger">{{ $message }}</div>
@@ -179,7 +179,7 @@
                                                 name="stud_middle_name"
                                                 class="form-control"
                                                 id="stud_middle_name"
-                                                value="{{ old('stud_middle_name', $stud->middle_name ?? '') }}"
+                                                value="{{ old('stud_middle_name', $user->middle_name ?? '') }}"
                                                 >
                                                 @error('stud_middle_name')
                                                     <div class="text-danger">{{ $message }}</div>
@@ -191,7 +191,7 @@
                                                 name="stud_last_name"
                                                 class="form-control"
                                                 id="stud_last_name"
-                                                value="{{ old('stud_last_name', $stud->last_name ?? '') }}"
+                                                value="{{ old('stud_last_name', $user->last_name ?? '') }}"
                                                 >
                                                 @error('stud_last_name')
                                                     <div class="text-danger">{{ $message }}</div>
@@ -203,7 +203,7 @@
                                                 name="stud_username"
                                                 class="form-control"
                                                 id="stud_username"
-                                                value="{{ old('stud_username', $stud->username ?? '') }}"
+                                                value="{{ old('stud_username', $user->username ?? '') }}"
                                                 >
                                                 @error('stud_username')
                                                     <div class="text-danger">{{ $message }}</div>

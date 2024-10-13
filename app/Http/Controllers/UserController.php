@@ -247,6 +247,12 @@ class UserController extends Controller
         return false;
     }
 
+    public function getProfile(){
+        $user = User::find(Auth::id());
+
+        return view('pages.profile', compact('user'));
+    }
+
     public function updateUserProfile(Request $request)
     {
 
@@ -254,12 +260,12 @@ class UserController extends Controller
             case 'hte':
                 $validation = $request->validate([
                     'hte_first_name' => 'required|regex:/^[a-zA-Z\s]+$/',
-                    'hte_profile_picture' => 'sometimes|image|mimes:jpeg,png,jpg',
+                    'hte_profile_picture' => 'nullable|image|mimes:jpeg,png,jpg',
                     'hte_username' => 'required|alpha:ascii',
                     'hte_password' => 'required|min:8'
                 ]);
 
-                if($validation['hte_profile_picture'] != null)
+                if(isset($validation['hte_profile_picture']))
                 {
                     $file = $request->file('hte_profile_picture');
                     $fileName = 'profile' . "-" . Auth::id() . '.' . $file->getCLientOriginalExtension();
@@ -268,7 +274,8 @@ class UserController extends Controller
 
                 $user = [
                     'first_name' => $validation['hte_first_name'],
-                    'profile_picture' => $validation['hte_profile_picture'] == null ? Auth::user()->profile_picture : $validation['hte_profile_picture'],
+                    // 'profile_picture' => $validation['hte_profile_picture'] == null ? Auth::user()->profile_picture : $validation['hte_profile_picture'],
+                    'profile_picture' => $filePath ?? Auth::user()->profile_picture,
                     'username' => $validation['hte_username'],
                     'password' => $validation['hte_password'],
                 ];
@@ -278,14 +285,15 @@ class UserController extends Controller
             case 'coord':
                 $validation = $request->validate([
                     'coord_first_name' => 'required|regex:/^[a-zA-Z\s]+$/',
-                    'coord_middle_name' => 'sometimes|regex:/^[a-zA-Z\s]+$/',
+                    'coord_middle_name' => 'nullable|regex:/^[a-zA-Z\s]+$/',
                     'coord_last_name' => 'required|regex:/^[a-zA-Z\s]+$/',
                     'coord_profile_picture' => 'sometimes|image|mimes:jpeg,png,jpg',
                     'coord_username' => 'required|alpha:ascii',
                     'coord_password' => 'required|min:8'
                 ]);
 
-                if($validation['coord_profile_picture'] != null)
+                // if($validation['coord_profile_picture'] != null)
+                if( isset($validation['coord_profile_picture']))
                 {
                     $file = $request->file('coord_profile_picture');
                     $fileName = 'profile' . "-" . Auth::id() . '.' . $file->getCLientOriginalExtension();
@@ -296,7 +304,8 @@ class UserController extends Controller
                     'first_name' => $validation['coord_first_name'],
                     'middle_name' => $validation['coord_middle_name'],
                     'last_name' => $validation['coord_last_name'],
-                    'profile_picture' => $validation['coord_profile_picture'] == null ? Auth::user()->profile_picture : $validation['coord_profile_picture'],
+                    // 'profile_picture' => $validation['coord_profile_picture'] == null ? Auth::user()->profile_picture : $validation['coord_profile_picture'],
+                    'profile_picture' => $filePath ?? Auth::user()->profile_picture,
                     'username' => $validation['coord_username'],
                     'password' => $validation['coord_password'],
                 ];
@@ -305,14 +314,14 @@ class UserController extends Controller
             case 'stud':
                 $validation = $request->validate([
                     'stud_first_name' => 'required|regex:/^[a-zA-Z\s]+$/',
-                    'stud_middle_name' => 'sometimes|regex:/^[a-zA-Z\s]+$/',
+                    'stud_middle_name' => 'nullable|regex:/^[a-zA-Z\s]+$/',
                     'stud_last_name' => 'required|regex:/^[a-zA-Z\s]+$/',
                     'stud_profile_picture' => 'nullable|image|mimes:jpeg,png,jpg',
                     'stud_username' => 'required|alpha:ascii',
                     'stud_password' => 'required|min:8',
                 ]);
 
-                if($validation['stud_profile_picture'] != null)
+                if(isset($validation['stud_profile_picture']))
                 {
                     $file = $request->file('stud_profile_picture');
                     $fileName = 'profile' . "-" . Auth::id() . '.' . $file->getCLientOriginalExtension();
@@ -323,7 +332,8 @@ class UserController extends Controller
                     'first_name' => $validation['stud_first_name'],
                     'middle_name' => $validation['stud_middle_name'],
                     'last_name' => $validation['stud_last_name'],
-                    'profile_picture' => $validation['stud_profile_picture'] == null ? Auth::user()->profile_picture : $validation['stud_profile_picture'],
+                    // 'profile_picture' => $validation['stud_profile_picture'] == null ? Auth::user()->profile_picture : $validation['stud_profile_picture'],
+                    'profile_picture' => $filePath ?? Auth::user()->profile_picture,
                     'username' => $validation['stud_username'],
                     'password' => $validation['stud_password'],
                 ];
