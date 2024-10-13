@@ -22,7 +22,7 @@
                             <h2 class="lead"><b>{{ $hte->first_name }}</b></h2>
                           </div>
                           <div class="col-5 text-center">
-                            <img src="{{ asset("dist/assets/img/avatar.png") }}" alt="user-avatar" class="rounded-circle img-fluid">
+                            <img src="{{ asset(!isset($hte->profile_picture) ? 'images/profile.jpg' : 'storage/images/' . $hte->profile_picture) }}" alt="user-avatar" class="rounded-circle img-fluid">
                           </div>
                         </div>
                       </div>
