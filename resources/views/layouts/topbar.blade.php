@@ -27,7 +27,7 @@
 
             @if (Auth::user()->role > '0')
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{ route('profile.edit-page') }}">
                         <i class="bi bi-person-circle"></i>
                     </a>
                 </li>

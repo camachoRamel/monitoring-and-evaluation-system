@@ -28,21 +28,6 @@ class FileController extends Controller
         return redirect()->back()->with('message', 'File uploaded successfully.');
     }
 
-    public function download(int $id)
-    {
-        $fileName = DB::table('users')
-        ->select('profile_picture')
-        ->where('id', $id)
-        ->first();
-
-
-        // dd(Storage::disk('public')->url('images/',$fileName->profile_picture));
-
-        //MAKES THE BROWSER DOWNLOAD FILE
-        return Storage::disk('public')->download('images/' .$fileName->profile_picture);
-
-    }
-
 
     public function fileDownload(string $path, string $fileName)
     {
