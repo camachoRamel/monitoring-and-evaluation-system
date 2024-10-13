@@ -19,7 +19,7 @@ class AdminController extends Controller
             case 3:
                 $validation = $request->validate([
                     'stud_first_name' => 'required|regex:/^[a-zA-Z\s]+$/',
-                    'stud_middle_name' => 'sometimes|regex:/^[a-zA-Z\s]+$/',
+                    'stud_middle_name' => 'nullable|regex:/^[a-zA-Z\s]+$/',
                     'stud_last_name' => 'required|regex:/^[a-zA-Z\s]+$/',
                     'role' => 'required',
                     'stud_username' => 'required|alpha:ascii',
@@ -47,7 +47,7 @@ class AdminController extends Controller
             case 2:
                 $validation = $request->validate([
                     'coord_first_name' => 'required|regex:/^[a-zA-Z\s]+$/',
-                    'coord_middle_name' => 'sometimes|regex:/^[a-zA-Z\s]+$/',
+                    'coord_middle_name' => 'nullable|regex:/^[a-zA-Z\s]+$/',
                     'coord_last_name' => 'required|regex:/^[a-zA-Z\s]+$/',
                     'role' => 'required',
                     'coord_username' => 'required|alpha:ascii',
