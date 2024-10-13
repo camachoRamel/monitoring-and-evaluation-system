@@ -25,6 +25,7 @@ class UserController extends Controller
         $comSciCount = Auth::user()->role == 1 ? UserController::getApprovedStudents(3)->count() : UserController::getHandledStudents(1)->count();
 
         $htes = UserController::getAllUsers(1);
+        $hte = UserController::getUser(Auth::id());
         $tasks = UserController::getWeeklyTasks(Auth::id());
 
         switch ($user->role) {
@@ -43,7 +44,7 @@ class UserController extends Controller
                 {
                     return view('pages.student.internship-requirements', compact('user', 'htes'));
                 }
-                return view('pages.student.index', compact('user', 'tasks'));
+                return view('pages.student.index', compact('user', 'tasks', 'hte'));
                 break;
         }
 
