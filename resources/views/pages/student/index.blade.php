@@ -51,15 +51,6 @@
                         </tr>
 
                     @endfor
-                    <tr>
-
-                        <td>Week 1</td>
-                        <td>Deadline</td>
-                        <td>Deadline</td>
-                        <td>Deadline</td>
-                        <td>Deadline</td>
-                        <td>Deadline</td>
-                    </tr>
                 </tbody>
             </table>
         </div>
