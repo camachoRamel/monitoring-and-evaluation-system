@@ -12,7 +12,7 @@
     <div class="alert alert-success" role="alert">
         {{ session('success') }}
     </div>
-@endif
+    @endif
 
     <section class="content w-100 px-0 p-lg-4">
         <div class="card card-solid px-0 py-2 p-lg-4">
