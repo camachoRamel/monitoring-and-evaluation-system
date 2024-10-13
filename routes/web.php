@@ -177,15 +177,19 @@ Route::middleware('is.student')->group(function()
 
     Route::post('/student/resume-upload{id}', [StudentController::class, 'uploadResume'])->name('stud.resume-upload');
 
-    Route::get('/student/weekly-tasks', [StudentController::class, 'getWeeklyTasks'])->name('stud.weekly-tasks-page');
+    Route::get('/student/weekly-tasks{week}', [StudentController::class, 'getWeeklyTasks'])->name('stud.weekly-tasks-page');
 
     Route::get('/student/weekly-submissions', function()
     {
         $tasks = UserController::getWeeklyTasks(Auth::id());
+        dd($tasks);
         return view('pages.student.weekly-submission', compact('tasks'));
 
     })->name('stud.weekly-submission-page');
 
     Route::post('/student/submitting-week{week}', [StudentController::class, 'uploadReport'])->name('stud.weekly-submission');
+
+    //ROUTE FOR DOWNLOADING UPLOADED TASK
+    Route::get('/student/download/{path}/{fileName}', [FileController::class, 'fileDownload'])->name('stud.download-file');
 
 });
