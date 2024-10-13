@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\InternHandler;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,9 +20,9 @@ class UserController extends Controller
 
         $rates = AdminController::calculateCompletionRate();
 
-        $iTCount = User::where('role', 3)->where('course', 1)->get()->count();
-        $iSCount = User::where('role', 3)->where('course', 2)->get()->count();
-        $comSciCount = User::where('role', 3)->where('course', 3)->get()->count();
+        $iTCount = Auth::user()->role == 1 ? UserController::getApprovedStudents(1)->count() : UserController::getHandledStudents(1)->count();
+        $iSCount = Auth::user()->role == 1 ? UserController::getApprovedStudents(2)->count() : UserController::getHandledStudents(1)->count();
+        $comSciCount = Auth::user()->role == 1 ? UserController::getApprovedStudents(3)->count() : UserController::getHandledStudents(1)->count();
 
         $htes = UserController::getAllUsers(1);
         $tasks = UserController::getWeeklyTasks(Auth::id());
