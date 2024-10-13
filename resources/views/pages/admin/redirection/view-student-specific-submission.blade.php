@@ -37,7 +37,10 @@
                         </ul>
                       </div>
                       <div class="col-5 text-center">
-                        <img src="{{ asset($stud->stud_picture == null ? 'images/profile.jpg' : 'storage/images/' . $stud->$stud_picture) }}" alt="user-avatar" class="rounded-circle img-fluid">
+                        <img
+                        src="{{ asset($stud->stud_picture == null ? 'images/profile.jpg' : 'storage/' . $stud->stud_picture) }}"
+                        alt="user-avatar"
+                        class="rounded-circle img-fluid">
                       </div>
                     </div>
                   </div>
