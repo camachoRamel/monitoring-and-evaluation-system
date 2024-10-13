@@ -12,6 +12,17 @@
             <div class="container p-3">
                 <form id="task-form" method="POST" action="{{ route('hte.upload-student-task', $student->id) }}" enctype="multipart/form-data">
                     @csrf
+                    <!-- Display Validation Errors -->
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
                     <div class="col-12 mb-4">
                         <select id="week-selector" name="week" class="form-select" aria-label="Select Week">
                             @foreach (range(1, 12) as $weekNum)
@@ -31,12 +42,18 @@
                                     <div class="form-group">
                                         <label for="file_day{{ $day }}">Upload File:</label>
                                         <input type="file" name="files[{{ $day }}]" id="file_day{{ $day }}" class="form-control">
+                                        @error("files.$day")
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
 
                                     <!-- Deadline input -->
                                     <div class="form-group">
                                         <label for="deadline_day{{ $day }}">Set Deadline:</label>
-                                        <input type="date" name="deadlines[{{ $day }}]" id="deadline_day{{ $day }}" class="form-control">
+                                        <input type="date" name="deadlines[{{ $day }}]" id="deadline_day{{ $day }}" class="form-control" value="{{ old("deadlines.$day") }}">
+                                        @error("deadlines.$day")
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                             </div>
