@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\InternHandler;
+use App\Models\Requirement;
+use App\Models\User;
 use App\Models\WeeklyTask;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -26,13 +29,12 @@ class HostingTrainingEstablishmentController extends Controller
 
     public function getStudentsToApprove()
     {
-        $students = DB::table('users')
-        ->select('*')
-        ->where('approved', 0)
-        ->where('role', 3)
+        $students = DB::table('requirements AS req')
+        ->select('u2.id', 'req.requirement AS resume', 'u2.profile_picture AS stud_picture', DB::raw('CONCAT(u2.first_name, " ", COALESCE(u2.middle_name, ""), " ", u2.last_name) AS name'))
+        ->join('users AS u1', 'u1.id', '=', 'req.hte_id')
+        ->join('users AS u2', 'u2.id', '=', 'req.user_id')
+        ->where('u1.id', Auth::id())
         ->get();
-
-        // dd($students);
 
         return view('pages.hte.redirection.approve-students', compact('students'));
     }
@@ -86,6 +88,28 @@ class HostingTrainingEstablishmentController extends Controller
         $stud = UserController::getApprovedStudent($id);
         $reports = FileController::getStudentReports($id);
         return view('pages.hte.redirection.view-student-specific-' . $type, compact('stud', 'reports'));
+    }
+
+    public function approve(Request $request, int $id)
+    {
+
+
+        //DELETE ROW IN REQUIREMENTS TABLE
+        Requirement::where('user_id', $id)->where('hte_id', Auth::id())->delete();
+
+        if($request->submitBtn == 'approve')
+        {
+            InternHandler::where('user_id', $id)->update(['hte_id' => Auth::id()]);
+            User::find($id)->update(['approved' => 1]);
+
+            return redirect()->back()->with('message', 'Student approved.');
+        }else
+        {
+            return redirect()->back()->with('message', 'Student declined.');
+        }
+
+
+
     }
 
 }

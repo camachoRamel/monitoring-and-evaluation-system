@@ -70,7 +70,7 @@ class UserController extends Controller
 
                 case 2:
                     $users = DB::table('intern_handlers')
-                    ->select('u1.id', 'u1.course', DB::raw('CONCAT(u1.first_name, " ", u1.middle_name, " ", u1.last_name) AS name, CONCAT(u2.first_name, " ", u2.middle_name, " ", u2.last_name) AS coord, CONCAT(u3.first_name, " ", u3.middle_name, " ", u3.last_name) AS hte'))
+                    ->select('u1.id', 'u1.course', DB::raw('CONCAT(u1.first_name, " ", COALESCE(u1.middle_name, ""), " ", u1.last_name) AS name, CONCAT(u2.first_name, " ", COALESCE(u2.middle_name, ""), " ", u2.last_name) AS coord, u3.first_name AS hte'))
                     ->join('users AS u1', 'u1.id', '=', 'user_id')
                     ->join('users AS u2', 'u2.id', '=', 'coord_id')
                     ->leftJoin('users AS u3', 'u3.id', '=', 'hte_id')
@@ -89,7 +89,7 @@ class UserController extends Controller
             {
                 case 1:
                     $user = DB::table('intern_handlers')
-                    ->select('u1.id', 'u1.course', 'u1.profile_picture AS stud_picture', 'u2.profile_picture AS coord_picture', 'u3.profile_picture AS hte_picture', DB::raw('CONCAT(u1.first_name, " ", u1.middle_name, " ", u1.last_name) AS name, CONCAT(u2.first_name, " ", u2.middle_name, " ", u2.last_name) AS coord, CONCAT(u3.first_name, " ", u3.middle_name, " ", u3.last_name) AS hte'))
+                    ->select('u1.id', 'u1.course', 'u1.profile_picture AS stud_picture', 'u2.profile_picture AS coord_picture', 'u3.profile_picture AS hte_picture', DB::raw('CONCAT(u1.first_name, " ", COALESCE(u1.middle_name, ""), " ", u1.last_name) AS name, CONCAT(u2.first_name, " ", COALESCE(u2.middle_name, ""), " ", u2.last_name) AS coord, u3.first_name AS hte'))
                     ->join('users AS u1', 'u1.id', '=', 'user_id')
                     ->join('users AS u2', 'u2.id', '=', 'coord_id')
                     ->leftJoin('users AS u3', 'u3.id', '=', 'hte_id')
@@ -110,12 +110,13 @@ class UserController extends Controller
                 case 0:
                     $students = DB::table('intern_handlers')
                     ->select('u1.id', 'u1.profile_picture AS stud_picture',
-                    'u1.course', DB::raw('CONCAT(u1.first_name, " ", u1.middle_name, " ", u1.last_name) AS name, CONCAT(u2.first_name, " ", u2.middle_name, " ", u2.last_name) AS coord, CONCAT(u3.first_name, " ", u3.middle_name, " ", u3.last_name) AS hte'))
+                    'u1.course', DB::raw('CONCAT(u1.first_name, " ", COALESCE(u1.middle_name, ""), " ", u1.last_name) AS name, CONCAT(u2.first_name, " ", COALESCE(u2.middle_name, ""), " ", u2.last_name) AS coord, u3.first_name AS hte'))
                     ->join('users AS u1', 'u1.id', '=', 'user_id')
                     ->join('users AS u2', 'u2.id', '=', 'coord_id')
                     ->join('users AS u3', 'u3.id', '=', 'hte_id')
                     ->where('u1.approved', 1)
                     ->where('u1.role', 3)
+                    ->where('u3.id', Auth::id())
                     ->get();
 
                     return $students;
@@ -124,7 +125,7 @@ class UserController extends Controller
                 case 1:
                     $students = DB::table('intern_handlers')
                     ->select('u1.id', 'u1.profile_picture AS stud_picture',
-                    'u1.course', DB::raw('CONCAT(u1.first_name, " ", u1.middle_name, " ", u1.last_name) AS name, CONCAT(u2.first_name, " ", u2.middle_name, " ", u2.last_name) AS coord, CONCAT(u3.first_name, " ", u3.middle_name, " ", u3.last_name) AS hte'))
+                    'u1.course', DB::raw('CONCAT(u1.first_name, " ", COALESCE(u1.middle_name, ""), " ", u1.last_name) AS name, CONCAT(u2.first_name, " ", COALESCE(u2.middle_name, ""), " ", u2.last_name) AS coord, u3.first_name AS hte'))
                     ->join('users AS u1', 'u1.id', '=', 'user_id')
                     ->join('users AS u2', 'u2.id', '=', 'coord_id')
                     ->join('users AS u3', 'u3.id', '=', 'hte_id')
@@ -144,7 +145,7 @@ class UserController extends Controller
     {
         $student = DB::table('intern_handlers')
         ->select('u1.id', 'u1.profile_picture AS stud_picture',
-         'u1.course', DB::raw('CONCAT(u1.first_name, " ", u1.middle_name, " ", u1.last_name) AS name, CONCAT(u2.first_name, " ", u2.middle_name, " ", u2.last_name) AS coord, CONCAT(u3.first_name, " ", u3.middle_name, " ", u3.last_name) AS hte'))
+         'u1.course', DB::raw('CONCAT(u1.first_name, " ", COALESCE(u1.middle_name, ""), " ", u1.last_name) AS name, CONCAT(u2.first_name, " ", COALESCE(u2.middle_name, ""), " ", u2.last_name) AS coord, u3.first_name AS hte'))
         ->join('users AS u1', 'u1.id', '=', 'user_id')
         ->join('users AS u2', 'u2.id', '=', 'coord_id')
         ->join('users AS u3', 'u3.id', '=', 'hte_id')
