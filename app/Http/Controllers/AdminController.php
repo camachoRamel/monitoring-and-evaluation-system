@@ -100,14 +100,14 @@ class AdminController extends Controller
 
     public function viewStudents(string $type, int $course)
     {
-        $students = UserController::getApprovedStudents($course);
+        $students = UserController::getAllUsers(3, $course);
 
         return view('pages.admin.redirection.view-program-specific-student-' . $type, compact('students'));
     }
 
     public function viewStudent(string $type, int $id)
     {
-        $stud = UserController::getApprovedStudent($id);
+        $stud = UserController::getUser($id);
         $reports = FileController::getStudentReports($id);
         return view('pages.admin.redirection.view-student-specific-' . $type, compact('stud', 'reports'));
     }

@@ -61,7 +61,7 @@ Route::middleware('is.admin')->group(function()
     Route::get('/admin/hte-info', [AdminController::class, 'viewHtes'])->name('admin.hte-info');
 
     //DYNAMIC ROUTE FOR VIEWING SPECIFIC COORD AND HTE
-    Route::get('/admin/worker/{type}{id}', [AdminController::class, 'viewWorker'])->name('admin.specific-worker');
+    Route::get('/admin/worker/{type}/{id}', [AdminController::class, 'viewWorker'])->name('admin.specific-worker');
 
     //CREATE ACCOUNT ROUTES
     Route::get('/admin/create-account-page', function ()
