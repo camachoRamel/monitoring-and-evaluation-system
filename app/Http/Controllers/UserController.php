@@ -222,6 +222,18 @@ class UserController extends Controller
         return $tasks;
     }
 
+    public static function getDailyTasks(int $id, int $week)
+    {
+        $tasks = DB::table('weekly_tasks')
+        ->select('tasks', 'week', 'day', 'deadline')
+        ->join('users AS u1', 'u1.id', '=', 'user_id')
+        ->where('u1.id', $id)
+        ->where('week', $week)
+        ->get();
+
+        return $tasks;
+    }
+
     public static function getWeeklyReports()
     {
         $reports = DB::table('weekly_reports')

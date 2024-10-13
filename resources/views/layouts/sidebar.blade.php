@@ -121,7 +121,7 @@
                 @endif
                 @if (Auth::user()->approved == 1)
                      <li class="nav-item">
-                  <a href="{{ route('stud.weekly-tasks-page') }}" class="nav-link">
+                  <a href="{{ route('stud.weekly-tasks-page', 0) }}" class="nav-link">
                     <p>
                       Weekly Tasks
                     </p>

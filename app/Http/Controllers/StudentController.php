@@ -10,10 +10,10 @@ use Illuminate\Support\Facades\Auth;
 
 class StudentController extends Controller
 {
-    public function getWeeklyTasks()
+    public function getWeeklyTasks($week)
     {
-        $tasks = UserController::getWeeklyTasks(Auth::id());
-        // dd($tasks);
+        $tasks = UserController::getDailyTasks(Auth::id(), $week);
+        dd($tasks);
         return view('pages.student.weekly-tasks', compact('tasks'));
     }
 
@@ -24,6 +24,8 @@ class StudentController extends Controller
         return view('pages.student.internship-requirements', compact('htes'));
 
     }
+
+
 
     public function uploadReport(Request $request, int $week)
     {

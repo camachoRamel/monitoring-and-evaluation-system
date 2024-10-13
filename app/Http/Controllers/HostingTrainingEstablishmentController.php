@@ -61,7 +61,7 @@ class HostingTrainingEstablishmentController extends Controller
                 'user_id' => $id,
                 'hte_id' => Auth::id(),
                 'week' => $validation['week'],
-                'day' => $i + 1,
+                'day' => $i,
                 'tasks' => $fileName,
                 'deadline' => $validation['deadlines'][$i]
             ];
@@ -69,9 +69,9 @@ class HostingTrainingEstablishmentController extends Controller
             WeeklyTask::updateOrCreate(
                 ['user_id' => $id, 'hte_id' => Auth::id(),
                 'week' => $validation['week'],
-                'day' => $i + 1,
-                'tasks' => $fileName,
-                'deadline' => $validation['deadlines'][$i]
+                'day' => $i,
+                // 'tasks' => $fileName,
+                // 'deadline' => $validation['deadlines'][$i]
             ],
                 $weekly_task
             );
