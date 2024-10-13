@@ -17,7 +17,7 @@
     <section class="content w-100 px-0 p-lg-4">
         <div class="card card-solid px-0 py-2 p-lg-4">
             <h3>{{ $hte->hte }}</h3>
-            <table id="example" class="table table-striped table-bordered" style="width:100%">
+            <table id="tasks-table" class="table table-striped table-bordered" style="width:100%">
                 <thead>
                     <tr>
                         <th>Week</th>
@@ -53,7 +53,7 @@
 @push('scripts')
 <script>
     $(document).ready(function() {
-        $('#example').DataTable();
+        $('#tasks-table').DataTable();
     });
 </script>
 @endpush
