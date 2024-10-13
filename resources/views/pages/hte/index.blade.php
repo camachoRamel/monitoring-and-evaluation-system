@@ -4,6 +4,12 @@
 
         <!-- Content Header (Page header) -->
         <div class="app-content-header"> <!--begin::Container-->
+             <!-- Display success message -->
+            @if(session('success'))
+                <div class="alert alert-success" role="alert">
+                    {{ session('success') }}
+                </div>
+            @endif
             <h3 class="mb-0">Dashboard</h3>
         </div> <!--end::App Content Header-->
 
