@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\InternHandler;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,11 +20,12 @@ class UserController extends Controller
 
         $rates = AdminController::calculateCompletionRate();
 
-        $iTCount = User::where('role', 3)->where('course', 1)->get()->count();
-        $iSCount = User::where('role', 3)->where('course', 2)->get()->count();
-        $comSciCount = User::where('role', 3)->where('course', 3)->get()->count();
+        $iTCount = Auth::user()->role == 1 ? UserController::getApprovedStudents(1)->count() : UserController::getHandledStudents(1)->count();
+        $iSCount = Auth::user()->role == 1 ? UserController::getApprovedStudents(2)->count() : UserController::getHandledStudents(1)->count();
+        $comSciCount = Auth::user()->role == 1 ? UserController::getApprovedStudents(3)->count() : UserController::getHandledStudents(1)->count();
 
         $htes = UserController::getAllUsers(1);
+        $hte = UserController::getUser(Auth::id());
         $tasks = UserController::getWeeklyTasks(Auth::id());
 
         switch ($user->role) {
@@ -42,7 +44,7 @@ class UserController extends Controller
                 {
                     return view('pages.student.internship-requirements', compact('user', 'htes'));
                 }
-                return view('pages.student.index', compact('user', 'tasks'));
+                return view('pages.student.index', compact('user', 'tasks', 'hte'));
                 break;
         }
 
@@ -278,7 +280,7 @@ class UserController extends Controller
                     'coord_first_name' => 'required|regex:/^[a-zA-Z\s]+$/',
                     'coord_middle_name' => 'sometimes|regex:/^[a-zA-Z\s]+$/',
                     'coord_last_name' => 'required|regex:/^[a-zA-Z\s]+$/',
-                    'coord_profile_picture' => 'nullable|image|mimes:jpeg,png,jpg',
+                    'coord_profile_picture' => 'sometimes|image|mimes:jpeg,png,jpg',
                     'coord_username' => 'required|alpha:ascii',
                     'coord_password' => 'required|min:8'
                 ]);
@@ -305,7 +307,7 @@ class UserController extends Controller
                     'stud_first_name' => 'required|regex:/^[a-zA-Z\s]+$/',
                     'stud_middle_name' => 'sometimes|regex:/^[a-zA-Z\s]+$/',
                     'stud_last_name' => 'required|regex:/^[a-zA-Z\s]+$/',
-                    'stud_profile_picture' => 'nullalbe|image|mimes:jpeg,png,jpg',
+                    'stud_profile_picture' => 'nullable|image|mimes:jpeg,png,jpg',
                     'stud_username' => 'required|alpha:ascii',
                     'stud_password' => 'required|min:8',
                 ]);

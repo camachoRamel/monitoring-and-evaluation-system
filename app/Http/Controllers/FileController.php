@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\WeeklyEvaluation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
@@ -44,5 +46,30 @@ class FileController extends Controller
         ->get();
 
         return $reports;
+    }
+
+
+    public function uploadEvaluation(Request $request, int $id)
+    {
+        $validation = $request->validate([
+            'week' => 'required',
+            'evaluation' => 'required'
+        ]);
+
+
+        $file = $request->file('evaluation');
+        $fileName = 'evaluation-'. $validation['week'] . $id . "-" . Auth::id() . time() . '.' . $file->getCLientOriginalExtension();
+        $filePath = $file->storeAs('evaluations', $fileName);
+
+        $weekly_evaluation = [
+            'user_id' => $id,
+            'task_week' => $validation['week'],
+            'evaluator_id' => Auth::id(),
+            'evaluation' => $fileName,
+        ];
+
+        WeeklyEvaluation::create($weekly_evaluation);
+
+        return redirect()->back();
     }
 }

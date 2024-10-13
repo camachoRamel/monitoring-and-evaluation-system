@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\InternHandler;
 use App\Models\Requirement;
 use App\Models\User;
+use App\Models\WeeklyEvaluation;
 use App\Models\WeeklyTask;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -39,7 +40,7 @@ class HostingTrainingEstablishmentController extends Controller
         return view('pages.hte.redirection.approve-students', compact('students'));
     }
 
-    public function uploadWeeklyTask(Request $request, $id)
+    public function uploadWeeklyTask(Request $request, int $id)
     {
         $validation = $request->validate([
             'week' => 'required',
@@ -51,7 +52,7 @@ class HostingTrainingEstablishmentController extends Controller
         for($i = 1; $i <= 5; $i++)
         {
             $file = $validation['files'][$i];
-            $fileName = 'task' . $i . $id . "-" . $validation['deadlines'][$i] . '.' . $file->getClientOriginalExtension();
+            $fileName = 'task' . $i . $id . "-" . $validation['deadlines'][$i] . time() . '.' . $file->getClientOriginalExtension();
             $filePath = $file->storeAs('tasks', $fileName);
 
             $weekly_task = [

@@ -61,7 +61,7 @@ Route::middleware('is.admin')->group(function()
     Route::get('/admin/hte-info', [AdminController::class, 'viewHtes'])->name('admin.hte-info');
 
     //DYNAMIC ROUTE FOR VIEWING SPECIFIC COORD AND HTE
-    Route::get('/admin/worker/{type}{id}', [AdminController::class, 'viewWorker'])->name('admin.specific-worker');
+    Route::get('/admin/worker/{type}/{id}', [AdminController::class, 'viewWorker'])->name('admin.specific-worker');
 
     //CREATE ACCOUNT ROUTES
     Route::get('/admin/create-account-page', function ()
@@ -106,7 +106,6 @@ Route::middleware('is.hte')->group(function()
 
     Route::post('hte/uploading-task{id}', [HostingTrainingEstablishmentController::class, 'uploadWeeklyTask'])->name('hte.upload-student-task');
 
-
     //HTE SUBMISSION VIEW STUDENT ROUTES
     Route::get('/hte/submission-students', function()
     {
@@ -122,6 +121,7 @@ Route::middleware('is.hte')->group(function()
     //ROUTE FOR DOWNLOADING STUDENT REPORT
     Route::get('/hte/download/{path}/{fileName}', [FileController::class, 'fileDownload'])->name('hte.download-file');
 
+    Route::post('/hte/upload-evaluation/{id}', [FileController::class, 'uploadEvaluation'])->name('hte.upload-evaluation');
 
 });
 
@@ -148,6 +148,8 @@ Route::middleware('is.coord')->group(function()
 
     //ROUTE FOR DOWNLOADING STUDENT REPORT
     Route::get('/ojt-coordinator/download/{path}/{fileName}', [FileController::class, 'fileDownload'])->name('coord.download-file');
+
+    Route::post('/coord/upload-evaluation/{id}', [FileController::class, 'uploadEvaluation'])->name('coord.upload-evaluation');
 
 
 });
