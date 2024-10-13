@@ -13,6 +13,16 @@
 
     <section class="content w-100 px-4">
         <div class="card card-solid p-4">
+            <!-- Display Validation Errors -->
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <!-- Button trigger modal -->
             <div class="container p-0 mb-3">
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#evaluationModal">
