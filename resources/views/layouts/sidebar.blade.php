@@ -119,7 +119,8 @@
                         </a>
                     </li>
                 @endif
-                <li class="nav-item">
+                @if (Auth::user()->approved == 1)
+                     <li class="nav-item">
                   <a href="{{ route('stud.weekly-tasks-page') }}" class="nav-link">
                     <p>
                       Weekly Tasks
@@ -133,6 +134,8 @@
                     </p>
                   </a>
                 </li>
+                @endif
+
               @endif
             </ul>
           <!--end::Sidebar Menu-->
