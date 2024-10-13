@@ -30,7 +30,7 @@
                 </thead>
                 <tbody>
 
-                    @for ($i = 0; $i <= $tasks->count(); $i++)
+                    @for ($i = 0; $i < $tasks[$i]->week; $i++)
                         {{-- display week --}}
                         <tr>
                             <td>Week {{ $tasks[$i]->week }}</td>
