@@ -2,17 +2,23 @@
 
 @section('content')
 
+@php
+    $report = 1;
+@endphp
+
     <!-- Content Header (Page header) -->
     <div class="app-content-header"> <!--begin::Container-->
         <h3 class="mb-0">Student Submission Record</h3>
     </div> <!--end::App Content Header-->
 
     <section class="content w-100 px-4">
-        <div class="card card-solid p-4 d-flex align-items-center">
+        <div class="card card-solid p-4">
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#evaluationModal">
-            Submit Evaluation to OJT Coordinator
-            </button>
+            <div class="container p-0 mb-3">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#evaluationModal">
+                    Submit Evaluation to Admin
+                </button>
+            </div>
 
             <!-- Modal -->
             <div class="modal fade" id="evaluationModal" tabindex="-1" aria-labelledby="evaluationModalLabel" aria-hidden="true">
