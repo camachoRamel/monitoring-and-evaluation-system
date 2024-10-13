@@ -12,7 +12,7 @@
             <div class="row">
                 <div class="col-12 d-flex justify-content-center">
                     <div class="col-12 col-md-5">
-                        <form action="" method="POST">
+                        <form action="{{ route('profile.edit') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <!-- Display Validation Errors -->
                             @if ($errors->any())
@@ -34,7 +34,7 @@
                                         <div class="card-body">
                                             <div class="form-group mb-3">
                                                 <label for="file">Upload Image for Profile:</label>
-                                                <input type="file" name="files" id="file" class="form-control">
+                                                <input type="file" name="hte_profile_picture" id="file" class="form-control">
                                             </div>
                                             <div class="mb-3">
                                                 <label for="hte_first_name" class="form-label">Company Name</label>
@@ -69,7 +69,7 @@
                                             </div>
                                         </div> <!--end::Body--> <!--begin::Footer-->
                                         <div class="card-footer d-flex justify-content-end">
-                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                            <button name="submitBtn" value="hte" type="submit" class="btn btn-primary">Submit</button>
                                         </div> <!--end::Footer-->
                                     </div> <!--end::Quick Example-->
                                 </div>
@@ -85,7 +85,7 @@
                                         <div class="card-body">
                                             <div class="form-group mb-3">
                                                 <label for="file">Upload Image for Profile:</label>
-                                                <input type="file" name="files" id="file" class="form-control">
+                                                <input type="file" name="coord_profile_picture" id="file" class="form-control">
                                             </div>
                                             <div class="mb-3">
                                                 <label for="coord_first_name" class="form-label">First Name</label>
@@ -144,7 +144,7 @@
                                             </div>
                                         </div> <!--end::Body--> <!--begin::Footer-->
                                         <div class="card-footer d-flex justify-content-end">
-                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                            <button name="submitBtn" value="coord" type="submit" class="btn btn-primary">Submit</button>
                                         </div> <!--end::Footer-->
                                     </div> <!--end::Quick Example-->
                                 </div>
@@ -159,7 +159,7 @@
                                         <div class="card-body">
                                             <div class="form-group mb-3">
                                                 <label for="file">Upload Image for Profile:</label>
-                                                <input type="file" name="files" id="file" class="form-control">
+                                                <input type="file" name="stud_profile_picture" id="file" class="form-control">
                                             </div>
                                             <div class="mb-3">
                                                 <label for="stud_first_name" class="form-label">First Name</label>
@@ -219,7 +219,7 @@
                                         </div>
 
                                         <div class="card-footer d-flex justify-content-end">
-                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                            <button name="submitBtn" value="stud" type="submit" class="btn btn-primary">Submit</button>
                                         </div>
                                     </div>
                                 </div>

@@ -132,6 +132,42 @@ class UserController extends Controller
                     ->where('u1.approved', 1)
                     ->where('u1.role', 3)
                     ->where('u1.course', $args[0])
+                    ->where('u3.id', Auth::id())
+                    ->get();
+
+                    return $students;
+                    break;
+            }
+        }
+
+        // GET HANDLED STUDENTS
+        if($name == 'getHandledStudents')
+        {
+            switch (count($args)) {
+                case 0:
+                    $students = DB::table('intern_handlers')
+                    ->select('u1.id', 'u1.profile_picture AS stud_picture',
+                    'u1.course', DB::raw('CONCAT(u1.first_name, " ", COALESCE(u1.middle_name, ""), " ", u1.last_name) AS name, CONCAT(u2.first_name, " ", COALESCE(u2.middle_name, ""), " ", u2.last_name) AS coord, u3.first_name AS hte'))
+                    ->join('users AS u1', 'u1.id', '=', 'user_id')
+                    ->join('users AS u2', 'u2.id', '=', 'coord_id')
+                    ->join('users AS u3', 'u3.id', '=', 'hte_id')
+                    ->where('u1.role', 3)
+                    ->where('u2.id', Auth::id())
+                    ->get();
+
+                    return $students;
+                    break;
+
+                case 1:
+                    $students = DB::table('intern_handlers')
+                    ->select('u1.id', 'u1.profile_picture AS stud_picture',
+                    'u1.course', DB::raw('CONCAT(u1.first_name, " ", COALESCE(u1.middle_name, ""), " ", u1.last_name) AS name, CONCAT(u2.first_name, " ", COALESCE(u2.middle_name, ""), " ", u2.last_name) AS coord, u3.first_name AS hte'))
+                    ->join('users AS u1', 'u1.id', '=', 'user_id')
+                    ->join('users AS u2', 'u2.id', '=', 'coord_id')
+                    ->join('users AS u3', 'u3.id', '=', 'hte_id')
+                    ->where('u1.role', 3)
+                    ->where('u1.course', $args[0])
+                    ->where('u2.id', Auth::id())
                     ->get();
 
                     return $students;
@@ -157,6 +193,21 @@ class UserController extends Controller
         return $student;
     }
 
+    public static function getHandledStudent(int $id)
+    {
+        $student = DB::table('intern_handlers')
+        ->select('u1.id', 'u1.profile_picture AS stud_picture',
+         'u1.course', DB::raw('CONCAT(u1.first_name, " ", COALESCE(u1.middle_name, ""), " ", u1.last_name) AS name, CONCAT(u2.first_name, " ", COALESCE(u2.middle_name, ""), " ", u2.last_name) AS coord, u3.first_name AS hte'))
+        ->join('users AS u1', 'u1.id', '=', 'user_id')
+        ->join('users AS u2', 'u2.id', '=', 'coord_id')
+        ->join('users AS u3', 'u3.id', '=', 'hte_id')
+        ->where('u1.approved', 1)
+        ->where('u1.id', $id)
+        ->where('u1.role', 3)
+        ->first();
+
+        return $student;
+    }
 
     public static function getWeeklyTasks(int $id)
     {
@@ -165,8 +216,6 @@ class UserController extends Controller
         ->join('users AS u1', 'u1.id', '=', 'user_id')
         ->where('u1.id', $id)
         ->get();
-
-        // dd($tasks);
 
         return $tasks;
     }
@@ -194,5 +243,96 @@ class UserController extends Controller
         }
 
         return false;
+    }
+
+    public function updateUserProfile(Request $request)
+    {
+
+        switch ($request->submitBtn) {
+            case 'hte':
+                $validation = $request->validate([
+                    'hte_first_name' => 'required|regex:/^[a-zA-Z\s]+$/',
+                    'hte_profile_picture' => 'sometimes|image|mimes:jpeg,png,jpg',
+                    'hte_username' => 'required|alpha:ascii',
+                    'hte_password' => 'required|min:8'
+                ]);
+
+                if($validation['hte_profile_picture'] != null)
+                {
+                    $file = $request->file('hte_profile_picture');
+                    $fileName = 'profile' . "-" . Auth::id() . '.' . $file->getCLientOriginalExtension();
+                    $filePath = $file->storePubliclyAs('images', $fileName, 'public');
+                }
+
+                $user = [
+                    'first_name' => $validation['hte_first_name'],
+                    'profile_picture' => $validation['hte_profile_picture'] == null ? Auth::user()->profile_picture : $validation['hte_profile_picture'],
+                    'username' => $validation['hte_username'],
+                    'password' => $validation['hte_password'],
+                ];
+
+                break;
+
+            case 'coord':
+                $validation = $request->validate([
+                    'coord_first_name' => 'required|regex:/^[a-zA-Z\s]+$/',
+                    'coord_middle_name' => 'sometimes|regex:/^[a-zA-Z\s]+$/',
+                    'coord_last_name' => 'required|regex:/^[a-zA-Z\s]+$/',
+                    'coord_profile_picture' => 'nullable|image|mimes:jpeg,png,jpg',
+                    'coord_username' => 'required|alpha:ascii',
+                    'coord_password' => 'required|min:8'
+                ]);
+
+                if($validation['coord_profile_picture'] != null)
+                {
+                    $file = $request->file('coord_profile_picture');
+                    $fileName = 'profile' . "-" . Auth::id() . '.' . $file->getCLientOriginalExtension();
+                    $filePath = $file->storePubliclyAs('images', $fileName, 'public');
+                }
+
+                $user = [
+                    'first_name' => $validation['coord_first_name'],
+                    'middle_name' => $validation['coord_middle_name'],
+                    'last_name' => $validation['coord_last_name'],
+                    'profile_picture' => $validation['coord_profile_picture'] == null ? Auth::user()->profile_picture : $validation['coord_profile_picture'],
+                    'username' => $validation['coord_username'],
+                    'password' => $validation['coord_password'],
+                ];
+
+                break;
+            case 'stud':
+                $validation = $request->validate([
+                    'stud_first_name' => 'required|regex:/^[a-zA-Z\s]+$/',
+                    'stud_middle_name' => 'sometimes|regex:/^[a-zA-Z\s]+$/',
+                    'stud_last_name' => 'required|regex:/^[a-zA-Z\s]+$/',
+                    'stud_profile_picture' => 'nullalbe|image|mimes:jpeg,png,jpg',
+                    'stud_username' => 'required|alpha:ascii',
+                    'stud_password' => 'required|min:8',
+                ]);
+
+                if($validation['stud_profile_picture'] != null)
+                {
+                    $file = $request->file('stud_profile_picture');
+                    $fileName = 'profile' . "-" . Auth::id() . '.' . $file->getCLientOriginalExtension();
+                    $filePath = $file->storePubliclyAs('images', $fileName, 'public');
+                }
+
+                $user = [
+                    'first_name' => $validation['stud_first_name'],
+                    'middle_name' => $validation['stud_middle_name'],
+                    'last_name' => $validation['stud_last_name'],
+                    'profile_picture' => $validation['stud_profile_picture'] == null ? Auth::user()->profile_picture : $validation['stud_profile_picture'],
+                    'username' => $validation['stud_username'],
+                    'password' => $validation['stud_password'],
+                ];
+
+                break;
+        }
+
+
+        User::find(Auth::id())
+      ->update($user);
+
+        return redirect()->route($request->submitBtn . '.index', Auth::id());
     }
 }

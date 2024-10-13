@@ -24,6 +24,14 @@ Route::get('/', function ()
 Route::post('/login', [LoginLogoutController::class, 'authenticate'])->name('login');
 Route::post('/logout', [LoginLogoutController::class, 'logout'])->name('logout');
 
+Route::get('/edit-profile-page', function()
+{
+    return view('pages.profile');
+
+})->name('profile.edit-page');
+
+Route::post('/edit-profile', [UserController::class, 'updateUserProfile'])->name('profile.edit');
+
 
 // //ADMIN ROUTES
 Route::middleware('is.admin')->group(function()
