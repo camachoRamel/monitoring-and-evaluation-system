@@ -64,7 +64,15 @@ class HostingTrainingEstablishmentController extends Controller
                 'deadline' => $validation['deadlines'][$i]
             ];
 
-            WeeklyTask::create($weekly_task);
+            WeeklyTask::updateOrCreate(
+                ['user_id' => $id, 'hte_id' => Auth::id(),
+                'week' => $validation['week'],
+                'day' => $i + 1,
+                'tasks' => $fileName,
+                'deadline' => $validation['deadlines'][$i]
+            ],
+                $weekly_task
+            );
         }
 
         return redirect()->route('hte.index', Auth::id());
