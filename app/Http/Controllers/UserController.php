@@ -91,7 +91,7 @@ class UserController extends Controller
             {
                 case 1:
                     $user = DB::table('intern_handlers')
-                    ->select('u1.id', 'u1.course', 'u1.profile_picture AS stud_picture', 'u2.profile_picture AS coord_picture', 'u3.profile_picture AS hte_picture', DB::raw('CONCAT(u1.first_name, " ", COALESCE(u1.middle_name, ""), " ", u1.last_name) AS name, CONCAT(u2.first_name, " ", COALESCE(u2.middle_name, ""), " ", u2.last_name) AS coord, u3.first_name AS hte'))
+                    ->select('u3.id AS hte_id','u1.id', 'u1.course', 'u1.profile_picture AS stud_picture', 'u2.profile_picture AS coord_picture', 'u3.profile_picture AS hte_picture', DB::raw('CONCAT(u1.first_name, " ", COALESCE(u1.middle_name, ""), " ", u1.last_name) AS name, CONCAT(u2.first_name, " ", COALESCE(u2.middle_name, ""), " ", u2.last_name) AS coord, u3.first_name AS hte'))
                     ->join('users AS u1', 'u1.id', '=', 'user_id')
                     ->join('users AS u2', 'u2.id', '=', 'coord_id')
                     ->leftJoin('users AS u3', 'u3.id', '=', 'hte_id')
@@ -152,7 +152,7 @@ class UserController extends Controller
                     'u1.course', DB::raw('CONCAT(u1.first_name, " ", COALESCE(u1.middle_name, ""), " ", u1.last_name) AS name, CONCAT(u2.first_name, " ", COALESCE(u2.middle_name, ""), " ", u2.last_name) AS coord, u3.first_name AS hte'))
                     ->join('users AS u1', 'u1.id', '=', 'user_id')
                     ->join('users AS u2', 'u2.id', '=', 'coord_id')
-                    ->join('users AS u3', 'u3.id', '=', 'hte_id')
+                    ->leftJoin('users AS u3', 'u3.id', '=', 'hte_id')
                     ->where('u1.role', 3)
                     ->where('u2.id', Auth::id())
                     ->get();
@@ -166,7 +166,7 @@ class UserController extends Controller
                     'u1.course', DB::raw('CONCAT(u1.first_name, " ", COALESCE(u1.middle_name, ""), " ", u1.last_name) AS name, CONCAT(u2.first_name, " ", COALESCE(u2.middle_name, ""), " ", u2.last_name) AS coord, u3.first_name AS hte'))
                     ->join('users AS u1', 'u1.id', '=', 'user_id')
                     ->join('users AS u2', 'u2.id', '=', 'coord_id')
-                    ->join('users AS u3', 'u3.id', '=', 'hte_id')
+                    ->leftJoin('users AS u3', 'u3.id', '=', 'hte_id')
                     ->where('u1.role', 3)
                     ->where('u1.course', $args[0])
                     ->where('u2.id', Auth::id())
