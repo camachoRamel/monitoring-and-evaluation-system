@@ -182,7 +182,6 @@ Route::middleware('is.student')->group(function()
     Route::get('/student/weekly-submissions', function()
     {
         $tasks = UserController::getWeeklyTasks(Auth::id());
-        dd($tasks);
         return view('pages.student.weekly-submission', compact('tasks'));
 
     })->name('stud.weekly-submission-page');

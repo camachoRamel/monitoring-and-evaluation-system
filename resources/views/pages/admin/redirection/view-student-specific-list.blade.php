@@ -17,10 +17,10 @@
                             {{'BSIT'}}
                             @break
                         @case(2)
-                            {{'COMSCI'}}
+                            {{'BSIS'}}
                             @break
                         @case(3)
-                            {{'BSIS'}}
+                            {{'COMSCI'}}
                             @break
                     @endswitch
                   </div>

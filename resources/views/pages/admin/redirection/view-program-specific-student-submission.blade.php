@@ -9,13 +9,13 @@
             @if ($students != null)
                 @switch($students[0]->course)
                 @case(1)
-                    {{'BSIT Students Report'}}
+                    {{'BSIT Students List'}}
                     @break
                 @case(2)
-                    {{'COMSCI Students Report'}}
+                    {{'BSIS Students List'}}
                     @break
                 @case(3)
-                    {{'BSIS Students Report'}}
+                    {{'COMSCI Students List'}}
                 @break
                 @endswitch
             @endif

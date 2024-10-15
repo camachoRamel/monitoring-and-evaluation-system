@@ -12,10 +12,10 @@
                     {{'BSIT Students List'}}
                     @break
                 @case(2)
-                    {{'COMSCI Students List'}}
+                    {{'BSIS Students List'}}
                     @break
                 @case(3)
-                    {{'BSIS Students List'}}
+                    {{'COMSCI Students List'}}
                 @break
                 @endswitch
             @endif
