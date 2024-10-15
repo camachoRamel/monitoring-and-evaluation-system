@@ -30,17 +30,26 @@
                 </thead>
                 <tbody>
 
-                    @for ($i = 0; $i < $tasks[$i]->week; $i++)
-                        {{-- display week --}}
+                    @php
+                    //USED TO KEEP TRACK OF THE CURRENT WEEK IN THE LOOP
+                        $temp = 0;
+                    @endphp
+
+                    @foreach ($tasks as $task)
+
+                        @if ($temp != $task->week)
                         <tr>
-                            <td>Week {{ $tasks[$i]->week }}</td>
-                            @for ($j = $i; $j < $i + 5; $j++)
-                            <td>{{ $tasks[$j]->deadline }}</td>
-                            @endfor
+                                @php
+                                    $temp = $task->week
+                                @endphp
+                                <td>Week {{ $task->week }}</td>
+                        @endif
 
-                        </tr>
+                        @if ($temp == $task->week)
+                                <td>{{ $task->deadline }}</td>
+                        @endif
 
-                    @endfor
+                    @endforeach
                 </tbody>
             </table>
         </div>
