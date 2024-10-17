@@ -108,7 +108,16 @@ class AdminController extends Controller
     public function viewStudent(string $type, int $id)
     {
         $stud = UserController::getUser($id);
-        $reports = FileController::getStudentReports($id);
+
+        // GETS EVALUATION OF STUDENT FROM HTE. THIS QUERY RELIES FACT THAT A STUDENT CAN ONLY HAVE ON HTE AND COORD
+        // IT GETS THE STUDENT WHERE THE EVALUATOR IS NOT EQUAL TO THE ID OF THE CURRENT USER THUS GIVING IT EITHER A COORD IF USER IS HTE AND VICE VERSA
+        $reports = DB::table('weekly_evaluations AS we')
+        ->select('we.evaluation AS report', 'we.task_week')
+        ->join('intern_handlers AS ih', 'ih.user_id', '=', 'we.user_id')
+        ->whereNot('we.evaluator_id', $stud->hte_id)
+        ->where('we.user_id', $id)
+        ->get();
+
         return view('pages.admin.redirection.view-student-specific-' . $type, compact('stud', 'reports'));
     }
 
