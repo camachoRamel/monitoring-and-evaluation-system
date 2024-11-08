@@ -45,7 +45,7 @@ class User extends Authenticatable
 
     public function requirement() : Hasone
     {
-        return $this->hasOne(Requirements::class);
+        return $this->hasOne(Requirement::class);
     }
 
 }

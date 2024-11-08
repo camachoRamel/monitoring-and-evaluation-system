@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
@@ -273,7 +274,7 @@ class UserController extends Controller
                 $validation = $request->validate([
                     'hte_first_name' => 'required|regex:/^[a-zA-Z\s]+$/',
                     'hte_profile_picture' => 'nullable|image|mimes:jpeg,png,jpg',
-                    'hte_username' => 'required|alpha:ascii',
+                    'hte_username' => 'required|alpha:ascii|unique:users,username,' . Auth::id(),
                     'hte_password' => 'required|min:8'
                 ]);
 
@@ -300,7 +301,7 @@ class UserController extends Controller
                     'coord_middle_name' => 'nullable|regex:/^[a-zA-Z\s]+$/',
                     'coord_last_name' => 'required|regex:/^[a-zA-Z\s]+$/',
                     'coord_profile_picture' => 'sometimes|image|mimes:jpeg,png,jpg',
-                    'coord_username' => 'required|alpha:ascii',
+                    'coord_username' => 'required|alpha:ascii|unique:users,username,' . Auth::id(),
                     'coord_password' => 'required|min:8'
                 ]);
 
@@ -329,7 +330,7 @@ class UserController extends Controller
                     'stud_middle_name' => 'nullable|regex:/^[a-zA-Z\s]+$/',
                     'stud_last_name' => 'required|regex:/^[a-zA-Z\s]+$/',
                     'stud_profile_picture' => 'nullable|image|mimes:jpeg,png,jpg',
-                    'stud_username' => 'required|alpha:ascii',
+                    'stud_username' => 'required|alpha:ascii|unique:users,username,' . Auth::id(),
                     'stud_password' => 'required|min:8',
                 ]);
 
