@@ -33,6 +33,11 @@ class User extends Authenticatable
         return $this->hasMany(InternHandler::class);
     }
 
+    public function record() : HasMany
+    {
+        return $this->hasMany(Record::class);
+    }
+
     public function weeklyEvaluation() : HasMany
     {
         return $this->hasMany(WeeklyEvaluation::class);
