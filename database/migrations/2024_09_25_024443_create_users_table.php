@@ -20,7 +20,7 @@ return new class extends Migration
             $table->integer('role')->unsigned()->default(3);
             $table->integer('course')->default(0);
             $table->integer('approved')->unsigned()->default(0);
-            $table->string('username');
+            $table->string('username')->unique();
             $table->string('password');
             $table->timestamps();
         });

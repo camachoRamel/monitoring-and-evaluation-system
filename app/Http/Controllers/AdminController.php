@@ -22,7 +22,7 @@ class AdminController extends Controller
                     'stud_middle_name' => 'nullable|regex:/^[a-zA-Z\s]+$/',
                     'stud_last_name' => 'required|regex:/^[a-zA-Z\s]+$/',
                     'role' => 'required',
-                    'stud_username' => 'required|alpha:ascii',
+                    'stud_username' => 'required|alpha:ascii|unique:users,username',
                     'stud_password' => 'required|min:8',
                     'course' => 'required',
                     'coord_id' => 'required'
@@ -50,7 +50,7 @@ class AdminController extends Controller
                     'coord_middle_name' => 'nullable|regex:/^[a-zA-Z\s]+$/',
                     'coord_last_name' => 'required|regex:/^[a-zA-Z\s]+$/',
                     'role' => 'required',
-                    'coord_username' => 'required|alpha:ascii',
+                    'coord_username' => 'required|alpha:ascii|unique:users,username',
                     'coord_password' => 'required|min:8'
                 ]);
 
@@ -69,7 +69,7 @@ class AdminController extends Controller
                 $validation = $request->validate([
                     'hte_first_name' => 'required|regex:/^[a-zA-Z\s]+$/',
                     'role' => 'required',
-                    'hte_username' => 'required|alpha:ascii',
+                    'hte_username' => 'required|alpha:ascii|unique:users,username',
                     'hte_password' => 'required|min:8'
                 ]);
 
