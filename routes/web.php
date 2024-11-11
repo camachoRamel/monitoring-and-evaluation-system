@@ -6,6 +6,7 @@ use App\Http\Controllers\File;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\LoginLogoutController;
 use App\Http\Controllers\HostingTrainingEstablishmentController;
+use App\Http\Controllers\RecordController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
 use App\Models\User;
@@ -73,6 +74,12 @@ Route::middleware('is.admin')->group(function()
     })->name('admin.create-account-page');
 
     Route::post('/admin/create-account', [AdminController::class, 'createUser'])->name('admin.create-account');
+
+    //ROUTE TO VIEW RECORDS
+    Route::get('/admin/view-log', [RecordController::class, 'viewRecords'])->name('admin.view-records');
+
+    //ROUTE TO VIEW EDIT ACCOUNT OF OTHERS
+    // Route::get('/admin/edit/{id}', [AdminController::class, 'viewEditPage'])->name('admin.edit');
 
 
     //ROUTE FOR DOWNLOADING STUDENT REPORT

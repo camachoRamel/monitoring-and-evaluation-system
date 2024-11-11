@@ -6,7 +6,7 @@
                 <li class="nav-item d-none d-sm-inline-block">
                     <a href="{{ route("admin.create-account-page") }}" class="nav-link text-primary">Create Account</a>
                 </li>
-                <li class="nav-item d-none d-md-block"> <a href="{{ route("records") }}" class="nav-link">Records History</a> </li>
+                <li class="nav-item d-none d-md-block"> <a href="{{ route("admin.view-records") }}" class="nav-link">Records History</a> </li>
             @endif
             <li class="nav-item d-none d-md-block"> <a href="#" class="nav-link">About</a> </li>
             <li class="nav-item d-none d-md-block"> <a href="#" class="nav-link">Contact Us</a> </li>
