@@ -25,6 +25,41 @@
                                 </div>
                             @endif
 
+                            <!-- ADMIN -->
+                            @if (Auth::user()->role == '0')
+                                  <!-- ADMIN Card Begin -->
+                                  <div class="col-12">
+                                    <div class="card">
+                                        <!--begin::Body-->
+                                        <div class="card-body">
+                                            <div class="mb-3">
+                                                <label for="hte_username" class="form-label">Username</label>
+                                                <input type="text"
+                                                name="hte_username"
+                                                class="form-control"
+                                                id="hte_username"
+                                                value="{{ old('hte_username', $user->username ?? '') }}"
+                                                >
+                                                @error('hte_username')
+                                                    <div class="text-danger">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="hte_password" class="form-label">Password</label>
+                                                <input type="password" name="hte_password" class="form-control" id="hte_password">
+                                                @error('hte_password')
+                                                    <div class="text-danger">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                        </div> <!--end::Body--> <!--begin::Footer-->
+                                        <div class="card-footer d-flex justify-content-end">
+                                            <button name="submitBtn" value="hte" type="submit" class="btn btn-primary">Submit</button>
+                                        </div> <!--end::Footer-->
+                                    </div> <!--end::Quick Example-->
+                                </div>
+                                <!-- ADMIN Card End -->
+                            @endif
+
                             <!-- HTE -->
                             @if (Auth::user()->role == '1')
                                 <!-- HTE Card Begin -->
@@ -62,7 +97,7 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="hte_password" class="form-label">Password</label>
-                                                <input type="text" name="hte_password" class="form-control" id="hte_password">
+                                                <input type="password" name="hte_password" class="form-control" id="hte_password">
                                                 @error('hte_password')
                                                     <div class="text-danger">{{ $message }}</div>
                                                 @enderror
@@ -137,7 +172,7 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="coord_password" class="form-label">Password</label>
-                                                <input type="text" name="coord_password" class="form-control" id="coord_password">
+                                                <input type="password" name="coord_password" class="form-control" id="coord_password">
                                                 @error('coord_password')
                                                     <div class="text-danger">{{ $message }}</div>
                                                 @enderror
@@ -211,7 +246,7 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="stud_password" class="form-label">Password</label>
-                                                <input type="text" name="stud_password" class="form-control" id="stud_password" value="{{ old('stud_password') }}">
+                                                <input type="password" name="stud_password" class="form-control" id="stud_password" value="{{ old('stud_password') }}">
                                                 @error('stud_password')
                                                     <div class="text-danger">{{ $message }}</div>
                                                 @enderror
