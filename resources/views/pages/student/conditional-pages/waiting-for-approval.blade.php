@@ -12,7 +12,7 @@
             <div class="row">
                 <div class="col-12 d-flex justify-content-center align-items-center">
                     <div class="card bg-light">
-                        <div class="card-header text-muted border-bottom-0 fw-bold fs-5">HTE name</div>
+                        <div class="card-header text-muted border-bottom-0 fw-bold fs-5">Employer name</div>
                         <div class="card-body pt-0 d-flex flex-column">
                             <h2 class="lead"><b>Approval Status:</b></h2>
                             <ul class="ml-4 mb-0 fa-ul text-muted">

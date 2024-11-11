@@ -4,7 +4,7 @@
 
     <!-- Content Header (Page header) -->
     <div class="app-content-header"> <!--begin::Container-->
-        <h3 class="mb-0">Host Training Establishment Application</h3>
+        <h3 class="mb-0">Employer Application</h3>
     </div> <!--end::App Content Header-->
 {{-- d-flex flex-column flex-md-row gap-3 justify-content-center --}}
     <section class="content w-100 px-4">
@@ -14,7 +14,7 @@
                 <div class="col-12 col-md-5 col-lg-4 d-flex align-items-stretch flex-column mb-4">
                     <div class="card bg-light d-flex flex-fill">
                       <div class="card-header text-muted border-bottom-0">
-                        Host Training Establishment
+                        Employer
                       </div>
                       <div class="card-body pt-0">
                         <div class="row d-flex align-items-center pt-2">

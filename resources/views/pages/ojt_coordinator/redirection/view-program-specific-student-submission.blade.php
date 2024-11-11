@@ -4,7 +4,22 @@
 
     <!-- Content Header (Page header) -->
     <div class="app-content-header"> <!--begin::Container-->
-        <h3 class="mb-0">IT Students Report</h3>
+        <h3 class="mb-0">
+            @if ($students != null)
+                @switch($students[0]->course)
+                @case(1)
+                    {{'BSIT '}}
+                    @break
+                @case(2)
+                    {{'COMSCI '}}
+                    @break
+                @case(3)
+                    {{'BSIS '}}
+                @break
+                @endswitch
+            @endif
+            Employee Report
+        </h3>
     </div> <!--end::App Content Header-->
 
     <section class="content w-100 px-0 p-lg-4">

@@ -4,7 +4,7 @@
 
     <!-- Content Header (Page header) -->
     <div class="app-content-header"> <!--begin::Container-->
-        <h3 class="mb-0">Student Information</h3>
+        <h3 class="mb-0">Employee Information</h3>
     </div> <!--end::App Content Header-->
 
     <section class="content w-100 px-4">
@@ -17,10 +17,10 @@
                             {{'BSIT'}}
                             @break
                         @case(2)
-                            {{'COMSCI'}}
+                            {{'BSIS'}}
                             @break
                         @case(3)
-                            {{'BSIS'}}
+                            {{'COMSCI'}}
                             @break
                     @endswitch
                   </div>

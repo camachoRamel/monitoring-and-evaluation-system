@@ -25,9 +25,12 @@
                             <td>{{ $coord->first_name }}</td>
                             <td>{{ $coord->middle_name }}</td>
                             <td>{{ $coord->last_name }}</td>
-                            <td class="d-flex gap-2 justify-content-end">
-                                {{-- Provide a route that will redirect to redirection -> view-ojt-coordinator that gets the id of the specific coord viewed --}}
-                                <a href="{{ route('admin.specific-worker', ['type' => 'ojt-coordinator', 'id' => $coord->id]) }}" class="btn btn-secondary">View</a>
+                            <td class="d-flex flex-column flex-lg-row justify-content-end gap-2">
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#delete-modal">
+                                Edit
+                                </button>
+                                <a href="{{ route('admin.specific-worker', ['type' => 'ojt-coordinator', 'id' => $coord->id]) }}" class="btn btn-primary">View</a>
                             </td>
                         </tr>
 

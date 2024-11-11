@@ -7,13 +7,13 @@
                     <span class="brand-text fw-light">Admin</span>
                     @break
                 @case(1)
-                    <span class="brand-text fw-light">HTE</span>
+                    <span class="brand-text fw-light">Employer</span>
                     @break
                 @case(2)
                     <span class="brand-text fw-light">OJT Coordinator</span>
                     @break
                 @case(3)
-                    <span class="brand-text fw-light">Student</span>
+                    <span class="brand-text fw-light">Employee</span>
                     @break
 
             @endswitch
@@ -33,16 +33,16 @@
                   <a href="{{ route('admin.index', Auth::id()) }}" class="nav-link"><p>Dashboard</p></a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{ route('admin.student-list') }}" class="nav-link"><p>Student List</p></a>
+                  <a href="{{ route('admin.student-list') }}" class="nav-link"><p>Employee List</p></a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{ route("admin.student-weekly-report") }}" class="nav-link"><p>Student Weekly Report</p></a>
+                  <a href="{{ route("admin.student-weekly-report") }}" class="nav-link"><p>Employee Weekly Report</p></a>
                 </li>
                 <li class="nav-item">
                   <a href="{{ route("admin.ojt-coordinator-info") }}" class="nav-link"><p>OJT Coordinator Info</p></a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{ route("admin.hte-info") }}" class="nav-link"><p>Host Training Establishment Info</p></a>
+                  <a href="{{ route("admin.hte-info") }}" class="nav-link"><p>Employer Info</p></a>
                 </li>
               @endif
               <!--hte sidebar-->
@@ -50,28 +50,28 @@
                 <li class="nav-item">
                   <a href="{{ route('hte.index', Auth::id()) }}" class="nav-link">
                     <p>
-                      Dashboard
+                        Dashboard
                     </p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="{{ route('hte.student-list') }}" class="nav-link">
                     <p>
-                      Student List
+                        Employee List
                     </p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="{{ route('hte.weekly-tasks') }}" class="nav-link">
                     <p>
-                      Student Weekly Tasks
+                        Employee Weekly Tasks
                     </p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="{{ route('hte.weekly-submission') }}" class="nav-link">
                     <p>
-                      Student Weekly Submission
+                        Employee Weekly Submission
                     </p>
                   </a>
                 </li>
@@ -88,14 +88,14 @@
                 <li class="nav-item">
                   <a href="{{ route('coord.students-list-page') }}" class="nav-link">
                     <p>
-                      Student List
+                        Employee List
                     </p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="{{ route('coord.students-reports-page') }}" class="nav-link">
                     <p>
-                      Student Weekly Report
+                        Employee Weekly Report
                     </p>
                   </a>
                 </li>

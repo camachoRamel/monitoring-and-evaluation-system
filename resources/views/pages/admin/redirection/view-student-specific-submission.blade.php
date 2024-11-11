@@ -37,10 +37,13 @@
                         </ul>
                       </div>
                       <div class="col-5 text-center">
-                        <img
-                        src="{{ assset(!isset($stud->stud_picture) ? 'images/profile.jpg' : 'storage/' . $stud->stud_picture) }}"
+                        <img src="{{ asset(!isset($stud->stud_picture) ? 'images/profile.jpg' : 'storage/' . $stud->stud_picture) }}"
                         alt="user-avatar"
                         class="rounded-circle img-fluid">
+                        {{-- <img
+                        src="{{ assset(!isset($stud->stud_picture) ? 'images/profile.jpg' : 'storage/' . $stud->stud_picture) }}"
+                        alt="user-avatar"
+                        class="rounded-circle img-fluid"> --}}
                       </div>
                     </div>
                   </div>

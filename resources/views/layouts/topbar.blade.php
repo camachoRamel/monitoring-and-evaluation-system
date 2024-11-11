@@ -6,6 +6,7 @@
                 <li class="nav-item d-none d-sm-inline-block">
                     <a href="{{ route("admin.create-account-page") }}" class="nav-link text-primary">Create Account</a>
                 </li>
+                <li class="nav-item d-none d-md-block"> <a href="{{ route("records") }}" class="nav-link">Records History</a> </li>
             @endif
             <li class="nav-item d-none d-md-block"> <a href="#" class="nav-link">About</a> </li>
             <li class="nav-item d-none d-md-block"> <a href="#" class="nav-link">Contact Us</a> </li>
@@ -22,16 +23,13 @@
                 <i class="fas fa-th-large"></i>
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('profile.edit-page') }}">
+                    <i class="bi bi-person-circle"></i>
+                </a>
+            </li>
             <li class="nav-item"> <a class="nav-link" href="#" data-lte-toggle="fullscreen"> <i data-lte-icon="maximize" class="bi bi-arrows-fullscreen"></i> <i data-lte-icon="minimize" class="bi bi-fullscreen-exit" style="display: none;"></i> </a>
             </li> <!--end::Fullscreen Toggle-->
-
-            @if (Auth::user()->role > '0')
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('profile.edit-page') }}">
-                        <i class="bi bi-person-circle"></i>
-                    </a>
-                </li>
-            @endif
 
         </ul> <!--end::End Navbar Links-->
     </div> <!--end::Container-->

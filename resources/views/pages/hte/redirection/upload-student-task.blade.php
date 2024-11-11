@@ -4,10 +4,10 @@
 
     <!-- Content Header (Page header) -->
     <div class="app-content-header">
-        <h3 class="mb-0">Upload Weekly Tasks for {{ $student->name }}</h3>
+        <h3 class="mb-0">Upload Weekly Tasks for: {{ $student->name }}</h3>
     </div>
 
-    <section class="content w-100 px-0 p-lg-4">
+    <section class="content w-100 px-4">
         <div class="card card-solid px-0 py-2 p-lg-4">
             <div class="container p-3">
                 <form id="task-form" method="POST" action="{{ route('hte.upload-student-task', $student->id) }}" enctype="multipart/form-data">

@@ -13,7 +13,7 @@ class StudentController extends Controller
     public function getWeeklyTasks($week)
     {
         $tasks = UserController::getDailyTasks(Auth::id(), $week);
-        dd($tasks);
+        // dd($tasks);
         return view('pages.student.weekly-tasks', compact('tasks'));
     }
 

@@ -5,7 +5,7 @@
 @section('content')
 
     <div class="app-content-header"> <!--begin::Container-->
-        <h3 class="mb-0">Student Weekly Submission</h3>
+        <h3 class="mb-0">Employee Weekly Submission</h3>
     </div> <!--end::App Content Header-->
 
     <section class="content w-100 px-4">

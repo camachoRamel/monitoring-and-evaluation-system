@@ -47,8 +47,8 @@
                   </div>
                   {{-- <div class="card-footer">
                     <div class="container d-flex justify-content-end">
-                        <button href="#" class="btn btn-sm btn-primary">
-                            <i class="fas fa-user"></i> View Profile
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete-modal">
+                            Delete Employee
                         </button>
                    </div>
                   </div> --}}

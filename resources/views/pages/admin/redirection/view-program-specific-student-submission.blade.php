@@ -9,16 +9,17 @@
             @if ($students != null)
                 @switch($students[0]->course)
                 @case(1)
-                    {{'BSIT Students List'}}
+                    {{'BSIT '}}
                     @break
                 @case(2)
-                    {{'BSIS Students List'}}
+                    {{'BSIS '}}
                     @break
                 @case(3)
-                    {{'COMSCI Students List'}}
+                    {{'COMSCI '}}
                 @break
                 @endswitch
             @endif
+            Employees Report List
         </h3>
     </div> <!--end::App Content Header-->
 

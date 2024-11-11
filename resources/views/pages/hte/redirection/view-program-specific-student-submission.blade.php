@@ -11,17 +11,17 @@
                     {{'BSIT Students Report'}}
                     @break
                 @case(2)
-                    {{'COMSCI Students Report'}}
+                    {{'BSIS Students Report'}}
                     @break
                 @case(3)
-                    {{'BSIS Students Report'}}
+                    {{'COMSCI Students Report'}}
                 @break
                 @endswitch
             @endif
         </h3>
     </div> <!--end::App Content Header-->
 
-    <section class="content w-100 px-0 p-lg-4">
+    <section class="content w-100 px-4">
         <div class="card card-solid px-0 py-2 p-lg-4">
             <table id="students-table" class="table table-striped table-bordered" style="width:100%">
                 <thead>

@@ -9,26 +9,27 @@
             @if ($students != null)
                 @switch($students[0]->course)
                 @case(1)
-                    {{'BSIT Students List'}}
+                    {{'BSIT '}}
                     @break
                 @case(2)
-                    {{'BSIS Students List'}}
+                    {{'BSIS '}}
                     @break
                 @case(3)
-                    {{'COMSCI Students List'}}
+                    {{'COMSCI '}}
                 @break
                 @endswitch
             @endif
+            Employees List
         </h3>
     </div> <!--end::App Content Header-->
 
-    <section class="content w-100 px-0 p-lg-4">
+    <section class="content w-100 px-4">
         <div class="card card-solid px-0 py-2 p-lg-4">
             <table id="student-table" class="table table-striped table-bordered" style="width:100%">
                 <thead>
                     <tr>
                         <th>Name</th>
-                        <th>HTE</th>
+                        <th>Employer</th>
                         <th>OJT Coordinator</th>
                         <th>Control</th>
                     </tr>
@@ -44,21 +45,15 @@
                                     <button type="submit" class="btn btn-primary">View</button>
                                 </form>
                             </td> --}}
-                            <td class="d-flex justify-content-end">
+                            <td class="d-flex flex-column flex-lg-row justify-content-end gap-2">
+                                <!-- Button trigger modal -->
+                                <a href="" class="btn btn-danger">
+                                Edit
+                                </a>
                                 <a href="{{ route("admin.view-student", ['type' => 'list', 'id' => $stud->id]) }}" class="btn btn-primary">View</a>
                             </td>
                         </tr>
                     @endforeach
-                    {{-- <tr>
-                        <td>Tiger Nixon</td>
-                        <td>System Architect</td>
-                        <td>Edinburgh</td>
-                        <td>
-                            <form class="d-flex justify-content-end" action="{{ route("admin.view-student-specific-list") }}">
-                                <button type="submit" class="btn btn-primary">View</button>
-                            </form>
-                        </td>
-                    </tr> --}}
                 </tbody>
             </table>
         </div>

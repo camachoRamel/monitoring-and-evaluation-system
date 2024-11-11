@@ -21,11 +21,11 @@
                 <!-- Radio Begin -->
                 <div class="btn-group mb-2" role="group" aria-label="Basic radio toggle button group">
                     <input type="radio" class="btn-check" name="role" id="1" autocomplete="off" value="3" {{ old('role') == 3 ? 'checked' : '' }}>
-                    <label class="btn btn-outline-primary" for="1">Student</label>
+                    <label class="btn btn-outline-primary" for="1">Employee</label>
                     <input type="radio" class="btn-check" name="role" id="2" value="2" autocomplete="off" {{ old('role') == 2 ? 'checked' : '' }}>
                     <label class="btn btn-outline-primary" for="2">OJT Coordinator</label>
                     <input type="radio" class="btn-check" name="role" id="3" value="1" autocomplete="off" {{ old('role') == 1 ? 'checked' : '' }}>
-                    <label class="btn btn-outline-primary" for="3">HTE</label>
+                    <label class="btn btn-outline-primary" for="3">Employer</label>
                 </div>
 
                 <!-- Display Validation Errors -->
@@ -45,7 +45,7 @@
                         <div class="col-12 col-md-6">
                             <div class="card mb-4">
                                 <div class="card-header">
-                                    <div class="card-title">Student</div>
+                                    <div class="card-title">Employee</div>
                                 </div>
 
                                 <div class="card-body">
@@ -89,8 +89,8 @@
                                             <select name="course" class="form-select">
                                                 <option value="" {{ old('course') ? '' : 'selected' }}>Program</option>
                                                 <option value="1" {{ old('course') == 1 ? 'selected' : '' }}>BSIT</option>
-                                                <option value="2" {{ old('course') == 2 ? 'selected' : '' }}>ComSci</option>
-                                                <option value="3" {{ old('course') == 3 ? 'selected' : '' }}>BSIS</option>
+                                                <option value="3" {{ old('course') == 3 ? 'selected' : '' }}>ComSci</option>
+                                                <option value="2" {{ old('course') == 2 ? 'selected' : '' }}>BSIS</option>
                                             </select>
                                             @error('course')
                                                 <div class="text-danger">{{ $message }}</div>
@@ -181,7 +181,7 @@
                         <div class="col-12 col-md-6">
                             <div class="card mb-4"> <!--begin::Header-->
                                 <div class="card-header">
-                                    <div class="card-title">Host Training Establishment</div>
+                                    <div class="card-title">Employer</div>
                                 </div> <!--end::Header--> <!--begin::Body-->
                                 <div class="card-body">
                                     <div class="mb-3">

@@ -40,7 +40,7 @@
                                             <ul class="ml-4 mb-0 fa-ul text-muted">
                                                 @if ($task->week > 0)
                                                     <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span>
-                                                        <a href="{{ route('stud.download-file', ['path' => 'tasks', 'fileName' => $task->tasks]) }}">Day {{ $task->day - 1 }} - Task File</a>
+                                                        <a href="{{ route('stud.download-file', ['path' => 'tasks', 'fileName' => $task->tasks]) }}">Day {{ $task->day }} - Task File</a>
                                                     </li>
                                                 @endif
                                                 @if ($task->tasks == null)

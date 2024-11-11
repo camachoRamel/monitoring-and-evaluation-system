@@ -5,7 +5,7 @@
 @section('content')
 
     <main class="d-flex justify-content-center align-items-center vh-100">
-        <div class="container-xs p-5 border rounded border-dark">
+        <div class="container-xs p-5 border-none rounded bg-light" id="login-card">
             <form name="form" action="{{ route('login')}}" method="POST">
                 @csrf
                 <div class="form-floating mb-3">
@@ -24,7 +24,7 @@
                     <p class="text-danger">Incorrect Username or Password</p>
                 @endif
                 <div class="d-grid">
-                  <button class="btn btn-lg btn-dark btn-login text-uppercase fw-bold mb-2" type="submit" name="submit">Sign in</button>
+                  <button class="btn btn-lg btn-dark btn-login text-uppercase fw-bold" type="submit" name="submit">Sign in</button>
                   {{-- <div class="text-center">
                     <a class="small" href="{{ route('forgot.index') }}">Forgot password?</a>
                   </div> --}}

@@ -4,7 +4,7 @@
 
     <!-- Content Header (Page header) -->
     <div class="app-content-header"> <!--begin::Container-->
-        <h3 class="mb-0">Host Training Establishment Information</h3>
+        <h3 class="mb-0">Employer Information</h3>
     </div> <!--end::App Content Header-->
 
     <section class="content w-100 px-0 px-md-2 px-lg-4">
@@ -23,9 +23,12 @@
                     @foreach ($htes as $hte)
                         <tr>
                             <td>{{ $hte->first_name }}</td>
-                            <td class="d-flex gap-2 justify-content-end">
-                                {{-- Provide a route that will redirect to redirection -> view-hte that gets the id of the specific hte viewed --}}
-                                <a href="{{ route('admin.specific-worker', ['type' => 'hte', 'id' => $hte->id]) }}" class="btn btn-secondary">View</a>
+                            <td class="d-flex flex-column flex-lg-row justify-content-end gap-2">
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-secondary">
+                                Edit
+                                </button>
+                                <a href="{{ route('admin.specific-worker', ['type' => 'hte', 'id' => $hte->id]) }}" class="btn btn-primary">View</a>
                             </td>
                         </tr>
                     @endforeach

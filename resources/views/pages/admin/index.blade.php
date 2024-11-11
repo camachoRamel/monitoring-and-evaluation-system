@@ -44,7 +44,7 @@ function drawChart() {
 
     // Set chart options, including formatting tooltips
     var options = {
-    title: 'Student Performance',
+    title: 'Employee Performance',
     hAxis: {
         title: 'Program',
         titleTextStyle: { color: '#333' }
