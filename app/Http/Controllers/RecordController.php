@@ -28,4 +28,13 @@ class RecordController extends Controller
             'log_type' => 1
         ]);
     }
+
+    public function viewRecords()
+    {
+        $records = DB::table('records')
+        ->select('time', 'log_type', 'u.role', 'u.username')
+        ->join('users AS u', 'u.id', '=', 'user_id')
+        ->get();
+        return view('pages.admin.redirection.records', compact('records'));
+    }
 }

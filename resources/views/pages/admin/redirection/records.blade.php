@@ -5,7 +5,7 @@
     <!-- Content Header (Page header) -->
     <div class="app-content-header"> <!--begin::Container-->
         <h3 class="mb-0">
-            <!--MAKE SURE EACH COURSE HAS AT LEAST 1 STUDENT-->
+            <!--MAKE SURE RECORDS HAS ATLEAST 1 ENTRY-->
             Records
         </h3>
     </div> <!--end::App Content Header-->
@@ -22,26 +22,29 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {{-- @foreach ($students as $stud)
+                    @foreach ($records as $record)
                         <tr>
-                            <td>{{ $stud->name }}</td>
-                            <td>{{ $stud->hte }}</td>
-                            <td>{{ $stud->coord }}</td>
-                            <td class="d-flex justify-content-end">
-                                <a href="{{ route("admin.view-student", ['type' => 'list', 'id' => $stud->id]) }}" class="btn btn-primary">View</a>
-                            </td>
-                        </tr>
-                    @endforeach --}}
-                    @php
-                        $logtype = 0;
-                    @endphp
-                    @for ($i = 0; $i < 10; $i++)
-                        <tr>
-                            <td>test</td>
-                            <td>Wed, May 17, 2017 10:42 PM</td>
-                            <td>admin</td>
+                            <td>{{ $record->username }}</td>
+                            <td> {{$record->time}} </td>
                             <td>
-                                @switch($logtype)
+                                @switch($record->role)
+                                    @case(0)
+                                        Administrator
+                                        @break
+                                    @case(1)
+                                        Employer
+                                    @break
+
+                                    @case(2)
+                                        Coordinator
+                                    @break
+                                    @case(3)
+                                        Employee
+                                    @break
+                                @endswitch
+                            </td>
+                            <td>
+                                @switch($record->log_type)
                                     @case(0)
                                         Login
                                         @break
@@ -51,7 +54,7 @@
                                 @endswitch
                             </td>
                         </tr>
-                    @endfor
+                    @endforeach
                 </tbody>
             </table>
         </div>
