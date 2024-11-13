@@ -78,8 +78,8 @@ Route::middleware('is.admin')->group(function()
     //ROUTE TO VIEW RECORDS
     Route::get('/admin/view-log', [RecordController::class, 'viewRecords'])->name('admin.view-records');
 
-    //ROUTE TO VIEW EDIT ACCOUNT OF OTHERS
-    // Route::get('/admin/edit/{id}', [AdminController::class, 'viewEditPage'])->name('admin.edit');
+    //ROUTE TO DELETE ACCOUNT
+    Route::post('/admin/delete/{id}/{role}', [UserController::class, 'deleteAccount'])->name('admin.delete');
 
 
     //ROUTE FOR DOWNLOADING STUDENT REPORT

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\WeeklyEvaluation;
+use App\Models\WeeklyReport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -70,6 +71,12 @@ class FileController extends Controller
 
         WeeklyEvaluation::create($weekly_evaluation);
 
+        return redirect()->back();
+    }
+
+    public function deleteWeeklyReport(int $id)
+    {
+        WeeklyReport::destroy($id);
         return redirect()->back();
     }
 }
