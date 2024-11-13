@@ -53,7 +53,7 @@
                                             </div>
                                         </div> <!--end::Body--> <!--begin::Footer-->
                                         <div class="card-footer d-flex justify-content-end">
-                                            <button name="submitBtn" value="hte" type="submit" class="btn btn-primary">Submit</button>
+                                            <button name="submitBtn" value="admin" type="submit" class="btn btn-primary">Submit</button>
                                         </div> <!--end::Footer-->
                                     </div> <!--end::Quick Example-->
                                 </div>

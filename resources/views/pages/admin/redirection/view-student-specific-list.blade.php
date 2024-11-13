@@ -87,7 +87,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
-                <form action="">
+                <form action="{{ route("admin.delete", ['id' => $stud->id, 'role' => 3]) }}" method="POST">
                     @csrf
                     <button id="delete-btn" class="btn btn-danger">Delete</button>
                 </form>

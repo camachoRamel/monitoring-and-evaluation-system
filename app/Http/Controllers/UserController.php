@@ -48,12 +48,31 @@ class UserController extends Controller
                 return view('pages.student.index', compact('user', 'tasks', 'hte'));
                 break;
         }
+    }
 
+    public function deleteAccount(int $id, int $role)
+    {
+        User::destroy($id);
+        switch($role)
+        {
+            case 1:
+                $students = UserController::getApprovedStudents();
+                foreach ($students as $stud)
+                {
+                    User::destroy($stud->id);
+                }
+                break;
 
-
-
-        // $relations = DB::table('intern_handlers')->select('*')->where('user_id', $id);
-
+            case 2:
+                $students = UserController::getHandledStudents();
+                foreach ($students as $stud)
+                {
+                    User::destroy($stud->id);
+                }
+                break;
+        }
+        // User::destroy();
+        return redirect()->route('admin.index', Auth::id());
     }
 
     //FIRST ARGUMENT IS FOR ROLE SECOND IS FOR COURSE. SECOND ARGUMENT IS ONLY PRESENT WHEN ITS FOR STUDENT
@@ -112,7 +131,7 @@ class UserController extends Controller
             switch (count($args)) {
                 case 0:
                     $students = DB::table('intern_handlers')
-                    ->select('u1.id', 'u1.profile_picture AS stud_picture',
+                    ->select('u1.id AS id', 'u1.profile_picture AS stud_picture',
                     'u1.course', DB::raw('CONCAT(u1.first_name, " ", COALESCE(u1.middle_name, ""), " ", u1.last_name) AS name, CONCAT(u2.first_name, " ", COALESCE(u2.middle_name, ""), " ", u2.last_name) AS coord, u3.first_name AS hte'))
                     ->join('users AS u1', 'u1.id', '=', 'user_id')
                     ->join('users AS u2', 'u2.id', '=', 'coord_id')
@@ -351,6 +370,17 @@ class UserController extends Controller
                     'password' => $validation['stud_password'],
                 ];
 
+                break;
+            case 'admin':
+                $validation = $request->validate([
+                    'admin_username' => 'required|alpha:ascii|unique:users,username,' . Auth::id(),
+                    'admin_password' => 'required|min:8',
+                ]);
+
+                $user = [
+                    'username' => $validation['admin_username'],
+                    'password' => $validation['admin_password']
+                ];
                 break;
         }
 
