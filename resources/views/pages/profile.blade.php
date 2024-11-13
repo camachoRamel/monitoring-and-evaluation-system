@@ -33,21 +33,21 @@
                                         <!--begin::Body-->
                                         <div class="card-body">
                                             <div class="mb-3">
-                                                <label for="hte_username" class="form-label">Username</label>
+                                                <label for="admin_username" class="form-label">Username</label>
                                                 <input type="text"
-                                                name="hte_username"
+                                                name="admin_username"
                                                 class="form-control"
-                                                id="hte_username"
-                                                value="{{ old('hte_username', $user->username ?? '') }}"
+                                                id="admin_username"
+                                                value="{{ old('admin_username', $user->username ?? '') }}"
                                                 >
-                                                @error('hte_username')
+                                                @error('admin_username')
                                                     <div class="text-danger">{{ $message }}</div>
                                                 @enderror
                                             </div>
                                             <div class="mb-3">
-                                                <label for="hte_password" class="form-label">Password</label>
-                                                <input type="password" name="hte_password" class="form-control" id="hte_password">
-                                                @error('hte_password')
+                                                <label for="admin_password" class="form-label">Password</label>
+                                                <input type="password" name="admin_password" class="form-control" id="admin_password">
+                                                @error('admin_password')
                                                     <div class="text-danger">{{ $message }}</div>
                                                 @enderror
                                             </div>
