@@ -23,11 +23,7 @@
                     @foreach ($htes as $hte)
                         <tr>
                             <td>{{ $hte->first_name }}</td>
-                            <td class="d-flex flex-column flex-lg-row justify-content-end gap-2">
-                                <!-- Button trigger modal -->
-                                <button type="button" class="btn btn-secondary">
-                                Edit
-                                </button>
+                            <td class="d-flex justify-content-end">
                                 <a href="{{ route('admin.specific-worker', ['type' => 'hte', 'id' => $hte->id]) }}" class="btn btn-primary">View</a>
                             </td>
                         </tr>

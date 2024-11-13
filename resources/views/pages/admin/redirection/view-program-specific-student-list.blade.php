@@ -45,11 +45,8 @@
                                     <button type="submit" class="btn btn-primary">View</button>
                                 </form>
                             </td> --}}
-                            <td class="d-flex flex-column flex-lg-row justify-content-end gap-2">
+                            <td class="d-flex justify-content-end">
                                 <!-- Button trigger modal -->
-                                <a href="" class="btn btn-danger">
-                                Edit
-                                </a>
                                 <a href="{{ route("admin.view-student", ['type' => 'list', 'id' => $stud->id]) }}" class="btn btn-primary">View</a>
                             </td>
                         </tr>
