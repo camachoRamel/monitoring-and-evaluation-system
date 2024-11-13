@@ -118,6 +118,10 @@ class AdminController extends Controller
         ->where('we.user_id', $id)
         ->get();
 
+        if($reports->isEmpty()){
+            $reports = 'No evaluation submitted yet';
+        }
+
         return view('pages.admin.redirection.view-student-specific-' . $type, compact('stud', 'reports'));
     }
 

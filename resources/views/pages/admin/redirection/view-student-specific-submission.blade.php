@@ -4,7 +4,7 @@
 
     <!-- Content Header (Page header) -->
     <div class="app-content-header"> <!--begin::Container-->
-        <h3 class="mb-0">Student Report</h3>
+        <h3 class="mb-0">Employee Report</h3>
     </div> <!--end::App Content Header-->
 
     <section class="content w-100 px-4">
@@ -29,11 +29,17 @@
                       <div class="col-7">
                         <h2 class="lead"><b>{{ $stud->name }}</b></h2>
                         <ul class="ml-4 mb-0 fa-ul text-muted">
-                            @foreach ($reports as $report)
-                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span>
-                                <a href="{{ route('admin.download-file', ['path' => 'reports', 'fileName' => $report->report]) }}">Week {{ $report->task_week }}</a>
-                            </li>
-                            @endforeach
+                            @if (is_string($reports))
+                                <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span>
+                                    {{ $reports }}
+                                </li>
+                            @else
+                                @foreach ($reports as $report)
+                                <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span>
+                                    <a href="{{ route('admin.download-file', ['path' => 'reports', 'fileName' => $report->report]) }}">Week {{ $report->task_week }}</a>
+                                </li>
+                                @endforeach
+                            @endif
                         </ul>
                       </div>
                       <div class="col-5 text-center">
