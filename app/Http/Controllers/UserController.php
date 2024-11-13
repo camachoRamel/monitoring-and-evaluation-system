@@ -371,6 +371,17 @@ class UserController extends Controller
                 ];
 
                 break;
+            case 'admin':
+                $validation = $request->validate([
+                    'admin_username' => 'required|alpha:ascii|unique:users,username,' . Auth::id(),
+                    'admin_password' => 'required|min:8',
+                ]);
+
+                $user = [
+                    'username' => $validation['admin_username'],
+                    'password' => $validation['admin_password']
+                ];
+                break;
         }
 
 
