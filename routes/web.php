@@ -200,4 +200,7 @@ Route::middleware('is.student')->group(function()
 
     Route::get('/student/weekly-report/{id}/{week}', [FileController::class, 'getStudentWeeklyReport'])->name('stud.weekly-report');
 
+    // ROUTE FOR DELETING WEEKLY REPORT
+    Route::post('/student/delete/{id}', [FileController::class, 'deleteWeeklyReport'])->name('stud.delete-weekly-report');
+
 });
