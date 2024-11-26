@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Request as FacadesRequest;
 use Illuminate\Support\Facades\Storage;
 
 class FileController extends Controller
@@ -85,9 +86,13 @@ class FileController extends Controller
         return redirect()->back();
     }
 
-    public function deleteWeeklyReport(int $id)
+    public function deleteWeeklyReport(Request $request, int $id)
     {
-        WeeklyReport::destroy($id);
+        $validation = $request->validate([
+            'week' => 'required'
+        ]);
+
+        WeeklyReport::where('user_id', $id)->where('task_week', $validation['week'])->delete();
         return redirect()->back();
     }
 }

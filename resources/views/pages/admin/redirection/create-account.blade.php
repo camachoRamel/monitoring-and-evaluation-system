@@ -89,8 +89,8 @@
                                             <select name="course" class="form-select">
                                                 <option value="" {{ old('course') ? '' : 'selected' }}>Program</option>
                                                 <option value="1" {{ old('course') == 1 ? 'selected' : '' }}>BSIT</option>
-                                                <option value="3" {{ old('course') == 3 ? 'selected' : '' }}>ComSci</option>
-                                                <option value="2" {{ old('course') == 2 ? 'selected' : '' }}>BSIS</option>
+                                                <option value="2" {{ old('course') == 2 ? 'selected' : '' }}>ComSci</option>
+                                                <option value="3" {{ old('course') == 3 ? 'selected' : '' }}>BSIS</option>
                                             </select>
                                             @error('course')
                                                 <div class="text-danger">{{ $message }}</div>
