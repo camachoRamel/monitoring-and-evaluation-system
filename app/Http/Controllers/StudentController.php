@@ -7,7 +7,6 @@ use App\Models\Requirement;
 use App\Models\WeeklyReport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 
 class StudentController extends Controller
 {
@@ -35,19 +34,10 @@ class StudentController extends Controller
         ]);
 
         $file = $request->file('files');
-        $fileName = 'report' . $week . "-" . Auth::id() . '.' . $file->getCLientOriginalExtension();
+        $fileName = 'report' . $week . "-" . Auth::user()->last_name . '.' . $file->getCLientOriginalExtension();
         $filePath = $file->storeAs('reports', $fileName);
 
-        // $weekly_task = [
-        //     'user_id' => Auth::id(),
-        //     'task_week' => $week,
-        //     'report' => $fileName,
-        // ];
-
-        // WeeklyReport::create($weekly_task);
-
-        DB::table('weekly_reports')
-        ->updateOrInsert(
+        WeeklyReport::updateOrCreate(
         ['user_id' => Auth::id(), 'task_week' => $week],
         ['report' => $fileName]
         );

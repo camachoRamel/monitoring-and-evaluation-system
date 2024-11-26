@@ -59,11 +59,14 @@
                 <h1 class="modal-title fs-5 text-danger" id="deleteModalLabel">YOU WILL BE DELETING REPORT:</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
+            {{-- FORM --}}
+            <form action="{{ route('stud.delete-weekly-report', ['id' => Auth::id()])}}" method="POST">
+                @csrf
             <div class="modal-body px-3">
                 <div class="row">
                     <div class="col-12 mb-2">
                         <label for="week-select" class="form-label"><strong>Select Week:</strong></label>
-                        <select id="week-select" class="form-select" aria-label="Select Week">
+                        <select name='week' id="week-select" class="form-select" aria-label="Select Week">
                             <!-- If $week is not null it will be the one displayed else choose week is-->
                             <option value="" disabled selected>{{ $week ?? 'Choose Week' }}</option>
                             <!-- You can set a max of 12 weeks or adjust based on your needs -->
@@ -85,9 +88,7 @@
 
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
-                <form action="">
-                    @csrf
-                    <button id="delete-btn" class="btn btn-danger">Delete</button>
+                    <button type="submit" id="delete-btn" class="btn btn-danger">Delete</button>
                 </form>
             </div>
             </div>
