@@ -388,6 +388,6 @@ class UserController extends Controller
         User::find(Auth::id())
       ->update($user);
 
-        return redirect()->route($request->submitBtn . '.index', Auth::id());
+        return redirect()->route($request->submitBtn . '.index', Auth::id())->with('success', 'Profile updated successfully.');
     }
 }
