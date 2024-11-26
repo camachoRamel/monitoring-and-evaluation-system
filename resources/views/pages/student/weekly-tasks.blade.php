@@ -8,8 +8,8 @@
     </div>
 
     <!-- Select Element to Choose the Week -->
-    <section class="content w-100 px-0 p-lg-4">
-        <div class="card card-solid px-0 py-2 p-lg-4">
+    <section class="content w-100 px-4">
+        <div class="card card-solid p-4">
             <div class="container p-3">
                 <div class="col-12 mb-4">
                     <label for="week-select" class="form-label"><strong>Select Week:</strong></label>

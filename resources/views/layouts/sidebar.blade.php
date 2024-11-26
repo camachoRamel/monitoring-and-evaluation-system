@@ -134,6 +134,13 @@
                     </p>
                   </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('test') }}" class="nav-link">
+                      <p>
+                        Employer Evaluation
+                      </p>
+                    </a>
+                  </li>
                 @endif
 
               @endif
