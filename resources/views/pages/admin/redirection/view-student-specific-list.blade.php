@@ -56,13 +56,6 @@
                       </div>
                     </div>
                   </div>
-                  {{-- <div class="card-footer">
-                    <div class="container d-flex justify-content-end">
-                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete-modal">
-                            Delete Employee
-                        </button>
-                   </div>
-                  </div> --}}
                 </div>
             </div>
         </div>
@@ -70,8 +63,8 @@
     </section>
     {{-- content --}}
 
-       <!-- Modal -->
-       <div class="modal fade" id="delete-modal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <!-- Modal -->
+    <div class="modal fade" id="delete-modal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
             <div class="modal-header">
