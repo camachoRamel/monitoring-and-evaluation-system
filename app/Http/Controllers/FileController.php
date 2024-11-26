@@ -65,18 +65,19 @@ class FileController extends Controller
     public function uploadEvaluation(Request $request, int $id)
     {
         $validation = $request->validate([
-            'week' => 'required',
+            // 'week' => 'required',
             'evaluation' => 'required'
         ]);
 
 
         $file = $request->file('evaluation');
-        $fileName = 'evaluation-'. $validation['week'] . $id . "-" . Auth::id() . time() . '.' . $file->getCLientOriginalExtension();
+        //  . "-" . Auth::id() . time() .  USED TO BE IN THE FILENAME
+        $fileName = 'evaluation-'. Auth::user()->last_name .'.' . $file->getCLientOriginalExtension();
         $filePath = $file->storeAs('evaluations', $fileName);
 
         $weekly_evaluation = [
             'user_id' => $id,
-            'task_week' => $validation['week'],
+            'task_week' => 1,
             'evaluator_id' => Auth::id(),
             'evaluation' => $fileName,
         ];
