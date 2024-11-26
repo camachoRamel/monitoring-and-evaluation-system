@@ -198,4 +198,6 @@ Route::middleware('is.student')->group(function()
     //ROUTE FOR DOWNLOADING UPLOADED TASK
     Route::get('/student/download/{path}/{fileName}', [FileController::class, 'fileDownload'])->name('stud.download-file');
 
+    Route::get('/student/weekly-report/{id}/{week}', [FileController::class, 'getStudentWeeklyReport'])->name('stud.weekly-report');
+
 });
