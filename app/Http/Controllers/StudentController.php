@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Requirement;
+use App\Models\WeeklyEvaluation;
 use App\Models\WeeklyReport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class StudentController extends Controller
 {
@@ -23,6 +25,24 @@ class StudentController extends Controller
 
         return view('pages.student.internship-requirements', compact('htes'));
 
+    }
+
+    public function viewEvaluation()
+    {
+        $evaluation = DB::table('weekly_evaluations AS we')
+        ->select('we.evaluation')
+        ->join('users AS u1', 'u1.id', '=', 'evaluator_id')
+        ->where('user_id', Auth::id())
+        ->get();
+
+        $evaluator = DB::table('intern_handlers AS ih')
+        ->select('u1.first_name AS hte')
+        ->join('users AS u1', 'u1.id', '=', 'hte_id')
+        ->where('user_id', Auth::id())
+        ->get();
+
+        // dd($evaluation);
+        return view('pages.student.evaluation-page', compact('evaluation', 'evaluator'));
     }
 
 

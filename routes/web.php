@@ -172,6 +172,8 @@ Route::middleware('is.student')->group(function()
     // ROUTE FOR STUDENT APPLICATION
     Route::get('/student/intern-requirements', [StudentController::class, 'viewHtes'])->name('stud.intern-requirement-page');
 
+    Route::get('/student/evaluation-page', [StudentController::class, 'viewEvaluation'])->name('stud.evaluation-page');
+
     Route::get('/student/upload-resume-to{id}', function(int $id)
     {
         $hte = DB::table('users')
