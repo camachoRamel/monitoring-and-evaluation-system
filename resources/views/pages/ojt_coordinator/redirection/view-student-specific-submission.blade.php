@@ -20,14 +20,14 @@
                 </div>
             @endif
              <!-- Button trigger modal -->
-            <div class="container p-0 mb-3">
+            {{-- <div class="container p-0 mb-3">
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#evaluationModal">
                     Submit Evaluation to Admin
                 </button>
-            </div>
+            </div> --}}
 
             <!-- Modal -->
-            <form method="POST" action="{{ route('coord.upload-evaluation', $stud->id) }}" class="modal fade" id="evaluationModal" tabindex="-1" aria-labelledby="evaluationModalLabel" aria-hidden="true" enctype="multipart/form-data">
+            {{-- <form method="POST" action="{{ route('coord.upload-evaluation', $stud->id) }}" class="modal fade" id="evaluationModal" tabindex="-1" aria-labelledby="evaluationModalLabel" aria-hidden="true" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
@@ -55,7 +55,7 @@
                     </div>
                     </div>
                 </div>
-            </form>
+            </form> --}}
             <div class="container d-flex justify-content-center">
                 <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch align-items-center flex-column">
                     <div class="card bg-light d-flex flex-fill">

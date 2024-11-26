@@ -26,7 +26,7 @@
             <!-- Button trigger modal -->
             <div class="container p-0 mb-3">
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#evaluationModal">
-                    Submit Evaluation to Coord
+                    Submit Evaluation to Employee
                 </button>
             </div>
 
@@ -41,13 +41,13 @@
                     </div>
                     <div class="modal-body">
 
-                        <div class="col-12 mb-4">
+                        {{-- <div class="col-12 mb-4">
                             <select id="week-selector" name="week" class="form-select" aria-label="Select Week">
                                 @foreach (range(1, 12) as $weekNum)
                                     <option value="{{ $weekNum }}">Week {{ $weekNum }}</option>
                                 @endforeach
                             </select>
-                        </div>
+                        </div> --}}
                         <div class="form-group mb-3">
                             <label for="file">Upload file:</label>
                             <input type="file" name="evaluation" id="file" class="form-control">
