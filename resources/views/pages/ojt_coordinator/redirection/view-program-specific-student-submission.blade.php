@@ -11,16 +11,27 @@
                     {{'BSIT '}}
                     @break
                 @case(2)
-                    {{'COMSCI '}}
+                    {{'BSIS'}}
                     @break
                 @case(3)
-                    {{'BSIS '}}
+                    {{'COMSCI '}}
                 @break
                 @endswitch
             @endif
             Employee Report
         </h3>
     </div> <!--end::App Content Header-->
+
+    @if (isset($students[0]->message))
+
+    <section class="content w-100 px-4">
+        <div class="card card-solid px-0 py-2 p-lg-4">
+            {{ $students[0]->message }}
+        </div>
+        {{-- card --}}
+    </section>
+
+    @else
 
     <section class="content w-100 px-0 p-lg-4">
         <div class="card card-solid px-0 py-2 p-lg-4">
@@ -48,6 +59,8 @@
         {{-- card --}}
     </section>
     {{-- content --}}
+
+    @endif
 
 @endsection
 

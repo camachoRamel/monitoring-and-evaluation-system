@@ -101,7 +101,19 @@ class AdminController extends Controller
     public function viewStudents(string $type, int $course)
     {
         $students = UserController::getAllUsers(3, $course);
-
+        // checks whether students contains data, if not give a message for error handling
+        if($students->isEmpty())
+        {
+            $rawStudents = [
+                [
+                    'message' => 'No Student Data Available for this Program/Course',
+                    'course' => $course
+                ]
+            ];
+            $students = collect($rawStudents)->map(function ($student) {
+                return (object) $student; // Convert each item to an object
+            })->toArray();
+        }
         return view('pages.admin.redirection.view-program-specific-student-' . $type, compact('students'));
     }
 

@@ -37,6 +37,13 @@ class HostingTrainingEstablishmentController extends Controller
         ->where('u1.id', Auth::id())
         ->get();
 
+        if($students->isEmpty())
+        {
+            $students = 'No Student Application yet';
+        }
+
+        // dd($students);
+
         return view('pages.hte.redirection.approve-students', compact('students'));
     }
 
@@ -90,7 +97,19 @@ class HostingTrainingEstablishmentController extends Controller
     public function viewStudents(string $type, int $course)
     {
         $students = UserController::getApprovedStudents($course);
-
+        // checks whether students contains data, if not give a message for error handling
+        if($students->isEmpty())
+        {
+            $rawStudents = [
+                [
+                    'message' => 'No Student Data Available for this Program/Course',
+                    'course' => $course
+                ]
+            ];
+            $students = collect($rawStudents)->map(function ($student) {
+                return (object) $student; // Convert each item to an object
+            })->toArray();
+        }
         return view('pages.hte.redirection.view-program-specific-student-' . $type, compact('students'));
     }
 
