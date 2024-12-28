@@ -40,8 +40,7 @@
                 <thead>
                     <tr>
                         <th>Name</th>
-                        <th>HTE</th>
-                        <th>OJT Coordinator</th>
+                        <th>Employer</th>
                         <th>Report</th>
                     </tr>
                 </thead>
@@ -49,8 +48,14 @@
                     @foreach ($students as $stud)
                         <tr>
                             <td>{{ $stud->name }}</td>
-                            <td>{{ $stud->hte }}</td>
-                            <td>{{ $stud->coord }}</td>
+                            <td>
+                                @if ($stud->hte != null)
+                                    {{ $stud->hte }}
+                                @else
+                                    No Employer yet
+                                @endif
+
+                            </td>
                             <td class="d-flex justify-content-end">
                                 <a href="{{ route("admin.view-student", ['type' => 'submission', 'id' => $stud->id]) }}" class="btn btn-primary">View</a>
                             </td>

@@ -38,7 +38,6 @@
                         <tr>
                             <th>Name</th>
                             <th>Employer</th>
-                            <th>OJT Coordinator</th>
                             <th>Control</th>
                         </tr>
                     </thead>
@@ -46,8 +45,14 @@
                         @foreach ($students as $stud)
                             <tr>
                                 <td>{{ $stud->name }}</td>
-                                <td>{{ $stud->hte }}</td>
-                                <td>{{ $stud->coord }}</td>
+                                <td>
+                                    @if ($stud->hte != null)
+                                        {{ $stud->hte }}
+                                    @else
+                                        No Employer yet
+                                    @endif
+
+                                </td>
                                 {{-- <td>
                                     <form class="d-flex justify-content-end" action="{{ route("admin.view-student-specific-list") }}">
                                         <button type="submit" class="btn btn-primary">View</button>

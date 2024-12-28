@@ -11,9 +11,9 @@
             <div class="card card-solid p-4">
                 <div class="row">
                     <div class="col-12 d-flex justify-content-center align-items-center">
-                        <form action="{{ route('stud.resume-upload', $hte->id) }}" method="POST" class="card bg-light" enctype="multipart/form-data">
+                        <form action="" method="POST" class="card bg-light" enctype="multipart/form-data">
                             @csrf
-                            <div class="card-header text-muted border-bottom-0 fw-bold fs-5">{{ $hte->first_name }}</div>
+                            <div class="card-header text-muted border-bottom-0 fw-bold fs-5">Coord Name</div>
                             <div class="card-body pt-0 d-flex flex-column">
                                 <div class="lead mb-1">Resume</div>
                                 <!-- Upload file input -->
@@ -23,6 +23,16 @@
                                 </div>
                                 <input type="submit" value="upload" class="btn btn-primary">
                             </div>
+                            <!-- Display Validation Errors -->
+                            @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                            @endif
                         </form>
                     </div>
                 </div>

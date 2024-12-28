@@ -4,7 +4,7 @@
 
     <!-- Content Header (Page header) -->
     <div class="app-content-header"> <!--begin::Container-->
-        <h3 class="mb-0">Dashboard</h3>
+        <h3 class="mb-0">Home</h3>
     </div> <!--end::App Content Header-->
 
     <!-- Display success message -->
