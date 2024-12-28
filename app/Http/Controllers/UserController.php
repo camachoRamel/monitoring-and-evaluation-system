@@ -43,7 +43,7 @@ class UserController extends Controller
                 //checks student is approved by hte
                 if(!UserController::isApproved($id))
                 {
-                    return view('pages.student.internship-requirements', compact('user', 'htes'));
+                    return view('pages.student.conditional-pages.waiting-for-approval', compact('user', 'htes'));
                 }
                 return view('pages.student.index', compact('user', 'tasks', 'hte'));
                 break;

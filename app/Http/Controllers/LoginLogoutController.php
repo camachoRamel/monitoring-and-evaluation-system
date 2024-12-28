@@ -30,10 +30,6 @@ class LoginLogoutController extends Controller
                     return redirect()->route('hte.index', Auth::id());
                     break;
 
-                case 2:
-                    return redirect()->route('coord.index', Auth::id());
-                    break;
-
                 case 3:
                     return redirect()->route('stud.index', Auth::id());
                     break;

@@ -9,9 +9,6 @@
                 @case(1)
                     <span class="brand-text fw-light">Employer</span>
                     @break
-                @case(2)
-                    <span class="brand-text fw-light">OJT Coordinator</span>
-                    @break
                 @case(3)
                     <span class="brand-text fw-light">Employee</span>
                     @break
@@ -39,7 +36,7 @@
                   <a href="{{ route("admin.student-weekly-report") }}" class="nav-link"><p>Employee Weekly Report</p></a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{ route("admin.ojt-coordinator-info") }}" class="nav-link"><p>OJT Coordinator Info</p></a>
+                  <a href="#" class="nav-link"><p>Intern Application</p></a>
                 </li>
                 <li class="nav-item">
                   <a href="{{ route("admin.hte-info") }}" class="nav-link"><p>Employer Info</p></a>
@@ -77,7 +74,7 @@
                 </li>
               @endif
               <!--coord sidebar-->
-              @if (Auth::user()->role == '2')
+              {{-- @if (Auth::user()->role == '2')
                 <li class="nav-item">
                   <a href="{{ route('coord.index', Auth::id()) }}" class="nav-link">
                     <p>
@@ -99,13 +96,13 @@
                     </p>
                   </a>
                 </li>
-              @endif
+              @endif --}}
               <!--student sidebar-->
               @if (Auth::user()->role == '3')
                 <li class="nav-item">
                   <a href="{{ route('stud.index', Auth::id()) }}" class="nav-link">
                     <p>
-                      Dashboard
+                      Home
                     </p>
                   </a>
                 </li>
