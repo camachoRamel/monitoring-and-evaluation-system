@@ -108,7 +108,8 @@
                 </li>
                 @if (Auth::user()->approved == 0 || Auth::user()->approved == 2)
                     <li class="nav-item">
-                        <a href="{{ route('stud.intern-requirement-page') }}" class="nav-link">
+                        {{-- <a href="{{ route('stud.intern-requirement-page') }}" class="nav-link"> --}}
+                        <a href="" class="nav-link">
                         <p>
                             Internship Requirements
                             <!-- available only if the student doesn't have an HTE yet -->

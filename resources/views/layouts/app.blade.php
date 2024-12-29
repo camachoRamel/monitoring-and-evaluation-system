@@ -15,6 +15,8 @@
      <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.css') }}">
      <!-- Data table -->
      <link rel="stylesheet" href="{{ asset("DataTables/datatables.css") }}">
+
+     @livewireStyles
 </head>
 <body class="layout-fixed sidebar-expand-lg bg-body-tertiary app-loaded sidebar-open"> <!--begin::App Wrapper-->
     <div class="app-wrapper"> <!--begin::Header-->
@@ -62,6 +64,6 @@
     </script> <!--end::OverlayScrollbars Configure--> <!--end::Script-->
 
     @stack('scripts')
-
+    @livewireScripts
 </body>
 </html>

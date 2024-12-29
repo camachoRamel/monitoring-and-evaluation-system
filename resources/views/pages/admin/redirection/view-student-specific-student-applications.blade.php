@@ -5,21 +5,7 @@
     <!-- Content Header (Page header) -->
     <div class="app-content-header"> <!--begin::Container-->
         <h3 class="mb-0">
-            <!--MAKE SURE EACH COURSE HAS AT LEAST 1 STUDENT-->
-            {{-- @if ($students != null)
-                @switch($students[0]->course)
-                @case(1)
-                    {{'BSIT '}}
-                    @break
-                @case(2)
-                    {{'BSIS '}}
-                    @break
-                @case(3)
-                    {{'COMSCI '}}
-                @break
-                @endswitch
-            @endif --}}
-            BSIT Employees List
+            Application List of Intern: <span class="fw-bolder">"Student Name"</span>
         </h3>
     </div> <!--end::App Content Header-->
 
@@ -36,20 +22,16 @@
                     <thead>
                         <tr>
                             <th>Name</th>
-                            <th>Controls</th>
+                            <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
 
                         @for ($i = 0; $i < 3; $i++)
                             <tr>
-                                <td class="col-8">Student Name</td>
+                                <td class="col-8">Hte Name</td>
                                 <td class="col-4">
-                                    <div class="d-flex gap-2">
-                                        <a href="#" class="btn btn-primary">View applications</a>
-                                        <a href="#" class="btn btn-primary">Select Employer</a>
-                                    </div>
-
+                                    Pending/Declined/Approved
                                 </td>
                             </tr>
                         @endfor
