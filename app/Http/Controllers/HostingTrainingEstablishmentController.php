@@ -30,7 +30,7 @@ class HostingTrainingEstablishmentController extends Controller
 
     public function getStudentsToApprove()
     {
-        $students = DB::table('application AS appli')
+        $students = DB::table('applications AS appli')
         ->select('u2.id', 'req.requirement AS resume', 'u2.profile_picture AS stud_picture', DB::raw('CONCAT(u2.first_name, " ", COALESCE(u2.middle_name, ""), " ", u2.last_name) AS name'))
         ->join('users AS u1', 'u1.id', '=', 'appli.hte_id')
         ->join('users AS u2', 'u2.id', '=', 'appli.stud_id')

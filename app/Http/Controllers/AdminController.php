@@ -220,4 +220,25 @@ class AdminController extends Controller
     {
 
     }
+
+    public function viewHtesForStudent(int $id)
+    {
+        $student = UserController::getUser($id);
+        $htes = UserController::getAllUsers(1);
+
+        return view('pages.admin.redirection.create-student-specific-student-application', compact('student', 'htes'));
+    }
+
+    public function applyStudent(Request $request)
+    {
+        $validated = $request->validate([
+            'stud_id' => 'required',
+            'hte_id' => 'required'
+        ]);
+
+        Application::updateOrCreate($validated);
+
+        // FIX VALIDATED IN RETURN IF RUNS ERROR
+        return redirect()->route('admin.view.intern-application', $validated[0]->stud_id)->with('success', 'Student Applied');
+    }
 }
