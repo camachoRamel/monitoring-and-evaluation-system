@@ -5,7 +5,7 @@
     <!-- Content Header (Page header) -->
     <div class="app-content-header"> <!--begin::Container-->
         <h3 class="mb-0">
-            Application for Intern: <span class="fw-bolder">"Student Name" </span>
+            Application for Intern: <span class="fw-bolder"> {{$student->name}} </span>
         </h3>
     </div> <!--end::App Content Header-->
 
@@ -26,9 +26,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @for ($i = 0; $i < 3; $i++)
+                        @foreach ($htes as $hte)
                             <tr>
-                                <td class="col-8">Hte Name</td>
+                                <td class="col-8"> {{$hte->name}} </td>
                                 <td class="col-4">
                                     <!-- Modal trigger button -->
                                     <button
@@ -41,7 +41,7 @@
                                     </button>
                                 </td>
                             </tr>
-                        @endfor
+                        @endforeach
                         {{-- @foreach ($students as $stud)
                             <tr>
                                 <td>{{ $stud->name }}</td>
@@ -88,7 +88,7 @@
                   ></button>
               </div>
               <div class="modal-body">
-                You will be sending the requirements of <span class="fw-bolder">"Student Name"</span>
+                You will be sending the requirements of <span class="fw-bolder"> {{$student->name}} </span>
               </div>
               <div class="modal-footer">
                   <button

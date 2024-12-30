@@ -30,11 +30,13 @@ class HostingTrainingEstablishmentController extends Controller
 
     public function getStudentsToApprove()
     {
-        $students = DB::table('requirements AS req')
+        $students = DB::table('applications AS appli')
         ->select('u2.id', 'req.requirement AS resume', 'u2.profile_picture AS stud_picture', DB::raw('CONCAT(u2.first_name, " ", COALESCE(u2.middle_name, ""), " ", u2.last_name) AS name'))
-        ->join('users AS u1', 'u1.id', '=', 'req.hte_id')
-        ->join('users AS u2', 'u2.id', '=', 'req.user_id')
+        ->join('users AS u1', 'u1.id', '=', 'appli.hte_id')
+        ->join('users AS u2', 'u2.id', '=', 'appli.stud_id')
+        ->join('requirements AS req', 'req.user_id', '=', 'appli.stud_id')
         ->where('u1.id', Auth::id())
+        ->where('appli.declined', 0)
         ->get();
 
         if($students->isEmpty())
@@ -125,7 +127,7 @@ class HostingTrainingEstablishmentController extends Controller
 
 
         //DELETE ROW IN REQUIREMENTS TABLE
-        Requirement::where('user_id', $id)->where('hte_id', Auth::id())->delete();
+        Application::where('stud_id', $id)->where('hte_id', Auth::id())->delete();
 
         if($request->submitBtn == 'approve')
         {

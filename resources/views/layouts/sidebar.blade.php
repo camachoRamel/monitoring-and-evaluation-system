@@ -36,7 +36,7 @@
                   <a href="{{ route("admin.student-weekly-report") }}" class="nav-link"><p>Employee Weekly Report</p></a>
                 </li>
                 <li class="nav-item">
-                  <a href="#" class="nav-link"><p>Intern Application</p></a>
+                  <a href="{{ route('admin.intern-application')}}" class="nav-link"><p>Intern Application</p></a>
                 </li>
                 <li class="nav-item">
                   <a href="{{ route("admin.hte-info") }}" class="nav-link"><p>Employer Info</p></a>

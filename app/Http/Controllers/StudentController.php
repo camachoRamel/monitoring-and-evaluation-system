@@ -79,7 +79,6 @@ class StudentController extends Controller
 
         $requirements = [
             'user_id' => Auth::id(),
-            'hte_id' => $id,
             'requirement' => $fileName,
         ];
 

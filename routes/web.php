@@ -53,6 +53,18 @@ Route::middleware('is.admin')->group(function()
         return view('pages.admin.student-weekly-report');
     })->name('admin.student-weekly-report');
 
+    //VIEW STUDENT INTERNSHIP REQUIREMENT ROUTE FOR ADMIN
+    Route::get('/admin/internship-application', function()
+    {
+        return view('pages.admin.intern-application');
+    })->name('admin.intern-application');
+
+    //ROUTE FOR GOING TO APPLICATION VIEW OF SPECIFIC STUDENT
+    Route::get('/admin/internship-application/{id}', [AdminController::class, 'viewHtesForStudent'])->name('admin.view.intern-application');
+
+    //ROUTE USED TO APPLY STUDENT
+    Route::post('/admin/internship-application/apply', [AdminController::class, 'applyStudent'])->name('admin.apply-student');
+
     //DYNAMIC STUDENT VIEWS FOR ADMIN
     Route::get('/admin/{type}-students-{course}', [AdminController::class, 'viewStudents'])->name('admin.view-students');
 
@@ -69,8 +81,8 @@ Route::middleware('is.admin')->group(function()
     //CREATE ACCOUNT ROUTES
     Route::get('/admin/create-account-page', function ()
     {
-        $coords = UserController::getAllUsers(2);
-        return view('pages.admin.redirection.create-account', compact('coords'));
+        $students = UserController::getAllUsers(3);
+        return view('pages.admin.redirection.create-account', compact('students'));
     })->name('admin.create-account-page');
 
     Route::post('/admin/create-account', [AdminController::class, 'createUser'])->name('admin.create-account');

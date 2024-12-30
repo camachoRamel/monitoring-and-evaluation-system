@@ -24,8 +24,7 @@ class AdminController extends Controller
                     'role' => 'required',
                     'stud_username' => 'required|alpha:ascii|unique:users,username',
                     'stud_password' => 'required|min:8',
-                    'course' => 'required',
-                    'coord_id' => 'required'
+                    'course' => 'required'
                 ]);
 
                 $user = [
@@ -38,9 +37,7 @@ class AdminController extends Controller
                     'course' => $validation['course']
                 ];
 
-                $studentCoord = $request->validate([
-                    'coord_id' => 'required'
-                ]);
+                $studentCoord = $request;
 
                 break;
 
@@ -90,7 +87,7 @@ class AdminController extends Controller
         {
             InternHandler::create([
                 'user_id' => $userID,
-                'coord_id' => $studentCoord['coord_id']
+                'coord_id' => Auth::user()->id
             ]);
         }
 
@@ -100,7 +97,13 @@ class AdminController extends Controller
 
     public function viewStudents(string $type, int $course)
     {
-        $students = UserController::getAllUsers(3, $course);
+        if($type == "application")
+        {
+            $students = UserController::getHandledStudents($course, 0);
+        }else
+        {
+            $students = UserController::getHandledStudents($course);
+        }
         // checks whether students contains data, if not give a message for error handling
         if($students->isEmpty())
         {
@@ -211,5 +214,31 @@ class AdminController extends Controller
 
         return $finishRates;
 
+    }
+
+    public function getStudentAppliedHtes(int $id)
+    {
+
+    }
+
+    public function viewHtesForStudent(int $id)
+    {
+        $student = UserController::getUser($id);
+        $htes = UserController::getAllUsers(1);
+
+        return view('pages.admin.redirection.create-student-specific-student-application', compact('student', 'htes'));
+    }
+
+    public function applyStudent(Request $request)
+    {
+        $validated = $request->validate([
+            'stud_id' => 'required',
+            'hte_id' => 'required'
+        ]);
+
+        Application::updateOrCreate($validated);
+
+        // FIX VALIDATED IN RETURN IF RUNS ERROR
+        return redirect()->route('admin.view.intern-application', $validated[0]->stud_id)->with('success', 'Student Applied');
     }
 }
