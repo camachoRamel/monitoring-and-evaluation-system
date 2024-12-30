@@ -65,6 +65,9 @@ Route::middleware('is.admin')->group(function()
     //ROUTE USED TO APPLY STUDENT
     Route::post('/admin/internship-application/apply', [AdminController::class, 'applyStudent'])->name('admin.apply-student');
 
+    //ROUTE TO VIEW STUDENT APPLIED HTES
+    Route::get('/admin/internship-application/applications/{id}', [AdminController::class, 'getStudentAppliedHtes'])->name('admin.view.student-applications');
+
     //DYNAMIC STUDENT VIEWS FOR ADMIN
     Route::get('/admin/{type}-students-{course}', [AdminController::class, 'viewStudents'])->name('admin.view-students');
 
