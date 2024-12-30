@@ -126,7 +126,7 @@ class HostingTrainingEstablishmentController extends Controller
     {
 
 
-        //DELETE ROW IN REQUIREMENTS TABLE
+        //DELETE ROW IN APPLICATIONS TABLE
         Application::where('stud_id', $id)->where('hte_id', Auth::id())->delete();
 
         if($request->submitBtn == 'approve')
@@ -137,6 +137,7 @@ class HostingTrainingEstablishmentController extends Controller
             return redirect()->back()->with('message', 'Student approved.');
         }else
         {
+            Application::where('stud_id', $id)->update(['declined' => 1]);
             return redirect()->back()->with('message', 'Student declined.');
         }
 
