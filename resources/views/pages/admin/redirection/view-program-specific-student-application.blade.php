@@ -23,13 +23,13 @@
         </h3>
     </div> <!--end::App Content Header-->
 
-    {{-- @if (isset($students[0]->message))
+    @if (isset($students[0]->message))
         <section class="content w-100 px-4">
             <div class="card card-solid px-0 py-2 p-lg-4">
                 {{ $students[0]->message }}
             </div>
         </section>
-    @else --}}
+    @else
         <section class="content w-100 px-4">
             <div class="card card-solid px-0 py-2 p-lg-4">
                 <table id="student-table" class="table table-striped table-bordered" style="width:100%">
@@ -41,7 +41,7 @@
                     </thead>
                     <tbody>
 
-                        @for ($i = 0; $i < 3; $i++)
+                        {{-- @for ($i = 0; $i < 3; $i++)
                             <tr>
                                 <td class="col-8">Student Name</td>
                                 <td class="col-4">
@@ -52,23 +52,25 @@
 
                                 </td>
                             </tr>
-                        @endfor
-                        {{-- @foreach ($students as $stud)
+                        @endfor --}}
+                        @foreach ($students as $stud)
                             <tr>
-                                <td>{{ $stud->name }}</td>
-                                <td class="d-flex justify-content-end">
-                                    <a href="{{ route("admin.view-student", ['type' => 'list', 'id' => $stud->id]) }}" class="btn btn-primary">View</a>
-                                    REPLACE WITH ACTUAL ROUTE
-                                    <a href="#" class="btn btn-primary">Select Employer</a>
+                                <td class="col-8"> {{$stud->name}} </td>
+                                <td class="col-4">
+                                    <div class="d-flex gap-2">
+                                        <a href="#" class="btn btn-primary">View applications</a>
+                                        <a href="#" class="btn btn-primary">Select Employer</a>
+                                    </div>
+
                                 </td>
                             </tr>
-                        @endforeach --}}
+                        @endforeach
 
                     </tbody>
                 </table>
             </div>
         </section>
-    {{-- @endif --}}
+    @endif
 
     {{-- content --}}
 

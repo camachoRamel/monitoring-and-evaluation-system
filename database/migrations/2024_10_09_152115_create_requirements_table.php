@@ -14,9 +14,10 @@ return new class extends Migration
         Schema::create('requirements', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_id')->unsigned();
-            $table->bigInteger('hte_id')->unsigned();
+            // $table->bigInteger('hte_id')->unsigned();
+            // $table->integer('declined')->unsigned()->default(0);
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('hte_id')->references('id')->on('users')->onDelete('cascade');
+            // $table->foreign('hte_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('requirement');
             $table->timestamps();
         });
