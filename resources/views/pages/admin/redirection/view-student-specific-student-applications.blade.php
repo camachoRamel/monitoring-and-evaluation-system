@@ -5,17 +5,17 @@
     <!-- Content Header (Page header) -->
     <div class="app-content-header"> <!--begin::Container-->
         <h3 class="mb-0">
-            Application List of Intern: <span class="fw-bolder">"Student Name"</span>
+            Application List of Intern: <span class="fw-bolder"> {{$student->name}} </span>
         </h3>
     </div> <!--end::App Content Header-->
 
-    {{-- @if (isset($students[0]->message))
+    @if (isset($htes[0]->message))
         <section class="content w-100 px-4">
             <div class="card card-solid px-0 py-2 p-lg-4">
-                {{ $students[0]->message }}
+                {{ $htes[0]->message }}
             </div>
         </section>
-    @else --}}
+    @else
         <section class="content w-100 px-4">
             <div class="card card-solid px-0 py-2 p-lg-4">
                 <table id="student-table" class="table table-striped table-bordered" style="width:100%">
@@ -27,14 +27,18 @@
                     </thead>
                     <tbody>
 
-                        @for ($i = 0; $i < 3; $i++)
+                        @foreach ($htes as $hte)
                             <tr>
-                                <td class="col-8">Hte Name</td>
+                                <td class="col-8"> {{$hte->name}} </td>
                                 <td class="col-4">
-                                    Pending/Declined/Approved
+                                    @if ($hte>declined == 0)
+                                        Pending
+                                    @else
+                                        Declined
+                                    @endif
                                 </td>
                             </tr>
-                        @endfor
+                        @endforeach
                         {{-- @foreach ($students as $stud)
                             <tr>
                                 <td>{{ $stud->name }}</td>
@@ -50,7 +54,7 @@
                 </table>
             </div>
         </section>
-    {{-- @endif --}}
+    @endif
 
     {{-- content --}}
 
