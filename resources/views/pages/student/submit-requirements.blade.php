@@ -11,9 +11,9 @@
             <div class="card card-solid p-4">
                 <div class="row">
                     <div class="col-12 d-flex justify-content-center align-items-center">
-                        <form action="" method="POST" class="card bg-light" enctype="multipart/form-data">
+                        <form action="{{ route('stud.resume-upload')}}" method="POST" class="card bg-light" enctype="multipart/form-data">
                             @csrf
-                            <div class="card-header text-muted border-bottom-0 fw-bold fs-5">Coord Name</div>
+                            <div class="card-header text-muted border-bottom-0 fw-bold fs-5"> {{$coord->name}} </div>
                             <div class="card-body pt-0 d-flex flex-column">
                                 <div class="lead mb-1">Resume</div>
                                 <!-- Upload file input -->

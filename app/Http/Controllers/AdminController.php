@@ -260,6 +260,6 @@ class AdminController extends Controller
         Application::updateOrCreate($validated);
 
         // FIX VALIDATED IN RETURN IF RUNS ERROR
-        return redirect()->route('admin.view.intern-application', $validated[0]->stud_id)->with('success', 'Student Applied');
+        return redirect()->route('admin.view.intern-application', $validated['stud_id'])->with('success', 'Student Applied');
     }
 }
