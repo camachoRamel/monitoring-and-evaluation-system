@@ -4,7 +4,7 @@
 
     <!-- Content Header (Page header) -->
     <div class="app-content-header"> <!--begin::Container-->
-        <h3 class="mb-0">Employee Applicants</h3>
+        <h3 class="mb-0">Intern Applicants</h3>
     </div> <!--end::App Content Header-->
 
     <section class="content w-100 px-4">
@@ -18,7 +18,7 @@
                         <form action="{{ route('hte.approve-action', $stud->id) }}" method="POST" class="card bg-light d-flex flex-fill mb-4">
                             @csrf
                         <div class="card-header text-muted border-bottom-0">
-                            Employee
+                            Intern
                         </div>
                         <div class="card-body pt-0">
                             <div class="row d-flex align-items-center pt-2">

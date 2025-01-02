@@ -4,7 +4,7 @@
 
     <!-- Content Header (Page header) -->
     <div class="app-content-header"> <!--begin::Container-->
-        <h3 class="mb-0">Employee Evaluation Record</h3>
+        <h3 class="mb-0">Intern Evaluation Record</h3>
     </div> <!--end::App Content Header-->
 
     <section class="content w-100 px-4">

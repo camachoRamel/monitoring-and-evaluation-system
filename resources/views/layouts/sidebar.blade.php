@@ -10,7 +10,7 @@
                     <span class="brand-text fw-light">Employer</span>
                     @break
                 @case(3)
-                    <span class="brand-text fw-light">Employee</span>
+                    <span class="brand-text fw-light">Inter</span>
                     @break
 
             @endswitch
@@ -30,10 +30,10 @@
                   <a href="{{ route('admin.index', Auth::id()) }}" class="nav-link"><p>Dashboard</p></a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{ route('admin.student-list') }}" class="nav-link"><p>Employee List</p></a>
+                  <a href="{{ route('admin.student-list') }}" class="nav-link"><p>Intern List</p></a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{ route("admin.student-weekly-report") }}" class="nav-link"><p>Employee Weekly Report</p></a>
+                  <a href="{{ route("admin.student-weekly-report") }}" class="nav-link"><p>Intern Weekly Report</p></a>
                 </li>
                 <li class="nav-item">
                   <a href="{{ route('admin.intern-application')}}" class="nav-link"><p>Intern Application</p></a>
@@ -54,21 +54,21 @@
                 <li class="nav-item">
                   <a href="{{ route('hte.student-list') }}" class="nav-link">
                     <p>
-                        Employee List
+                        Intern List
                     </p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="{{ route('hte.weekly-tasks') }}" class="nav-link">
                     <p>
-                        Employee Weekly Tasks
+                        Intern Weekly Tasks
                     </p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="{{ route('hte.weekly-submission') }}" class="nav-link">
                     <p>
-                        Employee Weekly Submission
+                        Intern Weekly Submission
                     </p>
                   </a>
                 </li>
@@ -85,14 +85,14 @@
                 <li class="nav-item">
                   <a href="{{ route('coord.students-list-page') }}" class="nav-link">
                     <p>
-                        Employee List
+                        Intern List
                     </p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="{{ route('coord.students-reports-page') }}" class="nav-link">
                     <p>
-                        Employee Weekly Report
+                        Intern Weekly Report
                     </p>
                   </a>
                 </li>
