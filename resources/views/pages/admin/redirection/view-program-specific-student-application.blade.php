@@ -6,7 +6,7 @@
     <div class="app-content-header"> <!--begin::Container-->
         <h3 class="mb-0">
             <!--MAKE SURE EACH COURSE HAS AT LEAST 1 STUDENT-->
-            {{-- @if ($students != null)
+            @if ($students != null)
                 @switch($students[0]->course)
                 @case(1)
                     {{'BSIT '}}
@@ -18,8 +18,7 @@
                     {{'COMSCI '}}
                 @break
                 @endswitch
-            @endif --}}
-            BSIT Employees List
+            @endif
         </h3>
     </div> <!--end::App Content Header-->
 
@@ -40,19 +39,6 @@
                         </tr>
                     </thead>
                     <tbody>
-
-                        {{-- @for ($i = 0; $i < 3; $i++)
-                            <tr>
-                                <td class="col-8">Student Name</td>
-                                <td class="col-4">
-                                    <div class="d-flex gap-2">
-                                        <a href="#" class="btn btn-primary">View applications</a>
-                                        <a href="#" class="btn btn-primary">Select Employer</a>
-                                    </div>
-
-                                </td>
-                            </tr>
-                        @endfor --}}
                         @foreach ($students as $stud)
                             <tr>
                                 <td class="col-8"> {{$stud->name}} </td>
