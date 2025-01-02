@@ -141,8 +141,33 @@ class HostingTrainingEstablishmentController extends Controller
             return redirect()->back()->with('message', 'Student declined.');
         }
 
+    }
 
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+            'generalAppearance' => 'required|numeric',
+            'attendance' => 'required|numeric',
+            'honesty' => 'required|numeric',
+            'cooperation' => 'required|numeric',
+            'initiative' => 'required|numeric',
+            'dependability' => 'required|numeric',
+            'tact' => 'required|numeric',
+            'accuracy' => 'required|numeric',
+            'cleanliness' => 'required|numeric',
+            'safety' => 'required|numeric',
+            'toolUsage' => 'required|numeric',
+            'shopCondition' => 'required|numeric',
+            'supervisorRelation' => 'required|numeric',
+            'workerRelation' => 'required|numeric',
+            'studentRelation' => 'required|numeric',
+        ]);
 
+        // Process the data (e.g., save to database)
+        // Example:
+        // Evaluation::create($validated);
+
+        return redirect()->back()->with('success', 'Evaluation submitted successfully!');
     }
 
 }
