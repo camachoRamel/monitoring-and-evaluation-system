@@ -28,7 +28,7 @@
                 <button type="button" class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#evaluationModal">
                     Submit Evaluation to Intern
                 </button>
-                <a href="#" class="btn btn-secondary mb-2">Rate Interns Performance</a>
+                <a href="{{ route('hte.evaluation-page', ['id' => $stud->id])}}" class="btn btn-secondary mb-2">Rate Interns Performance</a>
             </div>
 
             <!-- Modal -->

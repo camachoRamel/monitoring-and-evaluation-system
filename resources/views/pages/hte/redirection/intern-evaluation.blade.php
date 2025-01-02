@@ -5,7 +5,7 @@
     <!-- Content Header (Page header) -->
     <div class="app-content-header"> <!--begin::Container-->
         <h3 class="mb-0">
-            Intern Evaluation for <span class="fw-bolder">Student Name</span>
+            Intern Evaluation for <span class="fw-bolder"> {{$student->name}} </span>
         </h3>
     </div> <!--end::App Content Header-->
 
@@ -31,7 +31,7 @@
 
             </div>
 
-            <form action="" method="POST">
+            <form action="{{ route('hte.store-evaluation', ['id' => $student->id]) }}" method="POST">
                 @csrf
 
                 <hr class="border border-primary border-2">
