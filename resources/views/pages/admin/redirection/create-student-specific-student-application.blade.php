@@ -6,6 +6,11 @@
         <h3 class="mb-0">
             Application for Intern: <span class="fw-bolder" id="stud"> {{$student->name}} </span>
         </h3>
+        @if(session('success'))
+            <div class="alert alert-success mt-3" role="alert">
+                {{ session('success') }}
+            </div>
+        @endif
     </div> <!--end::App Content Header-->
 
         <section class="content w-100 px-4">

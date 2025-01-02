@@ -8,6 +8,7 @@ use App\Models\Requirement;
 use App\Models\User;
 use App\Models\WeeklyEvaluation;
 use App\Models\WeeklyTask;
+use App\Models\Application;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
