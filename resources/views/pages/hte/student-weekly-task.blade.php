@@ -4,7 +4,7 @@
 
     <!-- Content Header (Page header) -->
     <div class="app-content-header"> <!--begin::Container-->
-        <h3 class="mb-0">Employee Weekly Task</h3>
+        <h3 class="mb-0">Intern Weekly Task</h3>
     </div> <!--end::App Content Header-->
 
     <section class="content w-100 px-0 p-lg-4">

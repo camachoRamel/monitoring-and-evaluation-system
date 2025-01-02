@@ -32,14 +32,14 @@
                                         Administrator
                                         @break
                                     @case(1)
-                                        Employer
+                                        HTE
                                     @break
 
                                     @case(2)
                                         Coordinator
                                     @break
                                     @case(3)
-                                        Employee
+                                        Intern
                                     @break
                                 @endswitch
                             </td>

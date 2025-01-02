@@ -10,7 +10,7 @@
         <section class="content w-100 px-4">
             <div class="card card-solid p-4">
                 <div class="container d-flex justify-content-center align-items-center">
-                    <p class="p-0 mt-2">You have not been approved yet by any employer</p>
+                    <p class="p-0 mt-2">You have not been approved yet by any HTE</p>
                 </div>
             </div>
             {{-- card --}}

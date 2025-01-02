@@ -33,7 +33,7 @@
                                         class="btn btn-primary getHteName"
                                         data-id="{{ $hte->name }}"
                                         id="{{ $hte->name }}"
-                                        {{-- wire:click="$emit('selectEmployer', '{{ $student->name }}', {{ $hte->id }})" onclick="console.log('HTE ID:', {{ $hte->id }})" --}}
+                                        {{-- wire:click="$emit('selectHTE', '{{ $student->name }}', {{ $hte->id }})" onclick="console.log('HTE ID:', {{ $hte->id }})" --}}
 
                                     >
                                         Send Requirements
@@ -63,7 +63,7 @@
             const targetId = $(this).data('id');
             const text = $(`#${targetId}`).text();
             // Display confirmation prompt
-            const isConfirmed = confirm(`Are you sure you want to submit?\n\nEmployer Name: ${targetId}`);
+            const isConfirmed = confirm(`Are you sure you want to submit?\n\nHTE Name: ${targetId}`);
 
             if (isConfirmed) {
                 // If confirmed, submit the form

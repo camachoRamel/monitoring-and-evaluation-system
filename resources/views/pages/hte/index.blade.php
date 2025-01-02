@@ -36,7 +36,7 @@ google.charts.setOnLoadCallback(drawChart);
 function drawChart() {
     // Create the data table. Use actual numbers instead of percentages
     var data = google.visualization.arrayToDataTable([
-        ['Program', 'Number of Employees'],
+        ['Program', 'Number of Interns'],
         ['IT', {{ $iTCount }}],
         ['IS', {{ $iSCount }}],
         ['ComSci', {{ $comSciCount }}]
@@ -47,13 +47,13 @@ function drawChart() {
 
     // Set chart options
     var options = {
-        title: 'Number of Employees Managed',
+        title: 'Number of Interns Managed',
         hAxis: {
             title: 'Program',
             titleTextStyle: { color: '#333' }
         },
         vAxis: {
-            title: 'Number of Employees',
+            title: 'Number of Interns',
             minValue: 0,
             maxValue: maxValue,  // Ensures that the vAxis is at least 10
             viewWindow: {

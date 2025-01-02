@@ -18,7 +18,7 @@
                 @break
                 @endswitch
             @endif
-            Employee Report
+            Intern Report
         </h3>
     </div> <!--end::App Content Header-->
 

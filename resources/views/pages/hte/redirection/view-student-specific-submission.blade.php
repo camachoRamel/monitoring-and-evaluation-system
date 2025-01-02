@@ -8,7 +8,7 @@
 
     <!-- Content Header (Page header) -->
     <div class="app-content-header"> <!--begin::Container-->
-        <h3 class="mb-0">Employee Submission Record</h3>
+        <h3 class="mb-0">Intern Submission Record</h3>
     </div> <!--end::App Content Header-->
 
     <section class="content w-100 px-4">
@@ -26,7 +26,7 @@
             <!-- Button trigger modal -->
             <div class="container p-0 mb-3">
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#evaluationModal">
-                    Submit Evaluation to Employee
+                    Submit Evaluation to Intern
                 </button>
             </div>
 

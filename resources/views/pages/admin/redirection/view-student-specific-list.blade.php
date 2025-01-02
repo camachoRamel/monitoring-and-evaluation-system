@@ -7,7 +7,7 @@
         <div class="container-fluid"> <!--begin::Row-->
             <div class="row">
                 <div class="col-sm-6">
-                    <h3 class="mb-0">Employee Information</h3>
+                    <h3 class="mb-0">Intern Information</h3>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-end">
@@ -68,7 +68,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5 text-danger" id="deleteModalLabel">YOU WILL BE DELETING EMPLOYEE:</h1>
+                <h1 class="modal-title fs-5 text-danger" id="deleteModalLabel">YOU WILL BE DELETING Intern:</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">

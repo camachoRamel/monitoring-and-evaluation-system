@@ -42,7 +42,7 @@
                                 <table id="student-table" class="table table-striped table-bordered">
                                     <thead>
                                         <tr>
-                                            <th>Employees Managed</th>
+                                            <th>Interns Managed</th>
                                             <th>Control</th>
                                         </tr>
                                     </thead>
@@ -81,7 +81,7 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="col">
-                        <h4 class="text-danger">ALONG WITH EMPLOYEES: </h4>
+                        <h4 class="text-danger">ALONG WITH InternS: </h4>
                         <table id="student-table" class="table table-striped table-bordered">
                             <tbody>
                                 @foreach ($connections as $conn)

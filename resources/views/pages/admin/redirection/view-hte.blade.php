@@ -7,7 +7,7 @@
         <div class="container-fluid"> <!--begin::Row-->
             <div class="row">
                 <div class="col-sm-6">
-                    <h3 class="mb-0">Employer Information</h3>
+                    <h3 class="mb-0">HTE Information</h3>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-end">
@@ -39,7 +39,7 @@
                                 <table id="student-table" class="table table-striped table-bordered">
                                     <thead>
                                         <tr>
-                                            <th>Employees Managed</th>
+                                            <th>Interns Managed</th>
                                             <th>Control</th>
                                         </tr>
                                     </thead>
@@ -70,7 +70,7 @@
             <div class="modal-content">
             <div class="modal-header">
                 <div class="col">
-                    <h3 class="modal-title text-danger" id="deleteModalLabel">YOU WILL BE DELETING EMPLOYER:</h3>
+                    <h3 class="modal-title text-danger" id="deleteModalLabel">YOU WILL BE DELETING HTE:</h3>
                     <h4 class="fw-bold"> {{ $worker->first_name }}</h4>
                 </div>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -78,7 +78,7 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="col">
-                        <h4 class="text-danger">ALONG WITH EMPLOYEES: </h4>
+                        <h4 class="text-danger">ALONG WITH InternS: </h4>
                         <table id="student-table" class="table table-striped table-bordered">
                             <tbody>
                                 @foreach ($connections as $conn)

@@ -45,7 +45,7 @@
                                 <td class="col-4">
                                     <div class="d-flex gap-2">
                                         <a href="{{ route('admin.view.student-applications', ['id' => $stud->id]) }}" class="btn btn-primary">View applications</a>
-                                        <a href="{{ route('admin.view.intern-application', ['id' => $stud->id]) }}" class="btn btn-primary">Select Employer</a>
+                                        <a href="{{ route('admin.view.intern-application', ['id' => $stud->id]) }}" class="btn btn-primary">Select HTE</a>
                                     </div>
 
                                 </td>
