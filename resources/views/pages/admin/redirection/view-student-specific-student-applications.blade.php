@@ -45,7 +45,7 @@
                                 <td class="d-flex justify-content-end">
                                     <a href="{{ route("admin.view-student", ['type' => 'list', 'id' => $stud->id]) }}" class="btn btn-primary">View</a>
                                     REPLACE WITH ACTUAL ROUTE
-                                    <a href="#" class="btn btn-primary">Select Employer</a>
+                                    <a href="#" class="btn btn-primary">Select HTE</a>
                                 </td>
                             </tr>
                         @endforeach --}}

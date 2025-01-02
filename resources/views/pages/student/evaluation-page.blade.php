@@ -4,7 +4,7 @@
 
     <!-- Content Header (Page header) -->
     <div class="app-content-header">
-        <h3 class="mb-0">Employer Evaluation</h3>
+        <h3 class="mb-0">HTE Evaluation</h3>
     </div>
 
     <!-- Select Element to Choose the Week -->

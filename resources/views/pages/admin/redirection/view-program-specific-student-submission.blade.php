@@ -19,7 +19,7 @@
                 @break
                 @endswitch
             @endif
-            Employees Report List
+            Interns Report List
         </h3>
     </div> <!--end::App Content Header-->
 
@@ -40,7 +40,7 @@
                 <thead>
                     <tr>
                         <th>Name</th>
-                        <th>Employer</th>
+                        <th>HTE</th>
                         <th>Report</th>
                     </tr>
                 </thead>
@@ -52,7 +52,7 @@
                                 @if ($stud->hte != null)
                                     {{ $stud->hte }}
                                 @else
-                                    No Employer yet
+                                    No HTE yet
                                 @endif
 
                             </td>

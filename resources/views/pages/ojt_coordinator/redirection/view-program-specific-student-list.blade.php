@@ -18,7 +18,7 @@
                 @break
                 @endswitch
             @endif
-            Employee List
+            Intern List
         </h3>
     </div> <!--end::App Content Header-->
 
