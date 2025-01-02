@@ -25,9 +25,10 @@
             @endif
             <!-- Button trigger modal -->
             <div class="container p-0 mb-3">
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#evaluationModal">
+                <button type="button" class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#evaluationModal">
                     Submit Evaluation to Intern
                 </button>
+                <a href="#" class="btn btn-secondary mb-2">Rate Interns Performance</a>
             </div>
 
             <!-- Modal -->
