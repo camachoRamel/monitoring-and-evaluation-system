@@ -21,11 +21,11 @@
                 <!-- Radio Begin -->
                 <div class="btn-group mb-2" role="group" aria-label="Basic radio toggle button group">
                     <input type="radio" class="btn-check" name="role" id="1" autocomplete="off" value="3" {{ old('role') == 3 ? 'checked' : '' }}>
-                    <label class="btn btn-outline-primary" for="1">Employee</label>
+                    <label class="btn btn-outline-primary" for="1">Intern</label>
                     {{-- <input type="radio" class="btn-check" name="role" id="2" value="2" autocomplete="off" {{ old('role') == 2 ? 'checked' : '' }}>
                     <label class="btn btn-outline-primary" for="2">OJT Coordinator</label> --}}
                     <input type="radio" class="btn-check" name="role" id="3" value="1" autocomplete="off" {{ old('role') == 1 ? 'checked' : '' }}>
-                    <label class="btn btn-outline-primary" for="3">Employer</label>
+                    <label class="btn btn-outline-primary" for="3">HTE</label>
                 </div>
 
                 <!-- Display Validation Errors -->
@@ -45,7 +45,7 @@
                         <div class="col-12 col-md-6">
                             <div class="card mb-4">
                                 <div class="card-header">
-                                    <div class="card-title">Employee</div>
+                                    <div class="card-title">Intern</div>
                                 </div>
 
                                 <div class="card-body">
@@ -181,7 +181,7 @@
                         <div class="col-12 col-md-6">
                             <div class="card mb-4"> <!--begin::Header-->
                                 <div class="card-header">
-                                    <div class="card-title">Employer</div>
+                                    <div class="card-title">HTE</div>
                                 </div> <!--end::Header--> <!--begin::Body-->
                                 <div class="card-body">
                                     <div class="mb-3">

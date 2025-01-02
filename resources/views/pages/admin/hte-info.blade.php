@@ -4,7 +4,7 @@
 
     <!-- Content Header (Page header) -->
     <div class="app-content-header"> <!--begin::Container-->
-        <h3 class="mb-0">Employer Information</h3>
+        <h3 class="mb-0">HTE Information</h3>
     </div> <!--end::App Content Header-->
 
     <section class="content w-100 px-0 px-md-2 px-lg-4">

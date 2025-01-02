@@ -7,7 +7,7 @@
                     <span class="brand-text fw-light">Admin</span>
                     @break
                 @case(1)
-                    <span class="brand-text fw-light">Employer</span>
+                    <span class="brand-text fw-light">HTE</span>
                     @break
                 @case(3)
                     <span class="brand-text fw-light">Inter</span>
@@ -39,7 +39,7 @@
                   <a href="{{ route('admin.intern-application')}}" class="nav-link"><p>Intern Application</p></a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{ route("admin.hte-info") }}" class="nav-link"><p>Employer Info</p></a>
+                  <a href="{{ route("admin.hte-info") }}" class="nav-link"><p>HTE Info</p></a>
                 </li>
               @endif
               <!--hte sidebar-->
@@ -135,7 +135,7 @@
                 <li class="nav-item">
                     <a href="{{ route('stud.evaluation-page') }}" class="nav-link">
                       <p>
-                        Employer Evaluation
+                        HTE Evaluation
                       </p>
                     </a>
                   </li>
