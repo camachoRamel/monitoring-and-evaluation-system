@@ -66,7 +66,7 @@ class StudentController extends Controller
 
     }
 
-    public function uploadResume(Request $request, int $id)
+    public function uploadResume(Request $request)
     {
 
         $validation = $request->validate([

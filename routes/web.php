@@ -189,17 +189,29 @@ Route::middleware('is.student')->group(function()
 
     Route::get('/student/evaluation-page', [StudentController::class, 'viewEvaluation'])->name('stud.evaluation-page');
 
-    Route::get('/student/upload-resume-to{id}', function(int $id)
+    // Route::get('/student/upload-resume-to{id}', function(int $id)
+    // {
+    //     $hte = DB::table('users')
+    //     ->select('*')
+    //     ->where('id', $id)
+    //     ->first();
+
+    //     return view('pages.student.conditional-pages.submit-requirements', compact('hte'));
+    // })->name('stud.resume-upload-page');
+
+    Route::get('/student/updload-resume-page', function()
     {
-        $hte = DB::table('users')
-        ->select('*')
-        ->where('id', $id)
+        $coord = DB::table('intern_handlers AS ih')
+        ->select(DB::raw('CONCAT(u2.first_name, " ", COALESCE(u2.middle_name, ""), " ", u2.last_name) AS name'))
+        ->join('users AS u2', 'u2.id', '=', 'ih.coord_id')
+        ->where('ih.user_id', Auth::id())
         ->first();
 
-        return view('pages.student.conditional-pages.submit-requirements', compact('hte'));
-    })->name('stud.resume-upload-page');
+        return view('pages.student.submit-requirements', compact('coord'));
 
-    Route::post('/student/resume-upload{id}', [StudentController::class, 'uploadResume'])->name('stud.resume-upload');
+    })->name('stud.updload-resume-page');
+
+    Route::post('/student/resume-upload', [StudentController::class, 'uploadResume'])->name('stud.resume-upload');
 
     Route::get('/student/weekly-tasks{week}', [StudentController::class, 'getWeeklyTasks'])->name('stud.weekly-tasks-page');
 

@@ -85,7 +85,7 @@ class UserController extends Controller
             {
                 case 1:
                     $users = DB::table('users')
-                    ->select('*', DB::raw('CONCAT(first_name, " ", COALESCE(middle_name, ""), " ", last_name) AS name'))
+                    ->select('*', DB::raw('CONCAT(first_name, " ", COALESCE(middle_name, ""), " ", COALESCE(last_name, "")) AS name'))
                     ->where('role', $args[0])
                     ->get();
                 break;
