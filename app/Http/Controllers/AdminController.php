@@ -221,7 +221,7 @@ class AdminController extends Controller
     public function getStudentAppliedHtes(int $id)
     {
         $student = UserController::getUser($id);
-        $htes = DB::table('application AS appli')
+        $htes = DB::table('applications AS appli')
         ->select('appli.declined AS declined', DB::raw('CONCAT(u1.first_name, " ", COALESCE(u1.middle_name, ""), " ", u1.last_name) AS name'))
         ->join('users AS u1', 'u1.id', '=', 'appli.hte_id')
         ->where('stud_id', $id)
