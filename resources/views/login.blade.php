@@ -6,6 +6,11 @@
 
     <main class="d-flex justify-content-center align-items-center vh-100">
         <div class="container-xs p-5 border-none rounded bg-light" id="login-card">
+            <div class="container mb-3">
+                <h4 class="text-center">
+                    On-the-Job Training Monitoring and Evaluation system
+                </h4>
+            </div>
             <form name="form" action="{{ route('login')}}" method="POST">
                 @csrf
                 <div class="form-floating mb-3">
