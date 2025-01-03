@@ -209,6 +209,22 @@ class UserController extends Controller
 
                     return $students;
                     break;
+                case 3:
+                    $students = DB::table('intern_handlers')
+                    ->select('u1.id', 'u1.profile_picture AS stud_picture',
+                    'u1.course', DB::raw('CONCAT(u1.first_name, " ", COALESCE(u1.middle_name, ""), " ", u1.last_name) AS name, CONCAT(u2.first_name, " ", COALESCE(u2.middle_name, ""), " ", u2.last_name) AS coord, u3.first_name AS hte'))
+                    ->join('users AS u1', 'u1.id', '=', 'user_id')
+                    ->join('users AS u2', 'u2.id', '=', 'coord_id')
+                    ->leftJoin('users AS u3', 'u3.id', '=', 'hte_id')
+                    ->join('requirements AS r', 'r.user_id', '=', 'u1.id')
+                    ->where('u1.role', 3)
+                    ->where('u1.course', $args[0])
+                    ->where('u1.approved', $args[1])
+                    ->where('u2.id', Auth::id())
+                    ->get();
+
+                    return $students;
+                    break;
             }
         }
 
