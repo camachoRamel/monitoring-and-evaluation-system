@@ -130,6 +130,15 @@ Route::middleware('is.hte')->group(function()
 
     Route::post('hte/uploading-task{id}', [HostingTrainingEstablishmentController::class, 'uploadWeeklyTask'])->name('hte.upload-student-task');
 
+    //STUDENT EVALUATION RATE
+    Route::get('/hte/evaluation-page{id}', function(int $id)
+    {
+        $student = UserController::getUser($id);
+        return view('pages.hte.redirection.intern-evaluation', compact('student'));
+    })->name('hte.evaluation-page');
+
+    Route::post('/hte/store-evaluation{id}', [HostingTrainingEstablishmentController::class, 'storeEvaluation'])->name('hte.store-evaluation');
+
     //HTE SUBMISSION VIEW STUDENT ROUTES
     Route::get('/hte/submission-students', function()
     {

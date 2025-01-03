@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\InternHandler;
 use App\Models\Requirement;
+use App\Models\Evaluation;
 use App\Models\User;
 use App\Models\WeeklyEvaluation;
 use App\Models\WeeklyTask;
@@ -144,7 +145,7 @@ class HostingTrainingEstablishmentController extends Controller
 
     }
 
-    public function store(Request $request)
+    public function storeEvaluation(Request $request, int $id)
     {
         $validated = $request->validate([
             'generalAppearance' => 'required|numeric',
@@ -155,15 +156,45 @@ class HostingTrainingEstablishmentController extends Controller
             'dependability' => 'required|numeric',
             'tact' => 'required|numeric',
             'accuracy' => 'required|numeric',
+
             'cleanliness' => 'required|numeric',
             'safety' => 'required|numeric',
             'toolUsage' => 'required|numeric',
             'shopCondition' => 'required|numeric',
+
             'supervisorRelation' => 'required|numeric',
             'workerRelation' => 'required|numeric',
             'studentRelation' => 'required|numeric',
         ]);
 
+        $pa_average = ($validated['generalAppearance'] +
+        $validated['attendance'] +
+        $validated['honesty'] +
+        $validated['cooperation'] +
+        $validated['initiative'] +
+        $validated['dependability'] +
+        $validated['tact'] +
+        $validated['accuracy']) / 8;
+
+        $sm_average = ($validated['cleanliness'] +
+        $validated['safety'] +
+        $validated['toolUsage'] +
+        $validated['shopCondition']) / 4;
+
+        $hrs_average = ($validated['supervisorRelation'] +
+        $validated['workerRelation'] +
+        $validated['studentRelation']) / 3;
+
+        Evaluation::create(
+            [
+                'stud_id' => $id,
+                'hte_id' => Auth::id(),
+                'pa_average' => $pa_average,
+                'sm_average' => $sm_average,
+                'hrs_average' => $hrs_average,
+                'total_average' => ($pa_average + $sm_average + $hrs_average) / 3
+            ]
+        );
         // Process the data (e.g., save to database)
         // Example:
         // Evaluation::create($validated);

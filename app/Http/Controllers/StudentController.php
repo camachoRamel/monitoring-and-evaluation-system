@@ -41,8 +41,13 @@ class StudentController extends Controller
         ->where('user_id', Auth::id())
         ->get();
 
+        $rate = DB::table('evaluations')
+        ->select('pa_average', 'sm_average', 'hrs_average', 'total_average')
+        ->where('stud_id', Auth::id())
+        ->first();
+
         // dd($evaluation);
-        return view('pages.student.evaluation-page', compact('evaluation', 'evaluator'));
+        return view('pages.student.evaluation-page', compact('evaluation', 'evaluator', 'rate'));
     }
 
 
