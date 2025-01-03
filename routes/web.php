@@ -16,10 +16,7 @@ use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
 
-Route::get('/', function ()
-{
-    return view('login');
-});
+Route::get('/', [LoginLogoutController::class, 'sessionBasedLogin']);
 
 //LOGIN AND LOGOUT ROUTES
 Route::post('/login', [LoginLogoutController::class, 'authenticate'])->name('login');

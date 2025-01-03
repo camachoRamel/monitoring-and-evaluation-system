@@ -101,7 +101,9 @@ class AdminController extends Controller
     {
         if($type == "application")
         {
-            $students = UserController::getHandledStudents($course, 0);
+            //THE FUNCTION NEEDS THREE PARAMETERS PASSED FOR IT TO GET ONLY THE STUDENTS WITH REQUIREMENTS PASSED.
+            // THE THIRD PARAMETER CAN BE ANYTHING
+            $students = UserController::getHandledStudents($course, 0, true);
         }else
         {
             $students = UserController::getHandledStudents($course);
