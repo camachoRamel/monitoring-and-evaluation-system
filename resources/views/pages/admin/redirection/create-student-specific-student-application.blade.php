@@ -20,7 +20,7 @@
                     <table id="student-table" class="table table-striped table-bordered" style="width:100%">
                         <thead>
                             <tr>
-                                <th>Name</th>
+                                <th>Hte Name</th>
                                 <th>Control</th>
                             </tr>
                         </thead>

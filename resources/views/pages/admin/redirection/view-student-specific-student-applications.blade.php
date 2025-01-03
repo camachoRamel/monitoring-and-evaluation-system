@@ -21,7 +21,7 @@
                 <table id="student-table" class="table table-striped table-bordered" style="width:100%">
                     <thead>
                         <tr>
-                            <th>Name</th>
+                            <th>Hte Name</th>
                             <th>Status</th>
                         </tr>
                     </thead>
@@ -31,7 +31,7 @@
                             <tr>
                                 <td class="col-8"> {{$hte->name}} </td>
                                 <td class="col-4">
-                                    @if ($hte>declined == 0)
+                                    @if ($hte->declined == 0)
                                         Pending
                                     @else
                                         Declined

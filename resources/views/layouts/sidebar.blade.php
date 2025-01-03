@@ -10,7 +10,7 @@
                     <span class="brand-text fw-light">HTE</span>
                     @break
                 @case(3)
-                    <span class="brand-text fw-light">Inter</span>
+                    <span class="brand-text fw-light">Intern</span>
                     @break
 
             @endswitch
