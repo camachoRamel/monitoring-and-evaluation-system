@@ -42,9 +42,9 @@
 
                     <div class="d-flex justify-content-center gap-2">
                         <div class="fw-bolder text-center">
-                            <p class="text-muted">Personal Attitude: <span class="text-dark"> {{$rate->pa_average}} </span> </p>
-                            <p class="text-muted">Shop Management: <span class="text-dark"> {{$rate->sm_average}} </span> </p>
-                            <p class="text-muted">Human Relation Skills: <span class="text-dark"> {{$rate->hrs_average}} </span> </p>
+                            <p class="text-muted">Personal Attitude: <span class="text-dark"> {{$rate->pa_average ?? 'No rating yet'}} </span> </p>
+                            <p class="text-muted">Shop Management: <span class="text-dark"> {{$rate->sm_average ?? 'No rating yet'}} </span> </p>
+                            <p class="text-muted">Human Relation Skills: <span class="text-dark"> {{$rate->hrs_average ?? 'No rating yet'}} </span> </p>
                         </div>
                         {{-- <div class="fw-bolder">1.75</div>
                         <div class="fw-bolder">1.76</div> --}}
@@ -52,10 +52,11 @@
                     <div class="row">
                         <div class="col-12 text-center">
                             <div class="fw-bolder">
-                                <p class="text-muted fs-4">Total Average: <span class="text-dark"> {{$rate->total_average}} </span> </p>
+                                <p class="text-muted fs-4">Total Average: <span class="text-dark"> {{$rate->total_average ?? 'No rating yet'}} </span> </p>
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>

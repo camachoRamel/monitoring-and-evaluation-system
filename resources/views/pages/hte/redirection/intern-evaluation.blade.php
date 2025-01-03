@@ -7,6 +7,11 @@
         <h3 class="mb-0">
             Intern Evaluation for <span class="fw-bolder"> {{$student->name}} </span>
         </h3>
+        @if(session('success'))
+            <div class="alert alert-success mt-3" role="alert">
+                {{ session('success') }}
+            </div>
+        @endif
     </div> <!--end::App Content Header-->
 
     <section class="content w-100 px-4">
@@ -40,38 +45,36 @@
                 <div class="mb-3">
                     <h5>I. PERSONAL ATTITUDES</h5>
                     <div class="row">
-                        <div class="form-group mb-2 col-12 col-lg-6">
-                            <label for="generalAppearance">1. General appearance, poise, neatness, bearing and proper attire</label>
-                            <input type="number" step="0.01" class="form-control" id="generalAppearance" name="generalAppearance" required>
-                        </div>
-                        <div class="form-group mb-2 col-12 col-lg-6">
-                            <label for="attendance">2. Attendance, regularity & punctuality</label>
-                            <input type="number" step="0.01" class="form-control" id="attendance" name="attendance" required>
-                        </div>
-                        <div class="form-group mb-2 col-12 col-lg-6">
-                            <label for="honesty">3. Honesty, ethical & model of good character</label>
-                            <input type="number" step="0.01" class="form-control" id="honesty" name="honesty" required>
-                        </div>
-                        <div class="form-group mb-2 col-12 col-lg-6">
-                            <label for="cooperation">4. Cooperation and loyalty</label>
-                            <input type="number" step="0.01" class="form-control" id="cooperation" name="cooperation" required>
-                        </div>
-                        <div class="form-group mb-2 col-12 col-lg-6">
-                            <label for="initiative">5. Initiative, resourcefulness & industry</label>
-                            <input type="number" step="0.01" class="form-control" id="initiative" name="initiative" required>
-                        </div>
-                        <div class="form-group mb-2 col-12 col-lg-6">
-                            <label for="dependability">6. Dependability</label>
-                            <input type="number" step="0.01" class="form-control" id="dependability" name="dependability" required>
-                        </div>
-                        <div class="form-group mb-2 col-12 col-lg-6">
-                            <label for="tact">7. Tact, attitude towards suggestions</label>
-                            <input type="number" step="0.01" class="form-control" id="tact" name="tact" required>
-                        </div>
-                        <div class="form-group mb-2 col-12 col-lg-6">
-                            <label for="accuracy">8. Accuracy</label>
-                            <input type="number" step="0.01" class="form-control" id="accuracy" name="accuracy" required>
-                        </div>
+                        @php
+                            $personalAttitudes = [
+                                'generalAppearance' => '1. General appearance, poise, neatness, bearing and proper attire',
+                                'attendance' => '2. Attendance, regularity & punctuality',
+                                'honesty' => '3. Honesty, ethical & model of good character',
+                                'cooperation' => '4. Cooperation and loyalty',
+                                'initiative' => '5. Initiative, resourcefulness & industry',
+                                'dependability' => '6. Dependability',
+                                'tact' => '7. Tact, attitude towards suggestions',
+                                'accuracy' => '8. Accuracy',
+                            ];
+                        @endphp
+                        @foreach ($personalAttitudes as $name => $label)
+                            <div class="form-group mb-2 col-12 col-lg-6">
+                                <label for="{{ $name }}">{{ $label }}</label>
+                                <input
+                                    type="number"
+                                    step="0.01"
+                                    min="1.0"
+                                    max="3.0"
+                                    class="form-control @error($name) is-invalid @enderror"
+                                    id="{{ $name }}"
+                                    name="{{ $name }}"
+                                    value="{{ old($name) }}"
+                                    required>
+                                @error($name)
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        @endforeach
                     </div>
                 </div>
 
@@ -81,25 +84,32 @@
                 <div class="mb-3">
                     <h5>II. SHOP MANAGEMENT</h5>
                     <div class="row">
-                        <div class="form-group mb-2 col-12 col-lg-6">
-                            <label for="cleanliness">1. Skill in maintaining cleanliness/orderliness</label>
-                            <input type="number" step="0.01" class="form-control " id="cleanliness" name="cleanliness" required>
-
-                        </div>
-                        <div class="form-group mb-2 col-12 col-lg-6">
-                            <label for="safety">2. Skill in applying safety rules and regulations</label>
-                            <input type="number" step="0.01" class="form-control " id="safety" name="safety" required>
-
-                        </div>
-                        <div class="form-group mb-2 col-12 col-lg-6">
-                            <label for="toolUsage">3. Skill in the proper use and upkeep of tools, machines and equipment</label>
-                            <input type="number" step="0.01" class="form-control " id="toolUsage" name="toolUsage" required>
-
-                        </div>
-                        <div class="form-group mb-2 col-12 col-lg-6">
-                            <label for="shopCondition">4. Skill in maintaining the physical condition of shop/facilities</label>
-                            <input type="number" step="0.01" class="form-control " id="shopCondition" name="shopCondition" required>
-                        </div>
+                        @php
+                            $shopManagement = [
+                                'cleanliness' => '1. Skill in maintaining cleanliness/orderliness',
+                                'safety' => '2. Skill in applying safety rules and regulations',
+                                'toolUsage' => '3. Skill in the proper use and upkeep of tools, machines and equipment',
+                                'shopCondition' => '4. Skill in maintaining the physical condition of shop/facilities',
+                            ];
+                        @endphp
+                        @foreach ($shopManagement as $name => $label)
+                            <div class="form-group mb-2 col-12 col-lg-6">
+                                <label for="{{ $name }}">{{ $label }}</label>
+                                <input
+                                    type="number"
+                                    step="0.01"
+                                    min="1.0"
+                                    max="3.0"
+                                    class="form-control @error($name) is-invalid @enderror"
+                                    id="{{ $name }}"
+                                    name="{{ $name }}"
+                                    value="{{ old($name) }}"
+                                    required>
+                                @error($name)
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        @endforeach
                     </div>
                 </div>
 
@@ -109,35 +119,39 @@
                 <div class="mb-3">
                     <h5>III. HUMAN RELATION SKILLS</h5>
                     <div class="row">
-                        <div class="col-12 col-lg-6">
-                            <div class="form-group mb-2">
-                                <label for="supervisorRelation">1. Skill in maintaining harmonious relationships with supervisor/foreman</label>
-                                <input type="number" step="0.01" class="form-control" id="supervisorRelation" name="supervisorRelation" required>
+                        @php
+                            $humanRelations = [
+                                'supervisorRelation' => '1. Skill in maintaining harmonious relationships with supervisor/foreman',
+                                'workerRelation' => '2. Skill in maintaining congenial relationships with workers in the company',
+                                'studentRelation' => '3. Skills in maintaining congenial relationships with co-students or trainees',
+                            ];
+                        @endphp
+                        @foreach ($humanRelations as $name => $label)
+                            <div class="form-group mb-2 col-12 col-lg-6">
+                                <label for="{{ $name }}">{{ $label }}</label>
+                                <input
+                                    type="number"
+                                    step="0.01"
+                                    min="1.0"
+                                    max="3.0"
+                                    class="form-control @error($name) is-invalid @enderror"
+                                    id="{{ $name }}"
+                                    name="{{ $name }}"
+                                    value="{{ old($name) }}"
+                                    required>
+                                @error($name)
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
-                        </div>
-
-                        <div class="col-12 col-lg-6">
-                            <div class="form-group mb-2">
-                                <label for="workerRelation">2. Skill in maintaining congenial relationships with workers in the company</label>
-                                <input type="number" step="0.01" class="form-control" id="workerRelation" name="workerRelation" required>
-                            </div>
-                        </div>
-
-                        <div class="col-12 col-lg-6">
-                            <div class="form-group mb-2">
-                                <label for="studentRelation">3. Skills in maintaining congenial relationships with co-students or trainees</label>
-                                <input type="number" step="0.01" class="form-control" id="studentRelation" name="studentRelation" required>
-                            </div>
-                        </div>
-
+                        @endforeach
                     </div>
                 </div>
 
                 <div class="text-end">
                     <button type="submit" class="btn btn-primary ms-auto">Submit</button>
                 </div>
-
             </form>
+
 
 
         </div>
