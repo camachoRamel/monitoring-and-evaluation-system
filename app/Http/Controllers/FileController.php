@@ -72,7 +72,7 @@ class FileController extends Controller
 
         $file = $request->file('evaluation');
         //  . "-" . Auth::id() . time() .  USED TO BE IN THE FILENAME
-        $fileName = 'evaluation-'. Auth::user()->first_name .'.' . $file->getCLientOriginalExtension();
+        $fileName = 'evaluation-'. Auth::user()->first_name  .'.' . $file->getCLientOriginalExtension();
         $filePath = $file->storeAs('evaluations', $fileName);
 
         $weekly_evaluation = [

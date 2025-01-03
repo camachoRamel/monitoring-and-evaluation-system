@@ -40,6 +40,25 @@ class LoginLogoutController extends Controller
         return redirect('/')->with('incorrect', 'Incorrect password or username');
     }
 
+    public function sessionBasedLogin()
+    {
+        if(is_null(Auth::user())) return view('login');
+        switch(Auth::user()->role)
+            {
+                case 0:
+                    return redirect()->route('admin.index', Auth::id());
+                    break;
+
+                case 1:
+                    return redirect()->route('hte.index', Auth::id());
+                    break;
+
+                case 3:
+                    return redirect()->route('stud.index', Auth::id());
+                    break;
+            }
+    }
+
     public function logout(Request $request)
     {
         RecordController::logoutTime();
