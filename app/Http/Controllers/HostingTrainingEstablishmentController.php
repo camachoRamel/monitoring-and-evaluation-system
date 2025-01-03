@@ -185,7 +185,7 @@ class HostingTrainingEstablishmentController extends Controller
         $validated['workerRelation'] +
         $validated['studentRelation']) / 3;
 
-        Evaluation::create(
+        Evaluation::updateOrCreate(
             [
                 'stud_id' => $id,
                 'hte_id' => Auth::id(),
