@@ -24,14 +24,11 @@
                 </div>
             @endif
             <!-- Button trigger modal -->
-            <div class="container p-0 mb-3">
-                <button type="button" class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#evaluationModal">
-                    Submit Evaluation to Intern
-                </button>
-                <a href="{{ route('hte.evaluation-page', ['id' => $stud->id])}}" class="btn btn-secondary mb-2">Rate Interns Performance</a>
+            <div class="container p-0 mb-3 ms-0">
+                <a href="{{ route('hte.evaluation-page', ['id' => $stud->id])}}" class="btn btn-primary mb-2">Rate Interns Performance</a>
             </div>
 
-            <!-- Modal -->
+            <!-- Modal
             <form method="POST" action="{{ route('hte.upload-evaluation', $stud->id) }}" class="modal fade" id="evaluationModal" tabindex="-1" aria-labelledby="evaluationModalLabel" aria-hidden="true" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-dialog modal-dialog-centered">
@@ -61,8 +58,9 @@
                     </div>
                 </div>
             </form>
+            -->
 
-            <div class="container d-flex justify-content-center">
+            <div class="container d-flex justify-content-center mb-2">
                 <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
                     <div class="card bg-light d-flex flex-fill">
                       <div class="card-header text-muted border-bottom-0">
@@ -101,6 +99,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
         {{-- card --}}
     </section>
