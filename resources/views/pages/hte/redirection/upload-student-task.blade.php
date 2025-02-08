@@ -32,7 +32,7 @@
                     </div>
 
                     <div class="row">
-                        @foreach (range(1, 5) as $day)
+                        {{-- @foreach (range(1, 5) as $day)
                         <div class="col-6 col-md-4 col-lg-4 mb-4">
                             <div class="card">
                                 <div class="p-2">
@@ -59,10 +59,43 @@
                             </div>
 
                         </div>
-                        @endforeach
+                        @endforeach --}}
+
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                       <!-- Upload file input -->
+                                        <div class="row">
+                                            <div class="col-12 col-md-6">
+                                                <div class="form-group">
+                                                    <label for="file_day">Upload File:</label>
+                                                    <input type="file" name="files[]" id="file_day" class="form-control">
+                                                    @error("files")
+                                                        <div class="text-danger">{{ $message }}</div>
+                                                    @enderror
+                                                </div>
+                                            </div>
+
+                                            <div class="col-12 col-md-6">
+                                                <!-- Deadline input -->
+                                                <div class="form-group">
+                                                    <label for="deadline_day">Set Deadline:</label>
+                                                    <input type="date" name="deadlines[]" id="deadline_day" class="form-control" value="{{ old("deadlines") }}">
+                                                    @error("deadlines")
+                                                        <div class="text-danger">{{ $message }}</div>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="mt-4 text-center">
+                    <div class="mt-4 text-end">
                         <button type="submit" class="btn btn-primary">Submit Tasks</button>
                     </div>
                 </form>
