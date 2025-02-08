@@ -137,6 +137,11 @@ class AdminController extends Controller
         ->where('we.user_id', $id)
         ->get();
 
+        $rate = DB::table('evaluations')
+        ->select('pa_average', 'sm_average', 'hrs_average', 'total_average')
+        ->where('stud_id', $id)
+        ->first();
+
         if($reports->isEmpty()){
             $reports = 'No evaluation submitted yet';
         }
