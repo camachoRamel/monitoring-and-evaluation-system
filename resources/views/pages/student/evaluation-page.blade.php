@@ -4,22 +4,21 @@
 
     <!-- Content Header (Page header) -->
     <div class="app-content-header">
-        <h3 class="mb-0">HTE Evaluation</h3>
+        <h3 class="mb-0">HTE Evaluation for <span class="text-primary">Intern Name</span> </h3>
     </div>
 
     <!-- Select Element to Choose the Week -->
     <section class="content w-100 px-4">
-        <div class="card card-solid p-4">
-            <div class="container d-flex justify-content-center">
-                <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch align-items-center flex-column">
-                    <div class="card bg-light d-flex flex-fill">
-                      <div class="card-header text-muted border-bottom-0">
-                      {{ $evaluator[0]->hte }}
-                      </div>
-                      <div class="card-body pt-0">
-                        <div class="row d-flex align-items-center pt-2">
-                          <div class="col-7">
-                            <ul class="ml-4 mb-0 fa-ul text-muted">
+        {{-- <div class="card card-solid px-5 py-4"> --}}
+
+            <div class="row">
+                <div class="col-12 col-md-6 mt-3">
+                    <div class="card bg-light d-flex flex-fill h-100">
+                        <div class="card-header text-muted border-bottom-0">
+                            Download Certificate
+                        </div>
+                        <div class="card-body text-muted">
+
                                 @if ($evaluation->isEmpty())
                                     No evaluation yet
                                 @else
@@ -28,38 +27,163 @@
                                     <a href="{{ route('stud.download-file', ['path' => 'evaluations', 'fileName' => $evaluation[0]->evaluation]) }}">{{ $evaluation[0]->evaluation }}</a>
                                 </li>
                                 @endif
-                            </ul>
-                          </div>
-                          <div class="col-5 text-center">
 
-                          </div>
                         </div>
-                      </div>
                     </div>
                     <!-- card -->
+                </div>
 
-                    <hr class="border border-primary border-2">
-
-                    <div class="d-flex justify-content-center gap-2">
-                        <div class="fw-bolder text-center">
-                            <p class="text-muted">Personal Attitude: <span class="text-dark"> {{$rate->pa_average ?? 'No rating yet'}} </span> </p>
-                            <p class="text-muted">Shop Management: <span class="text-dark"> {{$rate->sm_average ?? 'No rating yet'}} </span> </p>
-                            <p class="text-muted">Human Relation Skills: <span class="text-dark"> {{$rate->hrs_average ?? 'No rating yet'}} </span> </p>
+                <div class="col-12 col-md-6 mt-3">
+                    <div class="card bg-light d-flex flex-fill h-100">
+                        <div class="card-header text-muted border-bottom-0">
+                            Comment/s for Intern
                         </div>
-                        {{-- <div class="fw-bolder">1.75</div>
-                        <div class="fw-bolder">1.76</div> --}}
+                        <div class="card-body text-muted">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, ipsam rerum! Voluptatum cum eius veritatis dolorum suscipit minus, tempore enim itaque sapiente deserunt eveniet quam nesciunt, atque eaque, aspernatur voluptate.
+
+                        </div>
                     </div>
-                    <div class="row">
-                        <div class="col-12 text-center">
-                            <div class="fw-bolder">
-                                <p class="text-muted fs-4">Total Average: <span class="text-dark"> {{$rate->total_average ?? 'No rating yet'}} </span> </p>
+                    <!-- card -->
+                </div>
+            </div>
+
+            <div class="col-12 my-3">
+                <div class="card">
+                    <div class="card-header text-muted border-bottom-0">
+                        Intern Rating
+                    </div>
+
+                    <div class="card-body">
+                        <div class="row g-3 text-center">
+                            <div class="container-fluid mt-3 fs-5">
+                                Overall Average: <span class="fw-bold fs-5">1.00</span>
+                            </div>
+
+                            <div class="col-12 col-lg-4">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        Personal Attitude: <span class="fw-bold">1.00</span>
+                                        <div class="row">
+
+                                            @for ($i = 0; $i < 8; $i++)
+                                            <div class="col-10 text-start">
+                                                <ul>
+                                                    <li class="small">
+                                                        <span class="fa-li">
+                                                            <i class="fas fa-lg fa-building"></i>
+                                                            General appearance, poise, neatness,
+                                                            bearing and proper attire
+                                                        </span>
+
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-2 fw-bold">
+                                                1.00
+                                            </div>
+                                            @endfor
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Card End -->
+                            </div>
+                            <!-- Col End -->
+
+                            <div class="col-12 col-lg-4">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        Personal Attitude: <span class="fw-bold">1.00</span>
+                                        <div class="row">
+
+                                            @for ($i = 0; $i < 4; $i++)
+                                            <div class="col-10 text-start">
+                                                <ul>
+                                                    <li class="small">
+                                                        <span class="fa-li">
+                                                            <i class="fas fa-lg fa-building"></i>
+                                                            General appearance, poise, neatness,
+                                                            bearing and proper attire
+                                                        </span>
+
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-2 fw-bold">
+                                                1.00
+                                            </div>
+                                            @endfor
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Card End -->
+                            </div>
+                            <!-- Col End -->
+
+                            <div class="col-12 col-lg-4">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        Personal Attitude: <span class="fw-bold">1.00</span>
+                                        <div class="row">
+
+                                            @for ($i = 0; $i < 3; $i++)
+                                            <div class="col-10 text-start">
+                                                <ul>
+                                                    <li class="small">
+                                                        <span class="fa-li">
+                                                            <i class="fas fa-lg fa-building"></i>
+                                                            General appearance, poise, neatness,
+                                                            bearing and proper attire
+                                                        </span>
+
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-2 fw-bold">
+                                                1.00
+                                            </div>
+                                            @endfor
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Card End -->
+                            </div>
+                            <!-- Col End -->
+
+                        </div>
+                        <!--
+                        <div class="row text-muted">
+                            <div class="col-12 col-6">
+                                <i class="fas fa-lg fa-building"></i>
+                                    awd
+                                </li>
+                                awdawdaw
+                            </div>
+                            <div class="col-12 col-3">
+                                <i class="fas fa-lg fa-building"></i>
+                                    awd
+                                </li>
+
+                                awdawdawd
+                            </div>
+                            <div class="col-12 col-3">
+                                {{-- <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span>
+                                    awd
+                                </li> --}}
+                                awdawdwa
                             </div>
                         </div>
+                    -->
                     </div>
+
+                    <!-- card -->
 
                 </div>
             </div>
-        </div>
+
+        {{-- </div> --}}
     </section>
 
 @endsection

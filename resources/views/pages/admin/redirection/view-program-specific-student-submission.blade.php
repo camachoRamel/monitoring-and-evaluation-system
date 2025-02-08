@@ -19,7 +19,7 @@
                 @break
                 @endswitch
             @endif
-            Interns Report List
+            Interns Evaluation List
         </h3>
     </div> <!--end::App Content Header-->
 

@@ -33,7 +33,7 @@
                   <a href="{{ route('admin.student-list') }}" class="nav-link"><p>Intern List</p></a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{ route("admin.student-weekly-report") }}" class="nav-link"><p>Intern Weekly Report</p></a>
+                  <a href="{{ route("admin.student-weekly-report") }}" class="nav-link"><p>Intern Evaluation</p></a>
                 </li>
                 <li class="nav-item">
                   <a href="{{ route('admin.intern-application')}}" class="nav-link"><p>Intern Application</p></a>
