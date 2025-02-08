@@ -53,40 +53,55 @@ class HostingTrainingEstablishmentController extends Controller
 
     public function uploadWeeklyTask(Request $request, int $id)
     {
-        $validation = $request->validate([
+        $validated = $request->validate([
             'week' => 'required',
-            'deadlines' => 'required',
-            'files' => 'required',
-            'deadlines' => 'required|array',
-            'deadlines.*' => 'required|date|after_or_equal:today', // Ensures no past date and not empty
+            'deadline' => 'required',
+            'tasks' => 'required',
+            'description' => 'required',
+            // 'deadlines' => 'required|array',
+            'deadline' => 'required|date|after_or_equal:today', // Ensures no past date and not empty
         ]);
 
         // 5 because there are 5 days with tasks|| i = day
-        for($i = 1; $i <= 5; $i++)
-        {
-            $file = $validation['files'][$i];
-            $fileName = 'task' . $i . $id . "-" . $validation['deadlines'][$i] . time() . '.' . $file->getClientOriginalExtension();
-            $filePath = $file->storeAs('tasks', $fileName);
+        // for($i = 1; $i <= 5; $i++)
+        // {
+        //     $file = $validation['files'][$i];
+        //     $fileName = 'task' . $i . $id . "-" . $validation['deadlines'][$i] . time() . '.' . $file->getClientOriginalExtension();
+        //     $filePath = $file->storeAs('tasks', $fileName);
 
-            $weekly_task = [
-                'user_id' => $id,
-                'hte_id' => Auth::id(),
-                'week' => $validation['week'],
-                'day' => $i,
-                'tasks' => $fileName,
-                'deadline' => $validation['deadlines'][$i]
-            ];
+        //     $weekly_task = [
+        //         'user_id' => $id,
+        //         'hte_id' => Auth::id(),
+        //         'week' => $validation['week'],
+        //         'day' => $i,
+        //         'tasks' => $fileName,
+        //         'deadline' => $validation['deadlines'][$i]
+        //     ];
+
+        //     WeeklyTask::updateOrCreate(
+        //         ['user_id' => $id, 'hte_id' => Auth::id(),
+        //         'week' => $validation['week'],
+        //         'day' => $i,
+        //         // 'tasks' => $fileName,
+        //         // 'deadline' => $validation['deadlines'][$i]
+        //     ],
+        //         $weekly_task
+        //     );
+        // }
+        // dd($validated);
+            $validated['day'] = 1;
+
+
+            $file = $request->file('tasks');
+            $fileName = 'task' . $id . "-" . $validated['deadline'] . time() . '.' . $file->getClientOriginalExtension();
+            $filePath = $file->storeAs('tasks', $fileName);
+            // $validated['tasks'] = $fileName;
 
             WeeklyTask::updateOrCreate(
-                ['user_id' => $id, 'hte_id' => Auth::id(),
-                'week' => $validation['week'],
-                'day' => $i,
-                // 'tasks' => $fileName,
-                // 'deadline' => $validation['deadlines'][$i]
-            ],
-                $weekly_task
+                ['user_id' => $id, 'hte_id' => Auth::id(), 'week' => $validated['week']],
+                $validated
             );
-        }
+
 
         return redirect()->route('hte.index', Auth::id())->with('success', 'Tasks successfully uploaded.');
     }

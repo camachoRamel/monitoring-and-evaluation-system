@@ -69,8 +69,8 @@
                                             <div class="col-12 col-md-6">
                                                 <div class="form-group">
                                                     <label for="file_day">Upload File:</label>
-                                                    <input type="file" name="files[]" id="file_day" class="form-control">
-                                                    @error("files")
+                                                    <input type="file" name="tasks" id="file_day" class="form-control">
+                                                    @error("tasks")
                                                         <div class="text-danger">{{ $message }}</div>
                                                     @enderror
                                                 </div>
@@ -79,8 +79,8 @@
                                                 <!-- Deadline input -->
                                                 <div class="form-group">
                                                     <label for="deadline_day">Set Deadline:</label>
-                                                    <input type="date" name="deadlines[]" id="deadline_day" class="form-control" value="{{ old("deadlines") }}">
-                                                    @error("deadlines")
+                                                    <input type="date" name="deadline" id="deadline_day" class="form-control" value="{{ old("deadlines") }}">
+                                                    @error("deadline")
                                                         <div class="text-danger">{{ $message }}</div>
                                                     @enderror
                                                 </div>
