@@ -218,6 +218,9 @@ class HostingTrainingEstablishmentController extends Controller
             ['stud_id' => $id,
             'hte_id' => Auth::id()],
             ['total_average' => ($pa_average + $sm_average + $hrs_average) / 3,
+            'pa_average' => $pa_average,
+            'sm_average' => $sm_average,
+            'hrs_average' => $hrs_average,
 
             'evaluation' => $validated['evaluation'],
 

@@ -29,7 +29,7 @@
             </div>
 
             <!-- Modal
-            <form method="POST" action="{{ route('hte.upload-evaluation', $stud->id) }}" class="modal fade" id="evaluationModal" tabindex="-1" aria-labelledby="evaluationModalLabel" aria-hidden="true" enctype="multipart/form-data">
+            {{-- <form method="POST" action="{{ route('hte.upload-evaluation', $stud->id) }}" class="modal fade" id="evaluationModal" tabindex="-1" aria-labelledby="evaluationModalLabel" aria-hidden="true" enctype="multipart/form-data"> --}}
                 @csrf
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
