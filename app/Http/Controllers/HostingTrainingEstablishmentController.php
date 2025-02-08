@@ -246,4 +246,10 @@ class HostingTrainingEstablishmentController extends Controller
         return redirect()->back()->with('success', 'Evaluation submitted successfully!');
     }
 
+    public function deleteEvaluation(int $id)
+    {
+        Evaluation::where('stud_id', $id)->delete();
+        return redirect()->back();
+    }
+
 }
