@@ -15,7 +15,7 @@
     </div> <!--end::App Content Header-->
 
     <section class="content w-100 px-4">
-        <form action="{{ route('hte.store-evaluation', ['id' => $student->id]) }}" method="POST">
+        <form action="{{ route('hte.store-evaluation', ['id' => $student->id]) }}" method="POST" enctype="multipart/form-data">
             @csrf
 
             <div class="card card-solid p-2 p-lg-4 mb-4">
@@ -177,7 +177,7 @@
                 </div>
                 <div class="card-body">
                     <label for="comment">Comments</label>
-                    <textarea class="form-control" placeholder="Leave a comment here" id="comment" style="height: 150px"></textarea>
+                    <textarea class="form-control" name="description" placeholder="Leave a comment here" id="comment" style="height: 150px"></textarea>
                 </div>
             </div>
             {{-- comment card --}}

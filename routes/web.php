@@ -136,6 +136,9 @@ Route::middleware('is.hte')->group(function()
 
     Route::post('/hte/store-evaluation{id}', [HostingTrainingEstablishmentController::class, 'storeEvaluation'])->name('hte.store-evaluation');
 
+    Route::post('/hte/evaluation{id}', [HostingTrainingEstablishmentController::class, 'deleteEvaluation'])->name('hte.delete-evaluation');
+
+
     //HTE SUBMISSION VIEW STUDENT ROUTES
     Route::get('/hte/submission-students', function()
     {
@@ -151,7 +154,7 @@ Route::middleware('is.hte')->group(function()
     //ROUTE FOR DOWNLOADING STUDENT REPORT
     Route::get('/hte/download/{path}/{fileName}', [FileController::class, 'fileDownload'])->name('hte.download-file');
 
-    Route::post('/hte/upload-evaluation/{id}', [FileController::class, 'uploadEvaluation'])->name('hte.upload-evaluation');
+    // Route::post('/hte/upload-evaluation/{id}', [FileController::class, 'uploadEvaluation'])->name('hte.upload-evaluation');
 
 });
 

@@ -147,6 +147,7 @@ class HostingTrainingEstablishmentController extends Controller
 
     public function storeEvaluation(Request $request, int $id)
     {
+        // dd($request);
         $validated = $request->validate([
             'generalAppearance' => 'required|numeric',
             'attendance' => 'required|numeric',
@@ -165,15 +166,26 @@ class HostingTrainingEstablishmentController extends Controller
             'supervisorRelation' => 'required|numeric',
             'workerRelation' => 'required|numeric',
             'studentRelation' => 'required|numeric',
+
+            'description' => 'required'
         ]);
 
+        // dd($request->files->count());
+        // SAVING EVALUATION/CERTIFICATE FILE
+        $file = $request->file('evaluation');
+        //  . "-" . Auth::id() . time() .  USED TO BE IN THE FILENAME
+        $fileName = 'evaluation-'. Auth::user()->first_name  .'.' . $file->getCLientOriginalExtension();
+        $filePath = $file->storeAs('evaluations', $fileName);
+
+        $validated['evaluation'] = $fileName;
+
+        // HAYSSS
         $pa_average = ($validated['generalAppearance'] +
         $validated['attendance'] +
         $validated['honesty'] +
         $validated['cooperation'] +
         $validated['initiative'] +
-        $validated['dependability'] +
-        $validated['tact'] +
+        $validated['dependability'] +        $validated['tact'] +
         $validated['accuracy']) / 8;
 
         $sm_average = ($validated['cleanliness'] +
@@ -185,21 +197,59 @@ class HostingTrainingEstablishmentController extends Controller
         $validated['workerRelation'] +
         $validated['studentRelation']) / 3;
 
+        // Evaluation::updateOrCreate(
+        //     [
+        //         'stud_id' => $id,
+        //         'hte_id' => Auth::id(),
+        //         'pa_average' => $pa_average,
+        //         'sm_average' => $sm_average,
+        //         'hrs_average' => $hrs_average,
+        //         'total_average' => ($pa_average + $sm_average + $hrs_average) / 3
+        //     ]
+        // // );
+        // $someshit = Evaluation::updateOrCreate(
+        //     ['stud_id' => $id,
+        //     'hte_id' => Auth::id()],
+        //     [$validated,
+        //     'evaluation' => $fileName,
+        //     'total_average' => ($pa_average + $sm_average + $hrs_average) / 3]
+        // );
         Evaluation::updateOrCreate(
-            [
-                'stud_id' => $id,
-                'hte_id' => Auth::id(),
-                'pa_average' => $pa_average,
-                'sm_average' => $sm_average,
-                'hrs_average' => $hrs_average,
-                'total_average' => ($pa_average + $sm_average + $hrs_average) / 3
-            ]
-        );
-        // Process the data (e.g., save to database)
-        // Example:
-        // Evaluation::create($validated);
+            ['stud_id' => $id,
+            'hte_id' => Auth::id()],
+            ['total_average' => ($pa_average + $sm_average + $hrs_average) / 3,
+
+            'evaluation' => $validated['evaluation'],
+
+            'generalAppearance' => $validated['generalAppearance'],
+            'attendance' => $validated['attendance'],
+            'honesty' => $validated['honesty'],
+            'cooperation' => $validated['cooperation'],
+            'initiative' => $validated['initiative'],
+            'dependability' => $validated['dependability'],
+            'tact' => $validated['tact'],
+            'accuracy' => $validated['accuracy'],
+
+            'cleanliness' => $validated['cleanliness'],
+            'safety' => $validated['safety'],
+            'toolUsage' => $validated['toolUsage'],
+            'shopCondition' => $validated['shopCondition'],
+
+            'supervisorRelation' => $validated['supervisorRelation'],
+            'workerRelation' => $validated['workerRelation'],
+            'studentRelation' => $validated['studentRelation'],
+
+            'description' => $validated['description']
+        ]);
+
 
         return redirect()->back()->with('success', 'Evaluation submitted successfully!');
+    }
+
+    public function deleteEvaluation(int $id)
+    {
+        Evaluation::where('stud_id', $id)->delete();
+        return redirect()->back();
     }
 
 }
