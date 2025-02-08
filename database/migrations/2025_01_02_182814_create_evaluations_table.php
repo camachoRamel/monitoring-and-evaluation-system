@@ -38,9 +38,9 @@ return new class extends Migration
              * hrs - Human Relation Skills
              */
             $table->string('evaluation');
-            // $table->decimal('pa_average', 4, 2);
-            // $table->decimal('sm_average', 4, 2);
-            // $table->decimal('hrs_average', 4, 2);
+            $table->decimal('pa_average', 4, 2);
+            $table->decimal('sm_average', 4, 2);
+            $table->decimal('hrs_average', 4, 2);
             $table->decimal('total_average', 4, 2);
             $table->text('description');
             $table->foreign('stud_id')->references('id')->on('users')->onDelete('cascade');

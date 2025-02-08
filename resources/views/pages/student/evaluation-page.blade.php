@@ -4,7 +4,7 @@
 
     <!-- Content Header (Page header) -->
     <div class="app-content-header">
-        <h3 class="mb-0">HTE Evaluation for <span class="text-primary">Intern Name</span> </h3>
+        <h3 class="mb-0">HTE Evaluation for <span class="text-primary">{{ $stud->name }}</span> </h3>
     </div>
 
     <!-- Select Element to Choose the Week -->
@@ -19,14 +19,14 @@
                         </div>
                         <div class="card-body text-muted">
 
-                                @if ($evaluation->isEmpty())
+                                {{-- @if ($evaluation->isEmpty())
                                     No evaluation yet
-                                @else
+                                @else --}}
 
                                 <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span>
-                                    <a href="{{ route('stud.download-file', ['path' => 'evaluations', 'fileName' => $evaluation[0]->evaluation]) }}">{{ $evaluation[0]->evaluation }}</a>
+                                    <a href="{{ route('stud.download-file', ['path' => 'evaluations', 'fileName' => $evaluation->evaluation]) }}">{{ $evaluation->evaluation }}</a>
                                 </li>
-                                @endif
+                                {{-- @endif --}}
 
                         </div>
                     </div>
@@ -39,8 +39,7 @@
                             Comment/s for Intern
                         </div>
                         <div class="card-body text-muted">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, ipsam rerum! Voluptatum cum eius veritatis dolorum suscipit minus, tempore enim itaque sapiente deserunt eveniet quam nesciunt, atque eaque, aspernatur voluptate.
-
+                            {{ $evaluation->description }}
                         </div>
                     </div>
                     <!-- card -->
@@ -62,27 +61,36 @@
                             <div class="col-12 col-lg-4">
                                 <div class="card h-100">
                                     <div class="card-body">
-                                        Personal Attitude: <span class="fw-bold">1.00</span>
+                                        Personal Attitude: <span class="fw-bold">{{ $evaluation->pa_average }}</span>
                                         <div class="row">
-
-                                            @for ($i = 0; $i < 8; $i++)
+                                            @php
+                                            $personalAttitudes = [
+                                                'generalAppearance' => '1. General appearance, poise, neatness, bearing and proper attire',
+                                                'attendance' => '2. Attendance, regularity & punctuality',
+                                                'honesty' => '3. Honesty, ethical & model of good character',
+                                                'cooperation' => '4. Cooperation and loyalty',
+                                                'initiative' => '5. Initiative, resourcefulness & industry',
+                                                'dependability' => '6. Dependability',
+                                                'tact' => '7. Tact, attitude towards suggestions',
+                                                'accuracy' => '8. Accuracy',
+                                            ];
+                                        @endphp
+                                        @foreach ($personalAttitudes as $name => $label)
                                             <div class="col-10 text-start">
                                                 <ul>
                                                     <li class="small">
                                                         <span class="fa-li">
                                                             <i class="fas fa-lg fa-building"></i>
-                                                            General appearance, poise, neatness,
-                                                            bearing and proper attire
+                                                            {{ $label }}
                                                         </span>
 
                                                     </li>
                                                 </ul>
                                             </div>
                                             <div class="col-2 fw-bold">
-                                                1.00
+                                                {{ $evaluation->$name }}
                                             </div>
-                                            @endfor
-
+                                        @endforeach
                                         </div>
                                     </div>
                                 </div>
@@ -93,27 +101,32 @@
                             <div class="col-12 col-lg-4">
                                 <div class="card h-100">
                                     <div class="card-body">
-                                        Personal Attitude: <span class="fw-bold">1.00</span>
+                                        Shop Management: <span class="fw-bold">{{$evaluation->sm_average}}</span>
                                         <div class="row">
-
-                                            @for ($i = 0; $i < 4; $i++)
+                                            @php
+                                            $shopManagement = [
+                                                'cleanliness' => '1. Skill in maintaining cleanliness/orderliness',
+                                                'safety' => '2. Skill in applying safety rules and regulations',
+                                                'toolUsage' => '3. Skill in the proper use and upkeep of tools, machines and equipment',
+                                                'shopCondition' => '4. Skill in maintaining the physical condition of shop/facilities',
+                                            ];
+                                        @endphp
+                                        @foreach ($shopManagement as $name => $label)
                                             <div class="col-10 text-start">
                                                 <ul>
                                                     <li class="small">
                                                         <span class="fa-li">
                                                             <i class="fas fa-lg fa-building"></i>
-                                                            General appearance, poise, neatness,
-                                                            bearing and proper attire
+                                                            {{ $label }}
                                                         </span>
 
                                                     </li>
                                                 </ul>
                                             </div>
                                             <div class="col-2 fw-bold">
-                                                1.00
+                                                {{ $evaluation->$name }}
                                             </div>
-                                            @endfor
-
+                                        @endforeach
                                         </div>
                                     </div>
                                 </div>
@@ -124,26 +137,31 @@
                             <div class="col-12 col-lg-4">
                                 <div class="card h-100">
                                     <div class="card-body">
-                                        Personal Attitude: <span class="fw-bold">1.00</span>
+                                        Human Relations: <span class="fw-bold">{{ $evaluation->hrs_average }}</span>
                                         <div class="row">
-
-                                            @for ($i = 0; $i < 3; $i++)
+                                            @php
+                                            $humanRelations = [
+                                                'supervisorRelation' => '1. Skill in maintaining harmonious relationships with supervisor/foreman',
+                                                'workerRelation' => '2. Skill in maintaining congenial relationships with workers in the company',
+                                                'studentRelation' => '3. Skills in maintaining congenial relationships with co-students or trainees',
+                                            ];
+                                        @endphp
+                                        @foreach ($humanRelations as $name => $label)
                                             <div class="col-10 text-start">
                                                 <ul>
                                                     <li class="small">
                                                         <span class="fa-li">
                                                             <i class="fas fa-lg fa-building"></i>
-                                                            General appearance, poise, neatness,
-                                                            bearing and proper attire
+                                                            {{ $label }}
                                                         </span>
 
                                                     </li>
                                                 </ul>
                                             </div>
                                             <div class="col-2 fw-bold">
-                                                1.00
+                                                {{ $evaluation->$name }}
                                             </div>
-                                            @endfor
+                                        @endforeach
 
                                         </div>
                                     </div>

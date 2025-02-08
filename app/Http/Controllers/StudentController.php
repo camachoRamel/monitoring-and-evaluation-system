@@ -29,11 +29,13 @@ class StudentController extends Controller
 
     public function viewEvaluation()
     {
-        $evaluation = DB::table('weekly_evaluations AS we')
-        ->select('we.evaluation')
-        ->join('users AS u1', 'u1.id', '=', 'evaluator_id')
-        ->where('user_id', Auth::id())
-        ->get();
+        // $evaluation = DB::table('weekly_evaluations AS we')
+        // ->select('we.evaluation')
+        // ->join('users AS u1', 'u1.id', '=', 'evaluator_id')
+        // ->where('user_id', Auth::id())
+        // ->get();
+
+        $stud = UserController::getUser(Auth::id());
 
         $evaluator = DB::table('intern_handlers AS ih')
         ->select('u1.first_name AS hte')
@@ -41,13 +43,13 @@ class StudentController extends Controller
         ->where('user_id', Auth::id())
         ->get();
 
-        $rate = DB::table('evaluations')
-        ->select('pa_average', 'sm_average', 'hrs_average', 'total_average')
+        $evaluation = DB::table('evaluations')
+        ->select('*')
         ->where('stud_id', Auth::id())
         ->first();
 
-        // dd($evaluation);
-        return view('pages.student.evaluation-page', compact('evaluation', 'evaluator', 'rate'));
+        // dd(Auth::user()->first_name);
+        return view('pages.student.evaluation-page', compact('evaluation', 'stud', 'evaluator'));
     }
 
 

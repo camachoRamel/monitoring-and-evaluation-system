@@ -130,23 +130,24 @@ class AdminController extends Controller
 
         // GETS EVALUATION OF STUDENT FROM HTE. THIS QUERY RELIES FACT THAT A STUDENT CAN ONLY HAVE ON HTE AND COORD
         // IT GETS THE STUDENT WHERE THE EVALUATOR IS NOT EQUAL TO THE ID OF THE CURRENT USER THUS GIVING IT EITHER A COORD IF USER IS HTE AND VICE VERSA
-        $reports = DB::table('weekly_evaluations AS we')
-        ->select('we.evaluation AS report', 'we.task_week')
-        ->join('intern_handlers AS ih', 'ih.user_id', '=', 'we.user_id')
-        ->whereNot('we.evaluator_id', $stud->hte_id)
-        ->where('we.user_id', $id)
-        ->get();
+        // $reports = DB::table('weekly_evaluations AS we')
+        // ->select('we.evaluation AS report', 'we.task_week')
+        // ->join('intern_handlers AS ih', 'ih.user_id', '=', 'we.user_id')
+        // ->whereNot('we.evaluator_id', $stud->hte_id)
+        // ->where('we.user_id', $id)
+        // ->get();
 
-        $rate = DB::table('evaluations')
-        ->select('pa_average', 'sm_average', 'hrs_average', 'total_average')
+        $evaluation = DB::table('evaluations')
+        ->select('*')
         ->where('stud_id', $id)
         ->first();
+        // dd($rate);
 
-        if($reports->isEmpty()){
-            $reports = 'No evaluation submitted yet';
-        }
+        // if($reports->isEmpty()){
+        //     $reports = 'No evaluation submitted yet';
+        // }
 
-        return view('pages.admin.redirection.view-student-specific-' . $type, compact('stud', 'reports'));
+        return view('pages.admin.redirection.view-student-specific-' . $type, compact('stud', 'evaluation'));
     }
 
     public function viewHtes()
