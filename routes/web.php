@@ -32,6 +32,13 @@ Route::get('/edit-profile-page', [UserController::class, 'getProfile'])->name('p
 
 Route::post('/edit-profile', [UserController::class, 'updateUserProfile'])->name('profile.edit');
 
+Route::get('/contact-us', function()
+{
+    return view('pages.contact-us');
+
+})->name('contact-us');
+
+
 
 // //ADMIN ROUTES
 Route::middleware('is.admin')->group(function()
@@ -242,3 +249,4 @@ Route::middleware('is.student')->group(function()
     Route::post('/student/delete/{id}', [FileController::class, 'deleteWeeklyReport'])->name('stud.delete-weekly-report');
 
 });
+
