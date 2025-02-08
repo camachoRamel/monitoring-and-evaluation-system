@@ -21,11 +21,7 @@
                 <thead>
                     <tr>
                         <th>Week</th>
-                        <th>Day 1</th>
-                        <th>Day 2</th>
-                        <th>Day 3</th>
-                        <th>Day 4</th>
-                        <th>Day 5</th>
+                        <th>DeadLine</th>
                     </tr>
                 </thead>
                 <tbody>
