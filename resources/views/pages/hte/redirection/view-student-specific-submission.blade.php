@@ -110,7 +110,7 @@
                                 <a href="{{ route('hte.download-file', ['path' => 'reports', 'fileName' => $report->report]) }}">Task Download Link </a>
                                 <hr>
                                 <div class="overflow-auto" style="max-height: 200px;">
-                                    <span class="text-muted">Submitted at: 11-00-11</span>
+                                    <span class="text-muted">Submitted at: {{ $report->created_date }}</span>
                                     <h5 class="mt-2">Description:</h5>
                                     <p>{{ $report->description }}</p>
                                 </div>

@@ -42,6 +42,7 @@ class FileController extends Controller
     {
         $reports = DB::table('weekly_reports')
         ->select('*')
+        ->selectRaw('DATE_FORMAT(weekly_reports.created_at, "%M %d, %Y") AS created_date')
         ->join('users AS u', 'user_id', '=', 'u.id')
         ->where('user_id', $id)
         ->get();
