@@ -20,7 +20,7 @@ return new class extends Migration
             $table->bigInteger('week');
             $table->integer('day');
             $table->string('tasks');
-            $table->text('description');
+            // $table->text('description');
             $table->date('deadline');
             $table->timestamps();
         });

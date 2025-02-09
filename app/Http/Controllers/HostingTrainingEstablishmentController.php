@@ -57,7 +57,6 @@ class HostingTrainingEstablishmentController extends Controller
             'week' => 'required',
             'deadline' => 'required',
             'tasks' => 'required',
-            'description' => 'required',
             // 'deadlines' => 'required|array',
             'deadline' => 'required|date|after_or_equal:today', // Ensures no past date and not empty
         ]);
