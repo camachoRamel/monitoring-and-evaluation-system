@@ -63,7 +63,8 @@ class StudentController extends Controller
     public function uploadReport(Request $request, int $week)
     {
         $validation = $request->validate([
-            'files' => 'required'
+            'files' => 'required',
+            'description' => 'required'
         ]);
 
         $file = $request->file('files');
@@ -72,7 +73,7 @@ class StudentController extends Controller
 
         WeeklyReport::updateOrCreate(
         ['user_id' => Auth::id(), 'task_week' => $week],
-        ['report' => $fileName]
+        ['report' => $fileName , 'description' => $validation['description']]
         );
 
         return redirect()->route('stud.index', Auth::id())->with('success', 'Report uploaded successfully.');
