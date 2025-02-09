@@ -8,7 +8,7 @@
                 </li>
                 <li class="nav-item d-none d-md-block"> <a href="{{ route("admin.view-records") }}" class="nav-link">Records History</a> </li>
             @endif
-            <li class="nav-item d-none d-md-block"> <a href="#" class="nav-link">About</a> </li>
+            <li class="nav-item d-none d-md-block"> <a href="{{ route('about-us') }}" class="nav-link">About</a> </li>
             <li class="nav-item d-none d-md-block"> <a href="{{ route('contact-us') }}" class="nav-link">Contact Us</a> </li>
         </ul> <!--end::Start Navbar Links--> <!--begin::End Navbar Links-->
         <ul class="navbar-nav ms-auto"> <!--begin::Navbar Search-->

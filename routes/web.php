@@ -38,6 +38,11 @@ Route::get('/contact-us', function()
 
 })->name('contact-us');
 
+Route::get('/about-us', function()
+{
+    return view('pages.about');
+
+})->name('about-us');
 
 
 // //ADMIN ROUTES

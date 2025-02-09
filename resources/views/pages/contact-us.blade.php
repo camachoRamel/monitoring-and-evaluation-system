@@ -64,11 +64,11 @@
                         <div class="col-12 mt-4">
                             <label for="subject" class="d-block fs-5 fw-bold">Select Subject?</label>
 
-                            <input class="form-check-input" type="radio" name="general" id="general">
+                            <input class="radio" type="radio" name="subject" id="general">
                             <label for="general" class="me-5">General Inquiry</label>
 
-                            <input class="form-check-input" type="radio" name="bug" id="bug">
-                            <label for="bug" class="me-5">Report a bug</label>
+                            <input class="radio" type="radio" name="subject" id="bug">
+                            <label for="bug" class="me-5">Report a Bug</label>
                         </div>
 
                         <div class="col-12 mt-4">
