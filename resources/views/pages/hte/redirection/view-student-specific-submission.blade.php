@@ -111,7 +111,7 @@
                                 <hr>
                                 <div class="overflow-auto" style="max-height: 200px;">
                                     <h5>Description:</h5>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi excepturi suscipit doloremque dignissimos in, saepe commodi iure expedita odio exercitationem quia! Sunt quam odio esse, aliquid veniam voluptate voluptates voluptas enim, pariatur ea nulla sed! Voluptatum quisquam repellendus quam dicta maiores eligendi illo commodi dignissimos ipsa, eius id quia . Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi, maxime? Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, aspernatur corrupti. Et cumque maxime laudantium. Fugiat tempore sed odio. Eum facere expedita nesciunt. Praesentium, quisquam sunt! Aperiam error quisquam laudantium expedita repellendus dolore hic? Veritatis, quibusdam sed labore veniam deleniti ad ipsum optio ab tempora facilis id dolor fuga dicta earum doloremque nam dolores repudiandae, dolorem libero vitae corporis quos asperiores, esse laborum. Ea error ratione, veniam quae praesentium culpa ipsa iusto ut rem illo dicta enim, accusamus tempore cupiditate aspernatur iure facilis sint. Adipisci quod nisi id nulla repudiandae assumenda, at asperiores pariatur animi sed atque voluptatum voluptas blanditiis.</p>
+                                    <p>{{ $report->description }}</p>
                                 </div>
 
                             </div>
