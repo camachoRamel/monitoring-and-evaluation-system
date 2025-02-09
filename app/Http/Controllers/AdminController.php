@@ -146,6 +146,12 @@ class AdminController extends Controller
         // if($reports->isEmpty()){
         //     $reports = 'No evaluation submitted yet';
         // }
+        if (!$evaluation) {
+            return view('pages.student.evaluation-page', [
+                'message' => 'No evaluation found. Please wait for your evaluation.',
+                'stud' => $stud,
+            ]);
+        }
 
         return view('pages.admin.redirection.view-student-specific-' . $type, compact('stud', 'evaluation'));
     }

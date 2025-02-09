@@ -12,7 +12,11 @@
     <!-- Select Element to Choose the Week -->
     <section class="content w-100 px-4">
         {{-- <div class="card card-solid px-5 py-4"> --}}
-
+            @if (isset($message))
+                <div class="alert alert-warning">
+                    {{ $message }}
+                </div>
+            @else
             <div class="row">
                 <div class="col-12 col-md-4 mt-3">
                     <div class="card h-100 bg-light d-flex flex-fill">
@@ -246,6 +250,7 @@
 
                 </div>
             </div>
+            @endif
 
         {{-- </div> --}}
     </section>

@@ -54,6 +54,15 @@ class StudentController extends Controller
         ->where('stud_id', Auth::id())
         ->first();
 
+        if (!$evaluation) {
+            return view('pages.student.evaluation-page', [
+                'message' => 'No evaluation found. Please wait for your evaluation.',
+                'stud' => $stud,
+                'evaluator' => $evaluator,
+            ]);
+        }
+
+
         // dd(Auth::user()->first_name);
         return view('pages.student.evaluation-page', compact('evaluation', 'stud', 'evaluator'));
     }

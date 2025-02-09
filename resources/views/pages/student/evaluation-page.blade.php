@@ -11,6 +11,11 @@
     <section class="content w-100 px-4">
         {{-- <div class="card card-solid px-5 py-4"> --}}
 
+            @if (isset($message))
+                    <div class="alert alert-warning">
+                        {{ $message }}
+                    </div>
+            @else
             <div class="row">
                 <div class="col-12 col-md-6 mt-3">
                     <div class="card bg-light d-flex flex-fill h-100">
@@ -19,9 +24,6 @@
                         </div>
                         <div class="card-body text-muted">
 
-                                {{-- @if ($evaluation->isEmpty())
-                                    No evaluation yet
-                                @else --}}
 
                                 <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span>
                                     <a href="{{ route('stud.download-file', ['path' => 'evaluations', 'fileName' => $evaluation->evaluation]) }}">{{ $evaluation->evaluation }}</a>
@@ -200,6 +202,8 @@
 
                 </div>
             </div>
+            @endif
+
 
         {{-- </div> --}}
     </section>
