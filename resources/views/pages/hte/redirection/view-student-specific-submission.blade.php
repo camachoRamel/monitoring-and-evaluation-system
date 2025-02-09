@@ -28,8 +28,8 @@
                 <a href="{{ route('hte.evaluation-page', ['id' => $stud->id])}}" class="btn btn-primary mb-2">Rate Interns Performance</a>
             </div>
 
-            {{-- Modal
-            <form method="POST" action="{{ route('hte.upload-evaluation', $stud->id) }}" class="modal fade" id="evaluationModal" tabindex="-1" aria-labelledby="evaluationModalLabel" aria-hidden="true" enctype="multipart/form-data">
+            <!-- Modal
+            {{-- <form method="POST" action="{{ route('hte.upload-evaluation', $stud->id) }}" class="modal fade" id="evaluationModal" tabindex="-1" aria-labelledby="evaluationModalLabel" aria-hidden="true" enctype="multipart/form-data"> --}}
                 @csrf
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
@@ -39,13 +39,13 @@
                     </div>
                     <div class="modal-body">
 
-                         <div class="col-12 mb-4">
+                        {{-- <div class="col-12 mb-4">
                             <select id="week-selector" name="week" class="form-select" aria-label="Select Week">
                                 @foreach (range(1, 12) as $weekNum)
                                     <option value="{{ $weekNum }}">Week {{ $weekNum }}</option>
                                 @endforeach
                             </select>
-                        </div>
+                        </div> --}}
                         <div class="form-group mb-3">
                             <label for="file">Upload file:</label>
                             <input type="file" name="evaluation" id="file" class="form-control">
@@ -58,48 +58,68 @@
                     </div>
                 </div>
             </form>
-            --}}
+            -->
 
-            <div class="container d-flex justify-content-center mb-2">
-                <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
-                    <div class="card bg-light d-flex flex-fill">
-                      <div class="card-header text-muted border-bottom-0">
-                        @switch($stud->course)
-                            @case(1)
-                                {{'BSIT'}}
-                                @break
-                            @case(2)
-                                {{'BSIS'}}
-                                @break
-                            @case(3)
-                                {{'COMSCI'}}
-                                @break
-                        @endswitch
-                      </div>
-                      <div class="card-body pt-0">
-                        <div class="row d-flex align-items-center pt-2">
-                          <div class="col-7">
-                            <h2 class="lead"><b>{{ $stud->name }}</b></h2>
-                            <ul class="ml-4 mb-0 fa-ul text-muted">
-                                @if ($reports->isEmpty())
-                                    No submitted report yet
-                                @endif
-                                @foreach ($reports as $report)
-                                <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span>
-                                    <a href="{{ route('hte.download-file', ['path' => 'reports', 'fileName' => $report->report]) }}">Week {{ $report->task_week }}</a>
-                                </li>
-                                @endforeach
-                            </ul>
+            <div class="container">
+                <div class="row g-3">
+                    <div class="col-12 col-lg-4">
+                        <div class="card bg-light flex-fill h-100 ">
+                            <div class="card-header text-muted border-bottom-0">
+                              @switch($stud->course)
+                                  @case(1)
+                                      {{'BSIT'}}
+                                      @break
+                                  @case(2)
+                                      {{'BSIS'}}
+                                      @break
+                                  @case(3)
+                                      {{'COMSCI'}}
+                                      @break
+                              @endswitch
+                            </div>
+                            <div class="card-body pt-0 d-flex justify-content-center align-items-center">
+                              <div class="row align-items-center justify-content-center pt-2">
+                                <div class="col-7">
+                                  <h2 class="lead"><b>{{ $stud->name }}</b></h2>
+                                  {{-- <ul class="ml-4 mb-0 fa-ul text-muted">
+                                      @foreach ($reports as $report)
+                                      <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span>
+                                          <a href="{{ route('hte.download-file', ['path' => 'reports', 'fileName' => $report->report]) }}">Week {{ $report->task_week }}</a>
+                                      </li>
+                                      @endforeach
+                                  </ul> --}}
+                                </div>
+                                <div class="col-5 text-center">
+                                  <img
+                                  src="{{ asset(!isset($stud->stud_picture) ? 'images/profile.jpg' : 'storage/' . $stud->stud_picture) }}"
+                                  alt="user-avatar"
+                                  class="rounded-circle img-fluid">
+                                </div>
+                              </div>
+                            </div>
                           </div>
-                          <div class="col-5 text-center">
-                            <img
-                            src="{{ asset(!isset($stud->stud_picture) ? 'images/profile.jpg' : 'storage/' . $stud->stud_picture) }}"
-                            alt="user-avatar"
-                            class="rounded-circle img-fluid">
-                          </div>
-                        </div>
-                      </div>
                     </div>
+
+                    @foreach ($reports as $report)
+                    <div class="col-12 col-lg-4">
+                        <div class="card h-100">
+                            <div class="card-header">
+                                Week {{ $report->task_week }}
+                            </div>
+                            <div class="card-body" style="max-height: 300px;">
+                                <a href="{{ route('hte.download-file', ['path' => 'reports', 'fileName' => $report->report]) }}">Task Download Link </a>
+                                <hr>
+                                <div class="overflow-auto" style="max-height: 200px;">
+                                    <h5>Description:</h5>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi excepturi suscipit doloremque dignissimos in, saepe commodi iure expedita odio exercitationem quia! Sunt quam odio esse, aliquid veniam voluptate voluptates voluptas enim, pariatur ea nulla sed! Voluptatum quisquam repellendus quam dicta maiores eligendi illo commodi dignissimos ipsa, eius id quia . Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi, maxime? Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, aspernatur corrupti. Et cumque maxime laudantium. Fugiat tempore sed odio. Eum facere expedita nesciunt. Praesentium, quisquam sunt! Aperiam error quisquam laudantium expedita repellendus dolore hic? Veritatis, quibusdam sed labore veniam deleniti ad ipsum optio ab tempora facilis id dolor fuga dicta earum doloremque nam dolores repudiandae, dolorem libero vitae corporis quos asperiores, esse laborum. Ea error ratione, veniam quae praesentium culpa ipsa iusto ut rem illo dicta enim, accusamus tempore cupiditate aspernatur iure facilis sint. Adipisci quod nisi id nulla repudiandae assumenda, at asperiores pariatur animi sed atque voluptatum voluptas blanditiis.</p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+
+
                 </div>
             </div>
 
