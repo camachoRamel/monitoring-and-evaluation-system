@@ -4,7 +4,7 @@
 
     <!-- Content Header (Page header) -->
     <div class="app-content-header">
-        <h3 class="mb-0">Upload Weekly Tasks for: {{ $student->name }}</h3>
+        <h3 class="mb-0">Upload Weekly Tasks for: <span class="fw-bold">{{ $student->name }}</span></h3>
     </div>
 
     <section class="content w-100 px-4">

@@ -4,7 +4,7 @@
 
     <!-- Content Header (Page header) -->
     <div class="app-content-header">
-        <h3 class="mb-0">Weekly Tasks</h3>
+        <h3 class="mb-0">Weekly Task</h3>
     </div>
 
     <!-- Select Element to Choose the Week -->
@@ -28,8 +28,13 @@
 
                 <!-- Dynamically Display Files for Each Day -->
                 <div class="row">
+                    @if ($tasks->isEmpty())
+                        <div class="alert alert-warning">
+                            No tasks available for Week {{ $weekVal }}.
+                        </div>
+                    @else
                     @foreach ($tasks as $task)
-                        <div class="col-6 col-md-4 col-lg-3">
+                        <div class="col-12">
                             <div class="card mb-4" style="height: auto;">
                                 <div class="card-header text-muted border-bottom-0">
                                     <strong>Week {{ $task->week }}</strong>
@@ -40,12 +45,7 @@
                                             <ul class="ml-4 mb-0 fa-ul text-muted">
                                                 @if ($task->week > 0)
                                                     <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span>
-                                                        <a href="{{ route('stud.download-file', ['path' => 'tasks', 'fileName' => $task->tasks]) }}">Day {{ $task->day }} - Task File</a>
-                                                    </li>
-                                                @endif
-                                                @if ($task->tasks == null)
-                                                    <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span>
-                                                        <p>No files uploaded for this day.</p>
+                                                        <a href="{{ route('stud.download-file', ['path' => 'tasks', 'fileName' => $task->tasks]) }}">Task File</a>
                                                     </li>
                                                 @endif
                                             </ul>
@@ -55,7 +55,7 @@
                             </div>
                         </div>
                     @endforeach
-
+                    @endif
                 </div>
             </div>
         </div>

@@ -16,6 +16,12 @@ class StudentController extends Controller
     {
         $tasks = UserController::getDailyTasks(Auth::id(), $week);
         // dd($tasks);
+        // $week = $week;
+        if($tasks->isEmpty()){
+            $weekVal = $week;
+            return view('pages.student.weekly-tasks', compact('tasks','weekVal'));
+        }
+
         return view('pages.student.weekly-tasks', compact('tasks'));
     }
 
