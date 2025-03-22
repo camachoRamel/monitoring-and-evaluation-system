@@ -211,7 +211,7 @@ class UserController extends Controller
                     break;
                 case 3:
                     $students = DB::table('intern_handlers')
-                    ->select('u1.id', 'u1.profile_picture AS stud_picture',
+                    ->select('u1.id', 'u1.profile_picture AS stud_picture', 'r.requirement AS resume',
                     'u1.course', DB::raw('CONCAT(u1.first_name, " ", COALESCE(u1.middle_name, ""), " ", u1.last_name) AS name, CONCAT(u2.first_name, " ", COALESCE(u2.middle_name, ""), " ", u2.last_name) AS coord, u3.first_name AS hte'))
                     ->join('users AS u1', 'u1.id', '=', 'user_id')
                     ->join('users AS u2', 'u2.id', '=', 'coord_id')

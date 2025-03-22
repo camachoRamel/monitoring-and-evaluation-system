@@ -97,7 +97,7 @@ class StudentController extends Controller
         ]);
 
         $file = $request->file('resume');
-        $fileName = 'resume' . Auth::user()->last_name . "-" . Auth::id() . '.' . $file->getCLientOriginalExtension();
+        $fileName = 'resume-' . Auth::user()->last_name . "-" . Auth::id() . '.' . $file->getCLientOriginalExtension();
         $filePath = $file->storeAs('resumes', $fileName);
 
         $requirements = [
