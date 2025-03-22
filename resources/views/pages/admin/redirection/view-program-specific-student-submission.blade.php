@@ -41,7 +41,8 @@
                     <tr>
                         <th>Name</th>
                         <th>HTE</th>
-                        <th>Report</th>
+                        <th>Submission Journal</th>
+                        <th>Evaluation</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -56,7 +57,11 @@
                                 @endif
 
                             </td>
-                            <td class="d-flex justify-content-end">
+                            <td class="text-end">
+                                {{-- TODO: CHANGE TO ACTUAL ROUTE FOR "admin/redirection/view-student-specific-submmission-record.blade.php"  --}}
+                                <a href="" class="btn btn-primary">View</a>
+                            </td>
+                            <td class="text-end">
                                 <a href="{{ route("admin.view-student", ['type' => 'submission', 'id' => $stud->id]) }}" class="btn btn-primary">View</a>
                             </td>
                         </tr>

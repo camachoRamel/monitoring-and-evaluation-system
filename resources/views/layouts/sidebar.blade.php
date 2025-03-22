@@ -138,7 +138,15 @@
                         HTE Evaluation
                       </p>
                     </a>
-                  </li>
+                </li>
+                <li class="nav-item">
+                    {{-- TODO: CHANGE ACTUAL ROUTE TO "student/submitted-reports.blade.php" --}}
+                    <a href="" class="nav-link">
+                      <p>
+                        My Submitted Reports
+                      </p>
+                    </a>
+                </li>
                 @endif
 
               @endif

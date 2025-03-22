@@ -35,13 +35,17 @@
                     <thead>
                         <tr>
                             <th>Name</th>
+                            <th>Resume</th>
                             <th>Controls</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($students as $stud)
                             <tr>
-                                <td class="col-8"> {{$stud->name}} </td>
+                                <td class="col-5"> {{$stud->name}} </td>
+                                <td class="col-3">
+                                    <a href="{{ route('admin.download-file', ['path' => 'resumes', 'fileName' => $stud->resume]) }}">{{ $stud->resume }}</a>
+                                </td>
                                 <td class="col-4">
                                     <div class="d-flex gap-2">
                                         <a href="{{ route('admin.view.student-applications', ['id' => $stud->id]) }}" class="btn btn-primary">View applications</a>
