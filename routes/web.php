@@ -245,6 +245,8 @@ Route::middleware('is.student')->group(function()
 
     Route::post('/student/submitting-week{week}', [StudentController::class, 'uploadReport'])->name('stud.weekly-submission');
 
+    Route::get('/student/submitted-reports', [StudentController::class, 'viewSubmittedReports'])->name('stud.submitted-reports');
+
     //ROUTE FOR DOWNLOADING UPLOADED TASK
     Route::get('/student/download/{path}/{fileName}', [FileController::class, 'fileDownload'])->name('stud.download-file');
 

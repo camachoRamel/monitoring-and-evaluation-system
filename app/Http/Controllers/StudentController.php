@@ -68,6 +68,13 @@ class StudentController extends Controller
     }
 
 
+    public function viewSubmittedReports()
+    {
+        // $stud = UserController::getApprovedStudent($id);
+        $reports = FileController::getStudentReports(Auth::id());
+
+        return view('pages.student.submitted-reports', compact('reports'));
+    }
 
     public function uploadReport(Request $request, int $week)
     {
