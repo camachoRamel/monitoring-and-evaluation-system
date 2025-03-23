@@ -153,7 +153,10 @@ class AdminController extends Controller
             ]);
         }
 
-        return view('pages.admin.redirection.view-student-specific-' . $type, compact('stud', 'evaluation'));
+        // $stud = UserController::getApprovedStudent($id);
+        $reports = FileController::getStudentReports($id);
+
+        return view('pages.admin.redirection.view-student-specific-' . $type, compact('stud', 'evaluation', 'reports'));
     }
 
     public function viewHtes()
