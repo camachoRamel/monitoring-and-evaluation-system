@@ -127,6 +127,7 @@ class AdminController extends Controller
     public function viewStudent(string $type, int $id)
     {
         $stud = UserController::getUser($id);
+        $reports = FileController::getStudentReports($id);
 
         // GETS EVALUATION OF STUDENT FROM HTE. THIS QUERY RELIES FACT THAT A STUDENT CAN ONLY HAVE ON HTE AND COORD
         // IT GETS THE STUDENT WHERE THE EVALUATOR IS NOT EQUAL TO THE ID OF THE CURRENT USER THUS GIVING IT EITHER A COORD IF USER IS HTE AND VICE VERSA
@@ -146,7 +147,7 @@ class AdminController extends Controller
         // if($reports->isEmpty()){
         //     $reports = 'No evaluation submitted yet';
         // }
-        if (!$evaluation) {
+        if (!$evaluation && $type == "submission") {
             return view('pages.student.evaluation-page', [
                 'message' => 'No evaluation found. Please wait for your evaluation.',
                 'stud' => $stud,
@@ -154,7 +155,6 @@ class AdminController extends Controller
         }
 
         // $stud = UserController::getApprovedStudent($id);
-        $reports = FileController::getStudentReports($id);
 
         return view('pages.admin.redirection.view-student-specific-' . $type, compact('stud', 'evaluation', 'reports'));
     }

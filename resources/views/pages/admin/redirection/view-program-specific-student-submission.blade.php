@@ -58,7 +58,7 @@
                                 </td>
                                 <td class="text-end">
                                     {{-- TODO: CHANGE TO ACTUAL ROUTE FOR "admin/redirection/view-student-specific-submission-record.blade.php"  --}}
-                                    <a href="{{ route('admin.view-student', ['type' => 'submission-record', 'id' => $stud->id]) }}"
+                                    <a href="{{ route('admin.view-student', ['type' => 'record', 'id' => $stud->id]) }}"
                                         class="btn btn-primary">View</a>
                                 </td>
                                 <td class="text-end">
